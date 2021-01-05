@@ -1,0 +1,16 @@
+@mixin btn($bg, $color, $fontSize, $padding, $margin) {
+    background-color: $bg;
+    color: $color;
+    font-size: $fontSize;
+    padding: $padding;
+    margin: $margin;
+    outline: none;
+    border: 0;
+    transition: all .3s ease;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:active {
+        transform: scale(.95);
+    }
+} 
