@@ -6,7 +6,7 @@ export class Car extends Component {
         super(props);
     }
     
-    check(e) {
+    checkHandler(e) {
         const text = e.target.value;
 
         if (text.length > 0) {
@@ -19,25 +19,33 @@ export class Car extends Component {
     }
 
     render() {
-        const {name, year, changeName, changeYear, remove} = this.props;
+        const {
+            name, 
+            year, 
+            price,
+            removeHandler,
+            changeNameHandler,
+            changeYearHandler,
+            getPriceHendler
+        } = this.props;
 
         return (
             <div className={cars.car}>
                 <div className={cars.wrapper}>
                     <h1 className={cars.car_main_title} >
-                        Car name: 
-                        <span>{name}</span>
+                        Car name: <span>{name}</span>
                     </h1>
                     <p className={cars.car_text}>
-                        Year:
-                        <span> {year}</span>
+                        Year: <span> {year}</span>
                     </p>
                     <form>
-                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={name} onInput={(e) => this.check(e)} onChange={(e) => changeName(e, cars.green, cars.red)} />
-                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={year} onInput={(e) => this.check(e)} onChange={(e) => changeYear(e, cars.green, cars.red)} />
+                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={name} onInput={(e) => this.checkHandler(e)}  onChange={changeNameHandler} />
+                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={year} onInput={(e) => this.checkHandler(e)}  onChange={changeYearHandler} />
                     </form>
+                    <p className={cars.car_price}>{price}</p>
                     <div className={cars.car_btn_wrap}>
-                        <button className={cars.car_btn} onClick={remove}>Remove</button>
+                        <button className={cars.car_btn} onClick={removeHandler}>Remove</button>
+                        <button className={cars.car_btn} onClick={getPriceHendler} >Get Price</button>
                     </div>
                 </div>
             </div>

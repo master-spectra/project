@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import main from "./App.module.scss";
-import {Car} from "../Car/Car.jsx";
+import { Car } from "../Car/Car.js";
 
 export class App extends Component {
     constructor () {
@@ -21,22 +21,20 @@ export class App extends Component {
                     year: "2017"
                 }
             ],
-    
+            price: "Price: 0$",
             pageTitle: "React JS",
             showCars: true
         };
-
-        this.name = "";
     }
 
-    remove(index) {
+    removeHandler(index) {
         const cars = this.state.cars;
 
         cars.splice(index, 1);
         this.setState({cars});
     }
     
-    toggle() {
+    toggleHandler() {
         const showCars = this.state.showCars;
         
         this.setState({
@@ -44,7 +42,34 @@ export class App extends Component {
         });
     }
 
-    changeInput(e) {
+    getPriceHendler(name, year) {
+        let priceForName = 0,
+            priceForYear = 0;
+
+        const namesLuxCars = [
+            "Rolls Royce",
+            "Porche",
+            "Buggati"
+        ];
+
+        for (let i = 0; i < namesLuxCars.length; i++) {
+            if (name.toLowerCase() === namesLuxCars[i].toLowerCase()) {
+                priceForName = 10000;
+                break;
+            } else {
+                priceForName = 5000;
+            };
+        };
+
+        year >= 2015 ? priceForYear = 10000 : priceForYear = 5000;
+
+
+        const price = `price: ${priceForYear + priceForName}$`;
+
+        this.setState({price}); 
+    }
+
+    changeInputHandler(e) {
         const inputValue = e.target.value;
 
         this.setState({
@@ -52,17 +77,17 @@ export class App extends Component {
         });
     }
 
-    changeName(name, index) { 
+    changeNameHandler(text, index) {
         const cars = this.state.cars;
 
-        cars[index].name = name;
+        cars[index].text = text;
         this.setState({cars});
     }
 
-    changeYear(year, index) {
+    changeYearHandler(text, index) {
         const cars = this.state.cars;
 
-        cars[index].year = year;
+        cars[index].text = text;
         this.setState({cars});
     }
 
@@ -74,13 +99,17 @@ export class App extends Component {
                         key={index} 
                         name={item.name} 
                         year={item.year} 
-                        changeYear={
-                            (e) => this.changeYear(e.target.value, index)
-                        } 
-                        changeName={
-                            (e) => this.changeName(e.target.value, index)
-                        } 
-                        remove={() => this.remove(index)}
+                        price={this.state.price}
+                        getPriceHendler={
+                            () => this.getPriceHendler(item.name, item.year)
+                        }
+                        changeNameHandler={
+                            this.changeNameHandler.bind(this, item.name, index)
+                        }
+                        changeYearHandler={
+                            this.changeYearHandler.bind(this, item.year, index)
+                        }
+                        removeHandler={() => this.removeHandler(index)}
                     />
                 )
             } else { 
@@ -94,9 +123,9 @@ export class App extends Component {
                     {this.state.pageTitle}
                 </h1>
                 <form action="#">
-                    <input type="text" onChange={(e) => this.changeInput(e)} />
+                    <input type="text" onChange={(e) => this.changeInputHandler(e)} />
                 </form>
-                <button className={main.page_btn_change_title} onClick={() => this.toggle()}>
+                <button className={main.page_btn_change_title} onClick={() => this.toggleHandler()}>
                     Show/Hide cars
                 </button>
                 {data}
