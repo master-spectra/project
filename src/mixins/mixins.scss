@@ -8,9 +8,15 @@
     border: 0;
     transition: all .3s ease;
     cursor: pointer;
-    border-radius: 5px;
 
     &:active {
         transform: scale(.95);
     }
-} 
+}
+
+
+@mixin image() {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

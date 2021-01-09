@@ -1,0 +1,15 @@
+@import "../../mixins/mixins.scss";
+
+.header {
+	background: green;
+	margin-bottom: 20px;
+	padding: 50px;
+
+	.logo {
+		@include image;
+		padding: 30px;
+		width: 0;
+		cursor: pointer;
+		background-image: url("https://cdn.svgporn.com/logos/facebook.svg");
+	}
+}

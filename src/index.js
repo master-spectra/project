@@ -1,6 +1,13 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDom from "react-dom";
 import "./style.scss";
-import {App} from "./App/App";
+import {App} from "./component/App.js";
+import {store} from "./state/state";
 
-render(<App />, document.querySelector('body'));
+const renderDom = () => {
+	ReactDom.render(<App store={store} />, document.querySelector("body"));
+};
+
+store.subscriber(renderDom);
+
+renderDom();
