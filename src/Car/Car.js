@@ -19,33 +19,27 @@ export class Car extends Component {
     }
 
     render() {
-        const {
-            name, 
-            year, 
-            price,
-            removeHandler,
-            changeNameHandler,
-            changeYearHandler,
-            getPriceHendler
-        } = this.props;
+        const {name, year, changeNameHandler, changeYearHandler, removeHandler, reviewHandler, price} = this.props;
 
         return (
             <div className={cars.car}>
                 <div className={cars.wrapper}>
                     <h1 className={cars.car_main_title} >
-                        Car name: <span>{name}</span>
+                        Car name: 
+                        <span>{name}</span>
                     </h1>
                     <p className={cars.car_text}>
-                        Year: <span> {year}</span>
+                        Year:
+                        <span> {year}</span>
                     </p>
                     <form>
-                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={name} onInput={(e) => this.checkHandler(e)}  onChange={changeNameHandler} />
-                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={year} onInput={(e) => this.checkHandler(e)}  onChange={changeYearHandler} />
+                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={name} onInput={(e) => this.checkHandler(e)} onChange={(e) => changeNameHandler(e)} />
+                        <input type="text" className={`${cars.car_input} ${cars.green}`} value={year} onInput={(e) => this.checkHandler(e)} onChange={(e) => changeYearHandler(e)} />
                     </form>
-                    <p className={cars.car_price}>{price}</p>
+                    <p className={cars.car_price}>Price: {price}</p>
                     <div className={cars.car_btn_wrap}>
                         <button className={cars.car_btn} onClick={removeHandler}>Remove</button>
-                        <button className={cars.car_btn} onClick={getPriceHendler} >Get Price</button>
+                        <button className={cars.car_btn} onClick={() => reviewHandler(name, year)}>Review</button>
                     </div>
                 </div>
             </div>

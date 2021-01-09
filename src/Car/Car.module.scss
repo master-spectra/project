@@ -3,7 +3,7 @@
 
 .car {
     padding: 20px 0;
-    border: 5px solid green;
+    border: 1px solid green;
     margin-bottom: 20px;
 
     .car_main_title {
@@ -16,16 +16,16 @@
         }
     }
 
+    .car_price {
+        font-size: 30px;
+    }
+
     .car_text {
         font-size: 20px;
 
         span {
             font-size: 20px;
         }
-    }
-
-    .car_price {
-        font-size: 20px;
     }
 
     .car_color {

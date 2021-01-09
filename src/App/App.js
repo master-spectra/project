@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import main from "./App.module.scss";
-import { Car } from "../Car/Car.js";
-
+import {Car} from "../Car/Car";
+    
 export class App extends Component {
     constructor () {
         super();
@@ -21,15 +21,21 @@ export class App extends Component {
                     year: "2017"
                 }
             ],
-            price: "Price: 0$",
+            price: "0$",
             pageTitle: "React JS",
             showCars: true
         };
+
+        this.changeInputHandlerType    = "CHANGE INPUT HANDLER";
+        this.changeNameHandlerType     = "CHANGE NAME HANDLER";
+        this.changeYearHandlerType     = "CHANGE YEAR HANDLER";
+        this.removeHandlerType         = "REMOVE HANDLER";
+        this.reviewHandlerType         = "REVIEW HANDLER";
+        this.toggleHandlerType         = "TOGGLE HANDLER";
     }
 
     removeHandler(index) {
         const cars = this.state.cars;
-
         cars.splice(index, 1);
         this.setState({cars});
     }
@@ -42,33 +48,6 @@ export class App extends Component {
         });
     }
 
-    getPriceHendler(name, year) {
-        let priceForName = 0,
-            priceForYear = 0;
-
-        const namesLuxCars = [
-            "Rolls Royce",
-            "Porche",
-            "Buggati"
-        ];
-
-        for (let i = 0; i < namesLuxCars.length; i++) {
-            if (name.toLowerCase() === namesLuxCars[i].toLowerCase()) {
-                priceForName = 10000;
-                break;
-            } else {
-                priceForName = 5000;
-            };
-        };
-
-        year >= 2015 ? priceForYear = 10000 : priceForYear = 5000;
-
-
-        const price = `price: ${priceForYear + priceForName}$`;
-
-        this.setState({price}); 
-    }
-
     changeInputHandler(e) {
         const inputValue = e.target.value;
 
@@ -77,18 +56,46 @@ export class App extends Component {
         });
     }
 
-    changeNameHandler(text, index) {
+    changeNameHandler(name, index) { 
         const cars = this.state.cars;
 
-        cars[index].text = text;
+        cars[index].name = name;
         this.setState({cars});
     }
 
-    changeYearHandler(text, index) {
+    changeYearHandler(year, index) {
         const cars = this.state.cars;
 
-        cars[index].text = text;
+        cars[index].year = year;
         this.setState({cars});
+    }
+
+    reviewHandler(name, year) {
+        const namesLuxCars = [
+            "Rolls Royce",
+            "Lamborghini",
+            "Ferari",
+            "Porche",
+            "Maserati"
+        ];
+
+        let priceForNameCars = 0,
+            priceForYearCars = 0;
+
+        for (let i = 0; i < namesLuxCars.length; i++) {
+            if (name.toLowerCase() === namesLuxCars[i].toLowerCase()) {
+                priceForNameCars = 20000;
+                break;
+            } else {
+                priceForNameCars = 5000;
+            };
+        };
+
+        year >= 2015 ? priceForYearCars = 20000 : priceForYearCars = 5000;
+
+        const price = `${priceForNameCars + priceForYearCars}$`;
+
+        this.setState({price});
     }
 
     render() {        
@@ -100,16 +107,18 @@ export class App extends Component {
                         name={item.name} 
                         year={item.year} 
                         price={this.state.price}
-                        getPriceHendler={
-                            () => this.getPriceHendler(item.name, item.year)
-                        }
-                        changeNameHandler={
-                            this.changeNameHandler.bind(this, item.name, index)
-                        }
                         changeYearHandler={
-                            this.changeYearHandler.bind(this, item.year, index)
+                            (e) => this.changeYearHandler(e.target.value, index)
+                        } 
+                        changeNameHandler={
+                            (e) => this.changeNameHandler(e.target.value, index)
+                        } 
+                        removeHandler={
+                            () => this.removeHandler(index)
                         }
-                        removeHandler={() => this.removeHandler(index)}
+                        reviewHandler={
+                            (name, year) => this.reviewHandler(name, year)
+                        }
                     />
                 )
             } else { 
