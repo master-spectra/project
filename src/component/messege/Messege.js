@@ -4,12 +4,13 @@ import {MyMessege} from "./myMessege/MyMessege";
 
 export const Messege = (props) => {
 	const {messege, addPost, changeInput} 	= props;
-	const messegeLists 						= messege.messegeList.map(item => <MyMessege text={item.text} />)
-	const ref 								= React.createRef();
 	
 	const addMessegeCheckerForMessege 		= "ADD MESSEGE";	
 	const changeInputCheckerForMessege 		= "CHANGE INPUT MESSEGE";
-	
+
+	const messegeLists 						= messege.messegeList.map(item => <MyMessege text={item.text} />)
+	const ref 								= React.createRef();
+		
 	const callChangeInput = () => {
 		changeInput({}, ref, messege.value, changeInputCheckerForMessege);
 	};
