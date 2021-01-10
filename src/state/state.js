@@ -1,4 +1,5 @@
-import {profileReduce} from "./profileReduce.js"; 
+import {profileReduce} from "./profileReduce"; 
+import {messegeReduce} from "./messegeReduce";
 
 let reRender = () => {
 	console.log(true);
@@ -14,6 +15,10 @@ export const store = {
 				"City: unknow"
 			],
 			post: [],
+			value: ""
+		},
+		messege: {
+			messegeList: [],
 			value: ""
 		},
 		sideBar: [
@@ -37,7 +42,7 @@ export const store = {
 				name: "Setting",
 				link: "/setting"
 			}
-		]
+		],
 	},
 
 	getState() {
@@ -50,29 +55,30 @@ export const store = {
 
 	dispatch(action) {
 		profileReduce(this._state, action);
+		messegeReduce(this._state, action);
 		reRender();
+
+		return this._state;
 	},
 
-	addPostActionCreator(action, input) {
+	addPostActionCreator(action, input, target, textChacker) {
 		action = {
-			type: "ADD POST",
+			type: textChacker,
 			input: input.current.value,
-			target: this._state.profile.post
+			target: target,
 		};
 
 		this.dispatch(action);
 		input.current.value = "";
 	},
 
-	changeInputActionCreator(action, input) {
+	changeInputActionCreator(action, input, target, textChacker) {
 		action = {
-			type: "CHANGE INPUT",
+			type: textChacker,
 			input: input.current.value,
-			target: this._state.profile.post
+			target: target,
 		};
 
 		this.dispatch(action);
-
-		console.log(this._state.profile);
 	}
 };

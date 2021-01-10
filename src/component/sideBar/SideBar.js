@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import sideBarStyle from "./sideBar.module.scss";
+import SideBarStyle from "./sideBar.module.scss";
 import {Link} from "./link/Link";
 
 export const SideBar = (props) => {
@@ -14,8 +14,8 @@ export const SideBar = (props) => {
 	});
 
 	return (
-		<aside className={sideBarStyle.sideBar} >
-			<ul className={sideBarStyle.menu}>
+		<aside className={SideBarStyle.sideBar} >
+			<ul className={SideBarStyle.menu}>
 				{link}
 			</ul>
 		</aside>	

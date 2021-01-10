@@ -3,6 +3,7 @@ import AppStyle from "./app.module.scss";
 import {Header} from "./header/Header.js";
 import {SideBar} from "./sideBar/SideBar";
 import {Profile} from "./profile/Profile";
+import {Messege} from "./messege/Messege.js";
 import {BrowserRouter, Route} from "react-router-dom";
 
 export const App =  (props) => {
@@ -16,8 +17,8 @@ export const App =  (props) => {
 					<div className="wrapper">
 						<div className={AppStyle.overlay}>
 							<SideBar sideBar={store.getState().sideBar} />			
-							<Route path="/profile" render={() => <Profile store={store} /> } />	
-							<Route path="/messege" render={() => console.log(true)} />	
+							<Route path="/profile" render={() => <Profile store={store} />}/>	
+							<Route path="/messege" render={() => <Messege store={store} />}/>	
 						</div>
 					</div>										
 				</div>					
