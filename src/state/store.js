@@ -1,5 +1,5 @@
-import {profileReduce} from "./profileReduce"; 
-import {messegeReduce} from "./messegeReduce";
+import {profileReduce} from "./reducers/profileReduce"; 
+import {messegeReduce} from "./reducers/messegeReduce";
 
 let reRender = () => {
 	console.log(true);

@@ -1,6 +1,6 @@
 @import "../../../mixins/mixins.scss";
 
-.myPost {
+.myMessege {
 	display: flex;
 	align-items: flex-start;
 	padding-top: 20px;
@@ -13,7 +13,7 @@
 	.img {
 		@include image;
 		cursor: pointer;
-		background-image: url("../../media/profile.jpg");
+		background-image: url("../../../media/profile.jpg");
 		padding: 50px;
 		width: 0;
 	}

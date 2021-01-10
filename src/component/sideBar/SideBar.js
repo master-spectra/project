@@ -4,14 +4,7 @@ import {Link} from "./link/Link";
 
 export const SideBar = (props) => {
 	const {sideBar} = props;
-	const link = sideBar.map(item => {
-		return (
-			<Link 
-				path={item.link} 
-				text={item.name} 
-			/>
-		)
-	});
+	const link = sideBar.map(item => <Link path={item.link} text={item.name}/>)
 
 	return (
 		<aside className={SideBarStyle.sideBar} >

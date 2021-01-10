@@ -6,7 +6,7 @@
 
 	.backgroundImage {
 		@include image;
-		background-image: url("../media/space.jpg");
+		background-image: url("../../media/space.jpg");
 		padding: 50px;
 	}
 
@@ -17,7 +17,7 @@
 
 		.imgUser {
 			@include image;
-			background-image: url("../media/profile.jpg");
+			background-image: url("../../media/profile.jpg");
 			padding: 70px;
 			width: 0;
 		}

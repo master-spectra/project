@@ -13,7 +13,7 @@
 	.img {
 		@include image;
 		cursor: pointer;
-		background-image: url("../../media/profile.jpg");
+		background-image: url("../../../media/profile.jpg");
 		padding: 50px;
 		width: 0;
 	}

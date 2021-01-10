@@ -1,3 +1,13 @@
+::-webkit-scrollbar {
+	background-color: grey;
+}
+
+::-webkit-scrollbar-thumb {
+	width: 20px;
+	height: 20px;
+	background-color: #ccc;
+}
+
 .app {
 	.content {
 		.overlay {

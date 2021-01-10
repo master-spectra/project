@@ -4,14 +4,23 @@ import {Info} from "./info/Info";
 import {MyPost} from "./myPost/MyPost";
 
 export const Profile = (props) => {
-	const {store} 				= props;
-	const profile 				= store.getState().profile;
-	const ref 					= React.createRef();
-	const infoArr				= profile.info.map(item => <Info text={item} /> );
-	const myPost 				= profile.post.map(item => <MyPost text={item.text} />);
-	const addPostChecker 		= "ADD POST";
-	const changeInputChecker 	= "CHANGE INPUT PROFILE";
+	const {profile, addPost, changeInput} 	= props;
+	const ref 								= React.createRef();
 	
+	const infoArr 							= profile.info.map(item => <Info text={item} /> );
+	const myPost 							= profile.post.map(item => <MyPost text={item.text} />);
+	
+	const addPostCheckerForProfile 			= "ADD POST";	
+	const changeInputCheckerForProfile 		= "CHANGE INPUT PROFILE";
+	
+	const callChangeInput = () => {
+		changeInput({}, ref, profile.value, changeInputCheckerForProfile);
+	};
+
+	const callAddPost = () => {
+		addPost({}, ref, profile.post, addPostCheckerForProfile);
+	};
+
 	return (
 		<div className={ProfileStyle.profile}>
 			<div className={ProfileStyle.backgroundImage}></div>
@@ -25,8 +34,18 @@ export const Profile = (props) => {
 				<h3 className={ProfileStyle.formTitle}>
 					My Post
 				</h3>
-				<input type="text" value={profile.value} ref={ref} className={ProfileStyle.formInput} onChange={() => store.changeInputActionCreator({}, ref, profile.value, changeInputChecker)} />
-				<input type="button" className={ProfileStyle.formBtn} value="Send" onClick={() => store.addPostActionCreator({}, ref, profile.post, addPostChecker)} />
+				<input 
+					type="text" 
+					value={profile.value} 
+					ref={ref} 
+					className={ProfileStyle.formInput} onChange={callChangeInput} 
+				/>
+				<input 
+					type="button" 
+					className={ProfileStyle.formBtn} 
+					value="Send" 
+					onClick={callAddPost} 
+				/>
 			</form>
 			{myPost}
 		</div>
