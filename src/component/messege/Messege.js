@@ -14,15 +14,14 @@ export const Messege = (props) => {
 	
 	return (
 		<div className={MessegeStyle.messege}>
-			<div className={MessegeStyle.messegeList}></div>
+			<div className={MessegeStyle.messegeList}>{arr}</div>
 			<form action="#" className={MessegeStyle.formSendPost}>
 				<h3 className={MessegeStyle.formTitle}>
-					My Post
+					Send messege
 				</h3>
 				<input type="text" value={messege.value} ref={ref} className={MessegeStyle.formInput} onChange={() => store.changeInputActionCreator({}, ref, messege.value, changeInputChecker)} />
 				<input type="button" className={MessegeStyle.formBtn} value="Send" onClick={() => store.addPostActionCreator({}, ref, messege.messegeList, addMessegeChecker)} />
 			</form>
-			{arr}
 		</div>
 	)	
 };
