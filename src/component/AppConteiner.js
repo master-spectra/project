@@ -1,5 +1,6 @@
 import React from "react";
 import {App} from "./App";
+import {BrowserRouter} from "react-router-dom";
 
 export const AppConteiner = (props) => {
 	const {store} = props;
@@ -13,10 +14,12 @@ export const AppConteiner = (props) => {
 	};
 
 	return (
-		<App 
-			state={store.getState()} 
-			addPost={addPost} 
-			changeInput={changeInput} 
-		/>
+		<BrowserRouter>
+			<App 
+				state={store.getState()} 
+				addPost={addPost} 
+				changeInput={changeInput} 
+			/>
+		</BrowserRouter>
 	)
 };

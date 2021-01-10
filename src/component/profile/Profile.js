@@ -5,14 +5,14 @@ import {MyPost} from "./myPost/MyPost";
 
 export const Profile = (props) => {
 	const {profile, addPost, changeInput} 	= props;
-	const ref 								= React.createRef();
-	
-	const infoArr 							= profile.info.map(item => <Info text={item} /> );
-	const myPost 							= profile.post.map(item => <MyPost text={item.text} />);
 	
 	const addPostCheckerForProfile 			= "ADD POST";	
 	const changeInputCheckerForProfile 		= "CHANGE INPUT PROFILE";
-	
+
+	const ref 								= React.createRef();
+	const infoArr 							= profile.info.map(item => <Info text={item} /> );
+	const myPost 							= profile.post.map(item => <MyPost text={item.text} />);
+		
 	const callChangeInput = () => {
 		changeInput({}, ref, profile.value, changeInputCheckerForProfile);
 	};
