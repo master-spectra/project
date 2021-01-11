@@ -9,5 +9,5 @@ export const Header = () => {
 				<NavLink to="/" className={HeaderStyle.logo}></NavLink>
 			</div>
 		</div>	
-	)
+	);
 };

@@ -9,5 +9,5 @@ export const MyMessege = (props) => {
 			<div className={MyMessegeStyle.img}></div>
 			<p className={MyMessegeStyle.text}>{text}</p>
 		</div>	
-	)
+	);
 };

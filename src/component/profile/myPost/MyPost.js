@@ -9,5 +9,5 @@ export const MyPost = (props) => {
 			<div className={MyPostStyle.img}></div>
 			<p className={MyPostStyle.text}>{text}</p>
 		</div>	
-	)
+	);
 };

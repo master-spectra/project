@@ -4,21 +4,26 @@ import {Info} from "./info/Info";
 import {MyPost} from "./myPost/MyPost";
 
 export const Profile = (props) => {
-	const {profile, addPost, changeInput} 	= props;
+	const {profile, addYourMessege, changeInput} 	= props;
+	const input 									= React.createRef();
 	
-	const addPostCheckerForProfile 			= "ADD POST";	
-	const changeInputCheckerForProfile 		= "CHANGE INPUT PROFILE";
+	const addPostCheckerForProfile 					= "ADD POST";	
+	const changeInputCheckerForProfile 				= "CHANGE INPUT PROFILE";
 
-	const ref 								= React.createRef();
-	const infoArr 							= profile.info.map(item => <Info text={item} /> );
-	const myPost 							= profile.post.map(item => <MyPost text={item.text} />);
+	const userInfo = profile.userInfo.map(item => {
+		return <Info text={item} />
+	});
+
+	const myPost = profile.userComment.map(item => {
+		return <MyPost text={item.comment} />
+	});
 		
 	const callChangeInput = () => {
-		changeInput({}, ref, profile.value, changeInputCheckerForProfile);
+		changeInput({}, input, profile.value, changeInputCheckerForProfile);
 	};
 
-	const callAddPost = () => {
-		addPost({}, ref, profile.post, addPostCheckerForProfile);
+	const callAddYourMessege = () => {
+		addYourMessege({}, input, profile.userComment, addPostCheckerForProfile);
 	};
 
 	return (
@@ -27,7 +32,7 @@ export const Profile = (props) => {
 			<div className={ProfileStyle.user}>
 				<div className={ProfileStyle.imgUser}></div>
 				<div className={ProfileStyle.userInfoWrap}>
-					{infoArr}
+					{userInfo}
 				</div>
 			</div>
 			<form action="#" className={ProfileStyle.formSendPost}>
@@ -37,17 +42,18 @@ export const Profile = (props) => {
 				<input 
 					type="text" 
 					value={profile.value} 
-					ref={ref} 
-					className={ProfileStyle.formInput} onChange={callChangeInput} 
+					ref={input} 
+					className={ProfileStyle.formInput} 
+					onChange={callChangeInput} 
 				/>
 				<input 
 					type="button" 
 					className={ProfileStyle.formBtn} 
 					value="Send" 
-					onClick={callAddPost} 
+					onClick={callAddYourMessege} 
 				/>
 			</form>
 			{myPost}
 		</div>
-	)
+	);
 };

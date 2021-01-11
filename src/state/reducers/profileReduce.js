@@ -1,20 +1,20 @@
-export const profileReduce = (state, action) => {
+export const profileReducer = (state, action) => {
 	const addPostCheckerForProfile 		= "ADD POST";	
 	const changeInputCheckerForProfile 	= "CHANGE INPUT PROFILE";
 	
 	switch (true) {
 		case changeInputCheckerForProfile === action.type && action.input.trim().length > 0:
-			state.profile.value = action.input;
+			state.value = action.input;
 			
 			return state;
 			break;
 		case action.type === addPostCheckerForProfile && action.input.trim().length > 0: 
-			const data = {
-				text: action.input
+			const userPost = {
+				comment: action.input
 			};
-
-			action.target.push(data);
-			state.profile.value = "";
+			
+			state.userComment.push(userPost);
+			state.value = "";
 			
 			return state;
 			break;

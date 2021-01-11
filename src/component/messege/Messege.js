@@ -3,20 +3,22 @@ import MessegeStyle from "./messege.module.scss";
 import {MyMessege} from "./myMessege/MyMessege";
 
 export const Messege = (props) => {
-	const {messege, addPost, changeInput} 	= props;
+	const {messege, addYourMessege, changeInput} 	= props;
+	const input 									= React.createRef();
+			
+	const addMessegeCheckerForMessege 				= "ADD MESSEGE";	
+	const changeInputCheckerForMessege 				= "CHANGE INPUT MESSEGE";
 	
-	const addMessegeCheckerForMessege 		= "ADD MESSEGE";	
-	const changeInputCheckerForMessege 		= "CHANGE INPUT MESSEGE";
-
-	const messegeLists 						= messege.messegeList.map(item => <MyMessege text={item.text} />)
-	const ref 								= React.createRef();
-		
+	const messegeLists 	= messege.messegeList.map(item => {
+		return <MyMessege text={item.text} />
+	});
+	
 	const callChangeInput = () => {
-		changeInput({}, ref, messege.value, changeInputCheckerForMessege);
+		changeInput({}, input, messege.value, changeInputCheckerForMessege);
 	};
 
-	const callAddPost = () => {
-		addPost({}, ref, messege.messegeList, addMessegeCheckerForMessege);
+	const callAddYourMessege = () => {
+		addYourMessege({}, input, messege.messegeList, addMessegeCheckerForMessege);
 	};
 
 	return (
@@ -29,7 +31,7 @@ export const Messege = (props) => {
 				<input 
 					type="text" 
 					value={messege.value} 
-					ref={ref} 
+					ref={input} 
 					className={MessegeStyle.formInput} 
 					onChange={callChangeInput} 
 				/>
@@ -37,9 +39,9 @@ export const Messege = (props) => {
 					type="button" 
 					className={MessegeStyle.formBtn} 
 					value="Send" 
-					onClick={callAddPost} 
+					onClick={callAddYourMessege} 
 				/>
 			</form>
 		</div>
-	)	
+	);
 };

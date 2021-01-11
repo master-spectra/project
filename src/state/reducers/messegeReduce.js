@@ -1,21 +1,21 @@
-export const messegeReduce = (state, action) => {
+export const messegeReducer = (state, action) => {
 	const addMessegeCheckerForMessege 	= "ADD MESSEGE";	
 	const changeInputCheckerForMessege 	= "CHANGE INPUT MESSEGE";
 	
 	switch (true) {
 		case action.type === changeInputCheckerForMessege && action.input.trim().length > 0: 
-			state.messege.value = action.input;
-
+			state.inputValue = action.input;
+			
 			return state;
 			break;
 		case action.type === addMessegeCheckerForMessege && action.input.trim().length > 0: 
-			const data = {
+			const userPost = {
 				text: action.input
 			};
 
-			action.target.push(data);
-			state.messege.value = "";
-			
+			state.messegeList.push(userPost);
+			state.inputValue = "";
+
 			return state;
 			break;
 	};

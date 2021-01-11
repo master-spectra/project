@@ -5,7 +5,7 @@ import {BrowserRouter} from "react-router-dom";
 export const AppConteiner = (props) => {
 	const {store} = props;
 	
-	const addPost = ({}, ref, post, addPostCheckerForProfile) => {
+	const addYourMessege = ({}, ref, post, addPostCheckerForProfile) => {
 		store.addPostActionCreator({}, ref, post, addPostCheckerForProfile)
 	};
 	
@@ -17,9 +17,9 @@ export const AppConteiner = (props) => {
 		<BrowserRouter>
 			<App 
 				state={store.getState()} 
-				addPost={addPost} 
+				addYourMessege={addYourMessege} 
 				changeInput={changeInput} 
 			/>
 		</BrowserRouter>
-	)
+	);
 };

@@ -6,5 +6,5 @@ export const Info = (props) => {
 	
 	return (
 		<p className={InfoStyle.userInfo}>{text}</p>
-	)
+	);
 };

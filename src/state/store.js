@@ -1,5 +1,5 @@
-import {profileReduce} from "./reducers/profileReduce"; 
-import {messegeReduce} from "./reducers/messegeReduce";
+import {profileReducer} from "./reducers/profileReduce"; 
+import {messegeReducer} from "./reducers/messegeReduce";
 
 let reRender = () => {
 	console.log(true);
@@ -8,38 +8,38 @@ let reRender = () => {
 export const store = {
 	_state: {
 		profile: {
-			info: [
+			userInfo: [
 				"Andrey Omelchenko",
 				"Age: unknow",
 				"Home animal: unknow",
 				"City: unknow"
 			],
-			post: [],
-			value: ""
+			userComment: [],
+			inputValue: ""
 		},
 		messege: {
 			messegeList: [],
-			value: ""
+			inputValue: ""
 		},
 		sideBar: [
 			{
-				name: "Profile",
+				nameLink: "Profile",
 				link: "/profile"
 			},
 			{
-				name: "Messege",
+				nameLink: "Messege",
 				link: "/messege"
 			},
 			{
-				name: "Music",
+				nameLink: "Music",
 				link: "/music"
 			},
 			{
-				name: "About",
+				nameLink: "About",
 				link: "/about"
 			},
 			{
-				name: "Setting",
+				nameLink: "Setting",
 				link: "/setting"
 			}
 		],
@@ -54,18 +54,16 @@ export const store = {
 	},
 
 	dispatch(action) {
-		profileReduce(this._state, action);
-		messegeReduce(this._state, action);
-		reRender();
+		profileReducer(this._state.profile, action);
+		messegeReducer(this._state.messege, action);
 
-		return this._state;
+		reRender();
 	},
 
 	addPostActionCreator(action, input, target, textChacker) {
 		action = {
 			type: textChacker,
-			input: input.current.value,
-			target: target,
+			input: input.current.value
 		};
 
 		this.dispatch(action);
@@ -75,8 +73,7 @@ export const store = {
 	changeInputActionCreator(action, input, target, textChacker) {
 		action = {
 			type: textChacker,
-			input: input.current.value,
-			target: target,
+			input: input.current.value
 		};
 
 		this.dispatch(action);
