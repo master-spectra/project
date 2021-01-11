@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React from "react";
 import HeaderStyle from "./header.module.scss";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
 	return (

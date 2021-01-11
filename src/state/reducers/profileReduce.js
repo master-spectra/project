@@ -1,4 +1,4 @@
-export const profileReducer = (state, action) => {
+export const profileReducer = (state, action) => {	
 	const addPostCheckerForProfile 		= "ADD POST";	
 	const changeInputCheckerForProfile 	= "CHANGE INPUT PROFILE";
 	
@@ -16,6 +16,9 @@ export const profileReducer = (state, action) => {
 			state.userComment.push(userPost);
 			state.value = "";
 			
+			return state;
+			break;
+		default:
 			return state;
 			break;
 	};

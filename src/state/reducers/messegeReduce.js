@@ -18,5 +18,8 @@ export const messegeReducer = (state, action) => {
 
 			return state;
 			break;
+		default:
+			return state;
+			break;
 	};
 };

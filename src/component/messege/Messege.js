@@ -1,6 +1,6 @@
 import React from "react";
 import MessegeStyle from "./messege.module.scss";
-import {MyMessege} from "./myMessege/MyMessege";
+import { MyMessege } from "./myMessege/MyMessege";
 
 export const Messege = (props) => {
 	const {messege, addYourMessege, changeInput} 	= props;

@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileStyle from "./profile.module.scss";
-import {Info} from "./info/Info";
-import {MyPost} from "./myPost/MyPost";
+import { Info } from "./info/Info";
+import { MyPost } from "./myPost/MyPost";
 
 export const Profile = (props) => {
 	const {profile, addYourMessege, changeInput} 	= props;

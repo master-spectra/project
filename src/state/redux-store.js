@@ -1,13 +1,11 @@
-import React from "react";
-import {createStore, combineReducers} from "redux";
-import {profileReduce} from "./reducers/profileReduce";
-import {messegeReduce} from "./reducers/messegeReduce";
-
-console.log(profileReduce);
+import { combineReducers, createStore } from "redux";
+import { messegeReducer } from './reducers/messegeReduce';
+import { profileReducer } from './reducers/profileReduce';
+import { messegeInit, profileInit } from './initReducer';
 
 const reducers = combineReducers({
-	profile: profileReduce,
-	messege: messegeReduce
+	profile: profileReducer(profileInit, {}),
+	messege: messegeReducer(messegeInit, {}),
 });
 
 export const storeRedux = createStore(reducers);

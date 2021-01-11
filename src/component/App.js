@@ -1,10 +1,10 @@
-import React, {Component} from "react";
+import React from "react";
 import AppStyle from "./app.module.scss";
-import {Header} from "./header/Header";
-import {SideBar} from "./sideBar/SideBar";
-import {Messege} from "./messege/Messege";
-import {Profile} from "./profile/Profile";
-import {Route} from "react-router-dom";
+import { Header } from "./header/Header";
+import { SideBar } from "./sideBar/SideBar";
+import { Messege } from "./messege/Messege";
+import { Profile } from "./profile/Profile";
+import { Route } from "react-router-dom";
 
 export const App =  (props) => {
 	const {state, addYourMessege, changeInput} = props;
