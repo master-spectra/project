@@ -4,10 +4,9 @@ import {Info} from "./info/Info";
 import {MyPost} from "./myPost/MyPost";
 
 export const Profile = (props) => {
-<<<<<<< HEAD
 	const {profile, addYourMessege, changeInput} 	= props;
 	const input 									= React.createRef();
-	
+
 	const addPostCheckerForProfile 					= "ADD POST";	
 	const changeInputCheckerForProfile 				= "CHANGE INPUT PROFILE";
 
@@ -18,16 +17,6 @@ export const Profile = (props) => {
 	const myPost = profile.userComment.map(item => {
 		return <MyPost text={item.comment} />
 	});
-=======
-	const {profile, addPost, changeInput} 	= props;
-	
-	const addPostCheckerForProfile 			= "ADD POST";	
-	const changeInputCheckerForProfile 		= "CHANGE INPUT PROFILE";
-
-	const ref 								= React.createRef();
-	const infoArr 							= profile.info.map(item => <Info text={item} /> );
-	const myPost 							= profile.post.map(item => <MyPost text={item.text} />);
->>>>>>> 535bb1536cd541f82940fd83ffa1c569eca372ca
 		
 	const callChangeInput = () => {
 		changeInput({}, input, profile.value, changeInputCheckerForProfile);
