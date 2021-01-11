@@ -6,9 +6,8 @@ import {MyPost} from "./myPost/MyPost";
 export const Profile = (props) => {
 	const {profile, addYourMessege, changeInput} 	= props;
 	const input 									= React.createRef();
-
-	const addPostCheckerForProfile 					= "ADD POST";	
 	const changeInputCheckerForProfile 				= "CHANGE INPUT PROFILE";
+	const addPostCheckerForProfile 					= "ADD POST";	
 
 	const userInfo = profile.userInfo.map(item => {
 		return <Info text={item} />

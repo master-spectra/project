@@ -1,12 +1,14 @@
+// import reducer's for it's call in method dispatch 
 import {profileReducer} from "./reducers/profileReduce"; 
 import {messegeReducer} from "./reducers/messegeReduce";
 
-let reRender = () => {
+let reRender = () => { // create function for rerender DOM at change state  
 	console.log(true);
 };
 
-export const store = {
-	_state: {
+export const store = { // create BLL
+	_state: { // create state this safe information about App and user
+		// this block state safe information about user
 		profile: {
 			userInfo: [
 				"Andrey Omelchenko",
@@ -17,10 +19,12 @@ export const store = {
 			userComment: [],
 			inputValue: ""
 		},
-		messege: {
+		// this block state safe information about messege user
+ 		messege: {
 			messegeList: [],
 			inputValue: ""
 		},
+		// this block state safe link in sideBar
 		sideBar: [
 			{
 				nameLink: "Profile",
@@ -45,10 +49,12 @@ export const store = {
 		],
 	},
 
-	getState() {
+	// this method create for return state. It getter
+	getState() { 
 		return this._state
 	},
 
+	// this method create for get function render 
 	subscriber(observer) {
 		reRender = observer;
 	},
