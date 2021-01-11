@@ -1,0 +1,11 @@
+update
+
+# --------------
+# Please enter the commit message for your changes. Everything below
+# this paragraph is ignored, and an empty message aborts the commit.
+# Just close the window to accept your message.
+* Unmerged path .eslintcache
+* Unmerged path src/component/App.js
+* Unmerged path src/component/AppConteiner.js
+* Unmerged path src/component/messege/Messege.js
+* Unmerged path src/component/profile/Profile.js

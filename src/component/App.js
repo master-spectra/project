@@ -23,7 +23,11 @@ export const App =  (props) => {
 									return (
 										<Profile 
 											profile={state.profile} 
+<<<<<<< HEAD
 											addYourMessege={addYourMessege} 
+=======
+											addPost={addPost} 
+>>>>>>> 535bb1536cd541f82940fd83ffa1c569eca372ca
 											changeInput={changeInput} 
 										/>
 									)
@@ -37,7 +41,11 @@ export const App =  (props) => {
 									return (
 										<Messege 
 											messege={state.messege} 
+<<<<<<< HEAD
 											addYourMessege={addYourMessege} 
+=======
+											addPost={addPost} 
+>>>>>>> 535bb1536cd541f82940fd83ffa1c569eca372ca
 											changeInput={changeInput} 
 										/>
 									)

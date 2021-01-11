@@ -3,6 +3,7 @@ import MessegeStyle from "./messege.module.scss";
 import {MyMessege} from "./myMessege/MyMessege";
 
 export const Messege = (props) => {
+<<<<<<< HEAD
 	const {messege, addYourMessege, changeInput} 	= props;
 	const input 									= React.createRef();
 			
@@ -13,6 +14,16 @@ export const Messege = (props) => {
 		return <MyMessege text={item.text} />
 	});
 	
+=======
+	const {messege, addPost, changeInput} 	= props;
+	
+	const addMessegeCheckerForMessege 		= "ADD MESSEGE";	
+	const changeInputCheckerForMessege 		= "CHANGE INPUT MESSEGE";
+
+	const messegeLists 						= messege.messegeList.map(item => <MyMessege text={item.text} />)
+	const ref 								= React.createRef();
+		
+>>>>>>> 535bb1536cd541f82940fd83ffa1c569eca372ca
 	const callChangeInput = () => {
 		changeInput({}, input, messege.value, changeInputCheckerForMessege);
 	};
