@@ -22,13 +22,13 @@ export const profileReducer = (state, action) => {
 		case action.type === likePostChecker: 			
 			switch(true) {
 				case state.userComment[action.index].status === "far none":				
-					state.userComment[action.index].status 		= "fas active";
-					state.userComment[action.index].likeCounter = 1;
+					state.userComment[action.index].status 	= "fas active";
+					++state.userComment[action.index].likeCounter;
 
 					break;
 				case state.userComment[action.index].status === "fas active":  				
-					state.userComment[action.index].status 		= "far none";
-					state.userComment[action.index].likeCounter = 0;
+					state.userComment[action.index].status 	= "far none";
+					--state.userComment[action.index].likeCounter;
 
 					break;
 			};
