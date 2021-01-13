@@ -5,16 +5,35 @@
 	align-items: flex-start;
 	padding-top: 20px;
 
-	.text {
-		padding-left: 20px;
-		font-size: 20px;
-	}
-
 	.img {
 		@include image;
 		cursor: pointer;
 		background-image: url("../../../media/profile.jpg");
 		padding: 50px;
 		width: 0;
+	}
+
+	.textWrap {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+
+
+		.text {
+			padding-left: 20px;
+			font-size: 20px;
+		}
+
+		.like {
+			@include btn(transparent, #000, 0, 0, 0);
+			
+			span {
+				font-size: 30px;
+			}
+			
+			.likeCounter {
+				padding-left: 20px;
+			}
+		}
 	}
 }

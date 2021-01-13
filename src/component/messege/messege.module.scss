@@ -6,20 +6,25 @@
     width: 100%;
     align-items: flex-start;
     padding-left: 20px;
-}
 
-.formSendPost {
-	.formTitle {
-		font-size: 30px;
-		padding-bottom: 20px;
-	}
+    .formSendPost {
+    	text-align: end;
+    	width: 100%;
+    	padding-left: 40px;
 
-	.formInput {
-		font-size: 16px;
-		padding: 20px;
-	}
+		.formTitle {
+			font-size: 30px;
+			padding-bottom: 20px;
+		}
 
-	.formBtn {
-		@include btn(green, #fff, 18px, 20px 30px, 0 20px);
+		.formInput {
+			font-size: 16px;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+
+		.formBtn {
+			@include btn(green, #fff, 18px, 20px 30px, 0 20px);
+		}
 	}
 }

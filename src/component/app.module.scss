@@ -9,6 +9,9 @@
 }
 
 .app {
+	max-width: 100%;
+	overflow: hidden;
+	
 	.content {
 		.overlay {
 			display: flex;

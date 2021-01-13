@@ -1,5 +1,5 @@
 import React from "react";
-import AppStyle from "./app.module.scss";
+import AppStyle   from "./app.module.scss";
 import { Header } from "./header/Header";
 import { SideBar } from "./sideBar/SideBar";
 import { Messege } from "./messege/Messege";
@@ -7,7 +7,7 @@ import { Profile } from "./profile/Profile";
 import { Route } from "react-router-dom";
 
 export const App =  (props) => {
-	const {state, addYourMessege, changeInput} = props;
+	const {state, addYourMessege, changeInput, likePost} = props;
 	
  	return (
 		<div className={AppStyle.app} >
@@ -25,6 +25,7 @@ export const App =  (props) => {
 											profile={state.profile} 
 											addYourMessege={addYourMessege} 
 											changeInput={changeInput} 
+											likePost={likePost}
 										/>
 									)
 								}

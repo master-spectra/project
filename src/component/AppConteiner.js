@@ -13,12 +13,17 @@ export const AppConteiner = (props) => {
 		store.changeInputActionCreator({}, ref, value, changeInputCheckerForProfile);
 	};
 
+	const likePost = ({}, post, likeBtn, likePostTextChacker, index) => {
+		store.likePostActionCreator({}, post, likeBtn, likePostTextChacker, index);
+	};
+
 	return (
 		<BrowserRouter>
 			<App 
 				state={store.getState()} 
 				addYourMessege={addYourMessege} 
 				changeInput={changeInput} 
+				likePost={likePost}
 			/>
 		</BrowserRouter>
 	)
