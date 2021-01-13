@@ -4,7 +4,7 @@ import { Info } from "./info/Info";
 import { MyPost } from "./myPost/MyPost";
 
 export const Profile = (props) => {
-	const {profile, addYourMessege, changeInput, likePost} 	= props;
+	const {profile, addYourMessege, changeInput, likePost, className} 	= props;
 	const input 									= React.createRef();
 	const changeInputCheckerForProfile 				= "CHANGE INPUT PROFILE";
 	const addPostCheckerForProfile 					= "ADD POST";	
@@ -14,7 +14,9 @@ export const Profile = (props) => {
 	});
 
 	const allPostUser = profile.userComment.map((item, index) => {
-		return <MyPost text={item.comment} likeCounter={item.likeCounter} likePost={likePost} index={index} />
+		return (
+			<MyPost className={className} text={item.comment} likeCounter={item.likeCounter} likePost={likePost} index={index} />
+		)
 	});
 		
 	const callChangeInput = () => {

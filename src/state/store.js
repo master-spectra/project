@@ -85,10 +85,9 @@ export const store = { // create BLL
 		this.dispatch(action);
 	},
 
-	likePostActionCreator(action, post, likeBtn, textChacker, index) {
+	likePostActionCreator(action, likeBtn, textChacker, index) {
 		action = {
 			type: textChacker,
-			post: post, 
 			btn: likeBtn,
 			index: index
 		};

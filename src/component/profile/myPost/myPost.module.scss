@@ -29,11 +29,18 @@
 			
 			span {
 				font-size: 30px;
+				color: red;
+
+				&.active {
+					color: red;
+				}
 			}
-			
-			.likeCounter {
-				padding-left: 20px;
-			}
+		}
+
+		.likeCounter {
+			padding-left: 20px;
+			font-size: 30px;
+			color: #000;
 		}
 	}
 }

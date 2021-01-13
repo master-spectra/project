@@ -11,29 +11,24 @@ export const profileReducer = (state, action) => {
 		case action.type === addPostCheckerForProfile && action.input.trim().length > 0: 
 			const userPost = {
 				comment: action.input,
-				likeCounter: 0
+				likeCounter: 0,
+				status: "far none"
 			};
 			
 			state.userComment.push(userPost);
 			state.value = "";
 			
 			return state;
-		case action.type === likePostChecker: 
+		case action.type === likePostChecker: 			
 			switch(true) {
-				case !action.post.current.classList.contains("liked"):
-					++state.userComment[action.index].likeCounter;
-					
-					action.post.current.classList.add("liked");
-					action.btn.current.classList.add("fas");
-					action.btn.current.classList.remove("far");
+				case state.userComment[action.index].status === "far none":				
+					state.userComment[action.index].status 		= "fas active";
+					state.userComment[action.index].likeCounter = 1;
 
 					break;
-				default:  
-					--state.userComment[action.index].likeCounter;
-					
-					action.post.current.classList.remove("liked");
-					action.btn.current.classList.remove("fas");
-					action.btn.current.classList.add("far");
+				case state.userComment[action.index].status === "fas active":  				
+					state.userComment[action.index].status 		= "far none";
+					state.userComment[action.index].likeCounter = 0;
 
 					break;
 			};

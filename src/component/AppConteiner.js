@@ -13,8 +13,8 @@ export const AppConteiner = (props) => {
 		store.changeInputActionCreator({}, ref, value, changeInputCheckerForProfile);
 	};
 
-	const likePost = ({}, post, likeBtn, likePostTextChacker, index) => {
-		store.likePostActionCreator({}, post, likeBtn, likePostTextChacker, index);
+	const likePost = ({}, likeBtn, likePostTextChacker, index) => {
+		store.likePostActionCreator({}, likeBtn, likePostTextChacker, index);
 	};
 
 	return (
@@ -24,6 +24,7 @@ export const AppConteiner = (props) => {
 				addYourMessege={addYourMessege} 
 				changeInput={changeInput} 
 				likePost={likePost}
+				className={store.getState().profile.userComment}
 			/>
 		</BrowserRouter>
 	)

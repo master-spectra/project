@@ -7,7 +7,7 @@ import { Profile } from "./profile/Profile";
 import { Route } from "react-router-dom";
 
 export const App =  (props) => {
-	const {state, addYourMessege, changeInput, likePost} = props;
+	const {state, addYourMessege, changeInput, likePost, className} = props;
 	
  	return (
 		<div className={AppStyle.app} >
@@ -26,6 +26,7 @@ export const App =  (props) => {
 											addYourMessege={addYourMessege} 
 											changeInput={changeInput} 
 											likePost={likePost}
+											className={className}
 										/>
 									)
 								}
