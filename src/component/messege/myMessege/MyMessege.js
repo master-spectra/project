@@ -7,7 +7,10 @@ export const MyMessege = (props) => {
 	return (
 		<div className={MyMessegeStyle.myMessege}>
 			<div className={MyMessegeStyle.img}></div>
-			<p className={MyMessegeStyle.text}>{text}</p>
+			<div className={MyMessegeStyle.textWrap}>
+				<p className={MyMessegeStyle.text}>{text}</p>
+				<a href="#" className={MyMessegeStyle.answer}>Ответить</a>
+			</div>
 		</div>	
 	);
 };

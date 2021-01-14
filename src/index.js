@@ -8,6 +8,6 @@ const renderDom = () => { // create expresion function for render DOM and post r
 	ReactDom.render(<AppConteiner store={store} />, document.querySelector("body")); 
 };
 
-store.subscriber(renderDom); // export renderDom to BLL 
+store.subscriber(renderDom); // export renderDom to BLL
 
 renderDom(); // render DOM
