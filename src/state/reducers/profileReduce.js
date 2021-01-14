@@ -12,7 +12,7 @@ export const profileReducer = (state, action) => {
 			const userPost = {
 				comment: action.input,
 				likeCounter: 0,
-				status: "far none"
+				status: "far"
 			};
 			
 			state.userComment.push(userPost);
@@ -21,13 +21,13 @@ export const profileReducer = (state, action) => {
 			return state;
 		case action.type === likePostChecker: 			
 			switch(true) {
-				case state.userComment[action.index].status === "far none":				
+				case state.userComment[action.index].status === "far":				
 					state.userComment[action.index].status 	= "fas active";
 					++state.userComment[action.index].likeCounter;
 
 					break;
 				case state.userComment[action.index].status === "fas active":  				
-					state.userComment[action.index].status 	= "far none";
+					state.userComment[action.index].status 	= "far";
 					--state.userComment[action.index].likeCounter;
 
 					break;

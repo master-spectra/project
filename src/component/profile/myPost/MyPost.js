@@ -18,7 +18,7 @@ export const MyPost = (props) => {
 				<p className={MyPostStyle.text}>{text}</p>
 				<div className="likeWrap">
 					<button onClick={callLikePost} className={MyPostStyle.like}>
-						<span ref={likeBtn} className={"far fa-heart " + className[index].status}></span>
+						<span ref={likeBtn} className={"fa-heart " + className[index].status}></span>
 					</button>
 					<span className={MyPostStyle.likeCounter}>
 						{likeCounter}						
