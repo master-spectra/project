@@ -4,7 +4,7 @@ export const profileReducer = (state, action) => {
 	const likePostChecker				= "LIKE POST";
 	
 	switch (true) {
-		case changeInputCheckerForProfile === action.type && action.input.trim().length > 0:
+		case changeInputCheckerForProfile === action.type:
 			state.value = action.input;
 			
 			return state;
@@ -26,7 +26,7 @@ export const profileReducer = (state, action) => {
 					++state.userComment[action.index].likeCounter;
 
 					break;
-				case state.userComment[action.index].status === "fas active":  				
+				default:  				
 					state.userComment[action.index].status 	= "far";
 					--state.userComment[action.index].likeCounter;
 
