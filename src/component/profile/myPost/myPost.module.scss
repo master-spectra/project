@@ -2,8 +2,8 @@
 
 .myPost {
 	display: flex;
-	align-items: flex-start;
-	padding-top: 20px;
+	width: 100%;
+	padding: 10px 0;
 
 	.img {
 		@include image;
@@ -11,6 +11,7 @@
 		background-image: url("../../../media/profile.jpg");
 		padding: 50px;
 		width: 0;
+		align-self: flex-start;
 	}
 
 	.textWrap {
@@ -18,19 +19,25 @@
 		justify-content: space-between;
 		width: 100%;
 
-
 		.text {
-			padding-left: 20px;
+			padding: 0 20px;
 			font-size: 20px;
-		}
+			line-height: 150%;
+		}	
 
-		.like {
-			@include btn(transparent, #000, 0, 0, 0);
+		.likeWrap {
+		    display: flex;
+    		align-items: flex-start;
+    		justify-content: flex-end;
 			
-			span {
-				font-size: 30px;
-				color: #ccc;
-			}		
+			.like {
+				@include btn(transparent, #000, 0, 0, 0);
+					
+				span {
+					font-size: 30px;
+					color: #ccc;
+				}		
+			}
 		}
 
 		.likeCounter {

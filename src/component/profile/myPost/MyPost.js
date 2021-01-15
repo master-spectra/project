@@ -16,7 +16,7 @@ export const MyPost = (props) => {
 			<div className={MyPostStyle.img}></div>
 			<div className={MyPostStyle.textWrap}>
 				<p className={MyPostStyle.text}>{text}</p>
-				<div className="likeWrap">
+				<div className={MyPostStyle.likeWrap}>
 					<button onClick={callLikePost} className={MyPostStyle.like}>
 						<span ref={likeBtn} className={"fa-heart " + className[index].status}></span>
 					</button>

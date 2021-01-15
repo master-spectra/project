@@ -1,16 +1,15 @@
 @import "../../mixins/mixins.scss";
 
-.messege {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: flex-start;
-    padding-left: 20px;
 
-    .formSendPost {
-    	text-align: end;
-    	width: 100%;
-    	padding-left: 40px;
+.messege {
+	display: flex;
+	justify-content: space-between;
+
+
+	.formSendPost {
+		align-self: flex-start;
+		width: 43%;
+		padding-left: 40px;
 
 		.formTitle {
 			font-size: 30px;
@@ -18,13 +17,13 @@
 		}
 
 		.formInput {
-			font-size: 16px;
-			padding: 20px;
-			margin-bottom: 20px;
+			font-size: 20px;
+			margin-bottom: 40px;
+			padding: 10px 20px;
 		}
 
 		.formBtn {
-			@include btn(green, #fff, 18px, 20px 30px, 0 20px);
+			@include btn(green, #fff, 16px, 10px 20px, 0 0 0 20px)
 		}
 	}
 }

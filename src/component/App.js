@@ -16,36 +16,38 @@ export const App = (props) => {
                 <div className="wrapper">
                     <div className={AppStyle.overlay}>
                         <SideBar sideBar={state.sideBar}/>
-                        <Route
-                            path="/profile"
-                            render={
-                                () => {
-                                    return (
-                                        <Profile
-                                            profile={state.profile}
-                                            addYourMessege={addYourMessege}
-                                            changeInput={changeInput}
-                                            likePost={likePost}
-                                            className={className}
-                                        />
-                                    )
+                        <div className={AppStyle.appContent}>
+                            <Route
+                                path="/profile"
+                                render={
+                                    () => {
+                                        return (
+                                            <Profile
+                                                profile={state.profile}
+                                                addYourMessege={addYourMessege}
+                                                changeInput={changeInput}
+                                                likePost={likePost}
+                                                className={className}
+                                            />
+                                        )
+                                    }
                                 }
-                            }
-                        />
-                        <Route
-                            path="/messege"
-                            render={
-                                () => {
-                                    return (
-                                        <Messege
-                                            messege={state.messege}
-                                            addYourMessege={addYourMessege}
-                                            changeInput={changeInput}
-                                        />
-                                    )
+                            />
+                            <Route
+                                path="/messege"
+                                render={
+                                    () => {
+                                        return (
+                                            <Messege
+                                                messege={state.messege}
+                                                addYourMessege={addYourMessege}
+                                                changeInput={changeInput}
+                                            />
+                                        )
+                                    }
                                 }
-                            }
-                        />
+                            />
+                        </div>  
                     </div>
                 </div>
             </div>

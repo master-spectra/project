@@ -1,23 +1,30 @@
 @import "../../../mixins/mixins.scss";
-.listMessege {
-	color: #ccc;
-}
 
 .myMessege {
 	display: flex;
-	align-items: flex-start;
-	padding-top: 20px;
-	
-	.text {
-		padding-left: 20px;
-		font-size: 20px;
-	}
+	padding: 10px 0;
 
 	.img {
 		@include image;
-		cursor: pointer;
 		background-image: url("../../../media/profile.jpg");
 		padding: 50px;
 		width: 0;
+		align-self: flex-start;
+	}
+
+	.textWrap {
+		padding-left: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		.text {
+			font-size: 20px;
+			line-height: 150%;
+		}
+
+		.answer {
+			@include btn(transparent, #000, 16px, 0, 0)
+		}
 	}
 }

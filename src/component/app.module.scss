@@ -1,3 +1,5 @@
+@import "../mixins/mixins.scss";
+
 ::-webkit-scrollbar {
 	background-color: grey;
 }
@@ -9,13 +11,15 @@
 }
 
 .app {
-	max-width: 100%;
-	overflow: hidden;
-	
 	.content {
 		.overlay {
 			display: flex;
 			justify-content: space-between;
-		}		
+			
+			.appContent {
+				width: 80%;
+				padding: 0 20px;
+			}
+		}
 	}
 }
