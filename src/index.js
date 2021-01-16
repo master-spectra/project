@@ -4,6 +4,7 @@ import "./style.scss";
 import {AppConteiner} from "./component/AppConteiner";
 import {store} from "./state/store";
 import {BrowserRouter} from "react-router-dom";
+import {storeRedux} from "./state/redux-store";
 
 const renderDom = () => {
     ReactDom.render(

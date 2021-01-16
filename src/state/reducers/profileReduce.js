@@ -16,7 +16,7 @@ export const profileReducer = (state = profileInit, action) => {
 	
 	switch (true) {
 		case changeInputCheckerForProfile === action.type:
-			state.value = action.input;
+			state.inputValue = action.input;
 			
 			return state;
 		case action.type === addPostCheckerForProfile && action.input.trim().length > 0: 
@@ -27,7 +27,7 @@ export const profileReducer = (state = profileInit, action) => {
 			};
 			
 			state.userComment.push(userPost);
-			state.value = "";
+			state.inputValue = "";
 			
 			return state;
 		case action.type === likePostChecker:

@@ -1,14 +1,15 @@
 import React from "react";
 import MyPostStyle from "./myPost.module.scss";
+import {likePostActionCreator} from "../../../state/store";
 
 export const MyPost = (props) => {
-	const {text, likeCounter, likePost, index, className} = props;
+	const {text, likeCounter, index, className, dispatch} = props;
 	const post = React.createRef();
 	const likeBtn = React.createRef();
 	const likePostTextChacker = "LIKE POST";
 
 	const callLikePost = () => {
-		likePost({}, likeBtn, likePostTextChacker, index);
+		dispatch(likePostActionCreator(likeBtn, likePostTextChacker, index));
 	};
 
 	return (

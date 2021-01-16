@@ -1,15 +1,13 @@
-// import reducer's for it's call in method dispatch 
-import {profileReducer} from "./reducers/profileReduce"; 
+import {profileReducer} from "./reducers/profileReduce";
 import {messegeReducer} from "./reducers/messegeReduce";
 
-let reRender = () => { // create function for rerender DOM at change state  
+let reRender = () => {
 	console.log(true);
 };
 
-export const store = { // create BLL
-	_state: { // create state this safe information about App and user
-		// this block state safe information about user
-		profile: {
+export const store = {
+	_state: {
+ 		profile: {
 			userInfo: [
 				"Andrey Omelchenko",
 				"Age: unknow",
@@ -19,13 +17,11 @@ export const store = { // create BLL
 			userComment: [],
 			inputValue: ""
 		},
-		// this block state safe information about messege user
- 		messege: {
+  		messege: {
 			messegeList: [],
 			inputValue: ""
 		},
-		// this block state safe link in sideBar
-		sideBar: [
+ 		sideBar: [
 			{
 				nameLink: "Profile",
 				link: "/profile"
@@ -49,49 +45,46 @@ export const store = { // create BLL
 		],
 	},
 
-	// this method create for return state. It getter
-	getState() { 
+ 	getState() {
 		return this._state
 	},
 
-	// this method create for get function render 
-	subscriber(observer) {
+ 	subscriber(observer) {
 		reRender = observer;
 	},
 
 	dispatch(action) {
-		profileReducer(this._state.profile, action);
-		messegeReducer(this._state.messege, action);
+		this._state.profile = profileReducer(this._state.profile, action);
+		this._state.messege = messegeReducer(this._state.messege, action);
 
 		reRender();
 	},
-
-	addPostActionCreator(action, input, target, textChacker) {
-		action = {
-			type: textChacker,
-			input: input.current.value
-		};
-
-		this.dispatch(action);
-		input.current.value = "";
-	},
-
-	changeInputActionCreator(action, input, target, textChacker) {
-		action = {
-			type: textChacker,
-			input: input.current.value
-		};
-
-		this.dispatch(action);
-	},
-
-	likePostActionCreator(action, likeBtn, textChacker, index) {
-		action = {
-			type: textChacker,
-			btn: likeBtn,
-			index: index
-		};
-		
-		this.dispatch(action);
-	}
 };
+
+export const addPostActionCreator = (input, target, textChacker) => {
+	const action = {
+		type: textChacker,
+		input: input.current.value
+	};
+
+	return action;
+};
+
+export const changeInputActionCreator = (input, target, textChacker) => {
+	const action = {
+		type: textChacker,
+		input: input.current.value
+	};
+
+	return action;
+};
+
+export const likePostActionCreator = (likeBtn, textChacker, index) => {
+	const action = {
+		type: textChacker,
+		btn: likeBtn,
+		index: index
+	};
+
+	return action;
+}

@@ -7,7 +7,7 @@ import {Profile} from "./profile/Profile";
 import {Route} from "react-router-dom";
 
 export const App = (props) => {
-    const {state, addYourMessege, changeInput, likePost, className} = props;
+    const {state, className, dispatch} = props;
 
     return (
         <div className={AppStyle.app}>
@@ -24,10 +24,8 @@ export const App = (props) => {
                                         return (
                                             <Profile
                                                 profile={state.profile}
-                                                addYourMessege={addYourMessege}
-                                                changeInput={changeInput}
-                                                likePost={likePost}
                                                 className={className}
+                                                dispatch={dispatch}
                                             />
                                         )
                                     }
@@ -40,8 +38,7 @@ export const App = (props) => {
                                         return (
                                             <Messege
                                                 messege={state.messege}
-                                                addYourMessege={addYourMessege}
-                                                changeInput={changeInput}
+                                                dispatch={dispatch}
                                             />
                                         )
                                     }

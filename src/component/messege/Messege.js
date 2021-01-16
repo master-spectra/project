@@ -1,9 +1,10 @@
 import React from "react";
 import MessegeStyle from "./messege.module.scss";
 import { MyMessege } from "./myMessege/MyMessege";
+import {addPostActionCreator, changeInputActionCreator} from "../../state/store";
 
 export const Messege = (props) => {
-	const {messege, addYourMessege, changeInput} 	= props;
+	const {messege, dispatch} 	= props;
 	const input 									= React.createRef();
 			
 	const addMessegeCheckerForMessege 				= "ADD MESSEGE";	
@@ -14,11 +15,19 @@ export const Messege = (props) => {
 	});
 
 	const callChangeInput = () => {
-		changeInput({}, input, messege.value, changeInputCheckerForMessege);
+		dispatch(
+			changeInputActionCreator(
+				input, messege.inputValue, changeInputCheckerForMessege
+			)
+		);
 	};
 
 	const callAddYourMessege = () => {
-		addYourMessege({}, input, messege.messegeList, addMessegeCheckerForMessege);
+		dispatch(
+			addPostActionCreator(
+				input, messege.messegeList, addMessegeCheckerForMessege
+			)
+		);
 	};
 
 	return (
@@ -30,7 +39,7 @@ export const Messege = (props) => {
 				</h3>
 				<input 
 					type="text" 
-					value={messege.value} 
+					value={messege.inputValue}
 					ref={input} 
 					className={MessegeStyle.formInput} 
 					onChange={callChangeInput} 
