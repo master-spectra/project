@@ -1,4 +1,9 @@
-export const messegeReducer = (state, action) => {
+const messegeInit = {
+	messegeList: [],
+	inputValue: ""
+};
+
+export const messegeReducer = (state = messegeInit, action) => {
 	const addMessegeCheckerForMessege 	= "ADD MESSEGE";	
 	const changeInputCheckerForMessege 	= "CHANGE INPUT MESSEGE";
 	

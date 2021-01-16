@@ -1,4 +1,15 @@
-export const profileReducer = (state, action) => {	
+const profileInit = {
+	userInfo: [
+		"Andrey Omelchenko",
+		"Age: unknow",
+		"Home animal: unknow",
+		"City: unknow"
+	],
+	userComment: [],
+	inputValue: ""
+};
+
+export const profileReducer = (state = profileInit, action) => {
 	const addPostCheckerForProfile 		= "ADD POST";	
 	const changeInputCheckerForProfile 	= "CHANGE INPUT PROFILE";
 	const likePostChecker				= "LIKE POST";
@@ -19,15 +30,15 @@ export const profileReducer = (state, action) => {
 			state.value = "";
 			
 			return state;
-		case action.type === likePostChecker: 			
+		case action.type === likePostChecker:
 			switch(true) {
 				case state.userComment[action.index].status === "far":				
-					state.userComment[action.index].status 	= "fas active";
+					state.userComment[action.index].status = "fas active";
 					++state.userComment[action.index].likeCounter;
 
 					break;
-				default:  				
-					state.userComment[action.index].status 	= "far";
+				default:
+					state.userComment[action.index].status = "far";
 					--state.userComment[action.index].likeCounter;
 
 					break;
