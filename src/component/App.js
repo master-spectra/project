@@ -2,8 +2,8 @@ import React from "react";
 import AppStyle from "./app.module.scss";
 import {Header} from "./header/Header";
 import {SideBar} from "./sideBar/SideBar";
-import {Profile} from "./profile/Profile";
 import {Messege} from "./messege/Messege";
+import {Profile} from "./profile/Profile";
 import {Route} from "react-router-dom";
 
 export const App = (props) => {
@@ -47,7 +47,7 @@ export const App = (props) => {
                                     }
                                 }
                             />
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>

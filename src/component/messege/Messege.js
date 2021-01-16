@@ -21,8 +21,6 @@ export const Messege = (props) => {
 		addYourMessege({}, input, messege.messegeList, addMessegeCheckerForMessege);
 	};
 
-	console.log(MessegeStyle);
-
 	return (
 		<div className={MessegeStyle.messege}>
 			<div className={MessegeStyle.listMessege}>{messegeLists}</div>
