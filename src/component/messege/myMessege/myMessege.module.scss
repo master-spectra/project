@@ -24,7 +24,8 @@
 		}
 
 		.answer {
-			@include btn(transparent, #000, 16px, 0, 0)
+			@include btn(transparent, #000, 16px, 20px 0, 0);
+			text-align: start;
 		}
 	}
 }

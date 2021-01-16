@@ -23,7 +23,7 @@
 		}
 
 		.formBtn {
-			@include btn(green, #fff, 16px, 10px 20px, 0 0 0 20px)
+			@include btn(green, #fff, 16px, 10px 20px, 0 0 0 20px);
 		}
 	}
 }
