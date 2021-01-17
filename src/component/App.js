@@ -1,32 +1,42 @@
 import React from "react";
 import AppStyle from "./app.module.scss";
 import {Header} from "./header/Header";
-import {SideBar} from "./sideBar/SideBar";
 import {Messege} from "./messege/Messege";
-import {Profile} from "./profile/Profile";
+import {ProfileConteiner} from "./profile/ProfileConteiner";
+import {StoreContext} from "../storeContext";
+import {SideBarConteiner} from "./sideBar/sideBarConteiner";
 import {Route} from "react-router-dom";
 
-export const App = (props) => {
-    const {state, className, dispatch} = props;
-
+export const App = () => {
     return (
         <div className={AppStyle.app}>
             <Header/>
             <div className={AppStyle.content}>
                 <div className="wrapper">
                     <div className={AppStyle.overlay}>
-                        <SideBar sideBar={state.sideBar}/>
+                        <SideBarConteiner/>
                         <div className={AppStyle.appContent}>
                             <Route
                                 path="/profile"
                                 render={
                                     () => {
                                         return (
-                                            <Profile
-                                                profile={state.profile}
-                                                className={className}
-                                                dispatch={dispatch}
-                                            />
+                                            <StoreContext.Consumer>
+                                                {
+                                                    store => {
+                                                        return (
+                                                            <ProfileConteiner
+                                                                profile={
+                                                                    store.getState().profile
+                                                                }
+                                                                dispatch={(action) => {
+                                                                    store.dispatch(action)
+                                                                }}
+                                                            />
+                                                        )
+                                                    }
+                                                }
+                                            </StoreContext.Consumer>
                                         )
                                     }
                                 }
@@ -36,10 +46,22 @@ export const App = (props) => {
                                 render={
                                     () => {
                                         return (
-                                            <Messege
-                                                messege={state.messege}
-                                                dispatch={dispatch}
-                                            />
+                                            <StoreContext.Consumer>
+                                                {
+                                                    store => {
+                                                        return (
+                                                            <Messege
+                                                                messege={
+                                                                    store.getState().messege
+                                                                }
+                                                                dispatch={(action) => {
+                                                                    store.dispatch(action)
+                                                                }}
+                                                            />
+                                                        )
+                                                    }
+                                                }
+                                            </StoreContext.Consumer>
                                         )
                                     }
                                 }
