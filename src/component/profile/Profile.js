@@ -1,15 +1,10 @@
 import React from "react";
-import { Info } from "./info/Info";
 import { MyPost } from "./myPost/MyPost";
 import { User } from "./user/User";
-import { PostForm } from "./postForm/postForm";
+import { PostForm } from "./profileForm/postForm";
 
 export const Profile = (props) => {
 	const {profile, className, dispatch} = props;
-
-	const userInfo = profile.userInfo.map(item => {
-		return <Info text={item}/>
-	});
 
 	const allPostUser = profile.userComment.map((item, index) => {
 		return (
@@ -25,7 +20,7 @@ export const Profile = (props) => {
 
 	return (
 		<div>
-			<User userInfo={userInfo}/>
+			<User userInfo={profile.userInfo}/>
 			<PostForm profile={profile} dispatch={dispatch}/>
 			<div>
 				{allPostUser}

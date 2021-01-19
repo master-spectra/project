@@ -22,11 +22,5 @@ const sideBarInit = [
 ];
 
 export const sideBarReducer = (state = sideBarInit) => {
-    const newState = [];
-
-    state.forEach((item, index) => {
-       newState[index] = item;
-    });
-
-    return newState;
+    return state;
 };

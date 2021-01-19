@@ -3,7 +3,7 @@ import {messegeReducer} from "./reducers/messegeReduce";
 import { sideBarReducer } from "./reducers/sideBarReducer";
 
 export const store = {
-	_state: {
+	state: {
  		profile: {
 			userInfo: [
 				"Andrey Omelchenko",
@@ -43,13 +43,13 @@ export const store = {
 	},
 
  	getState() {
-		return this._state
+		return this.state
 	},
 
 	dispatch(action) {
-		this._state.profile = profileReducer(this._state.profile, action);
-		this._state.messege = messegeReducer(this._state.messege, action);
-		this._state.sideBar = sideBarReducer(this._state.sideBar);
+		this.state.profile = profileReducer(this.state.profile, action);
+		this.state.messege = messegeReducer(this.state.messege, action);
+		this.state.sideBar = sideBarReducer(this.state.sideBar);
 	}
 };
 
