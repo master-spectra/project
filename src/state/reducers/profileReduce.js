@@ -1,53 +1,61 @@
 const profileInit = {
-    userInfo: [
-        "Andrey Omelchenko",
-        "Age: unknow",
-        "Home animal: unknow",
-        "City: unknow"
-    ],
-    userComment: [],
-    inputValue: ""
+	userInfo: [
+		"Andrey Omelchenko",
+		"Age: unknow",
+		"Home animal: unknow",
+		"City: unknow"
+	],
+	userComment: [],
+	inputValue: ""
 };
 
 export const profileReducer = (state = profileInit, action) => {
-    const addPostCheckerForProfile = "ADD POST";
-    const changeInputCheckerForProfile = "CHANGE INPUT PROFILE";
-    const likePostChecker = "LIKE POST";
+	const addPostCheckerForProfile 		= "ADD POST";	
+	const changeInputCheckerForProfile 	= "CHANGE INPUT PROFILE";
+	const likePostChecker				= "LIKE POST";
+	
+	switch (true) {
+		case changeInputCheckerForProfile === action.type: {
+			const newState = {...state};
+			newState.inputValue = action.input;
 
-    switch (true) {
-        case changeInputCheckerForProfile === action.type:
-            state.inputValue = action.input;
+			return newState;
+		}
+		case action.type === addPostCheckerForProfile && action.input.trim().length > 0: {
+			const userPost = {
+				comment: action.input,
+				likeCounter: 0,
+				status: "far"
+			};
 
-            return state;
-        case action.type === addPostCheckerForProfile && action.input.trim().length > 0:
-            const userPost = {
-                comment: action.input,
-                likeCounter: 0,
-                status: "far"
-            };
+			const newState = {...state};
+			newState.userComment = [...state.userComment];
 
-            state.userComment.push(userPost);
-            state.inputValue = "";
+			newState.userComment.push(userPost);
+			newState.inputValue = "";
 
-            return state;
-        case action.type === likePostChecker:
-            switch (true) {
-                case state.userComment[action.index].status === "far":
-                    state.userComment[action.index].status = "fas active";
-                    ++state.userComment[action.index].likeCounter;
+			return newState;
+		}
+		case action.type === likePostChecker: {
+			const newState = {...state};
+			newState.userComment = [...state.userComment];
 
-                    break;
-                default:
-                    state.userComment[action.index].status = "far";
-                    --state.userComment[action.index].likeCounter;
+			switch (true) {
+				case newState.userComment[action.index].status === "far":
+					newState.userComment[action.index].status = "fas active";
+					++newState.userComment[action.index].likeCounter;
 
-                    break;
-            }
-            ;
+					break;
+				default:
+					newState.userComment[action.index].status = "far";
+					--newState.userComment[action.index].likeCounter;
 
-            return state;
-        default:
-            return state;
-    }
-    ;
+					break;
+			}
+
+			return newState;
+		}
+		default:
+			return state;
+	}
 };

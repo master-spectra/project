@@ -1,22 +1,16 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "./style.scss";
-import {App} from "./component/App";
-import {store} from "./state/store";
-import {BrowserRouter} from "react-router-dom";
-import {Provider, StoreContext} from "./storeContext";
+import { AppConteiner } from "./component/AppConteiner";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { storeRedux } from "./state/redux-store";
 
-const renderDom = () => {
-    ReactDom.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </BrowserRouter>,
-        document.querySelector("body")
-    );
-};
-
-store.subscriber(renderDom);
-
-renderDom();
+ReactDom.render(
+	<BrowserRouter>
+		<Provider store={storeRedux}>
+			<AppConteiner />
+		</Provider>
+	</BrowserRouter>,
+	document.querySelector("body")
+);

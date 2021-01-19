@@ -1,0 +1,19 @@
+@import "../../../mixins/mixins.scss";
+
+.formSendPost {
+    padding: 40px 0;
+
+    .formTitle {
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+
+    .formInput {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+
+    .formBtn {
+        @include btn(green, #fff, 16px, 10px 20px, 0 0 0 20px)
+    }
+}

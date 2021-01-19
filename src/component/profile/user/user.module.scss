@@ -1,0 +1,25 @@
+@import "../../../mixins/mixins.scss";
+
+.profileWrap {
+    .backgroundImage {
+        @include image;
+        background-image: url("../../../media/space.jpg");
+        padding: 50px 0;
+    }
+
+    .user {
+        display: flex;
+        padding-top: 20px;
+
+        .imgUser {
+            @include image;
+            background-image: url("../../../media/profile.jpg");
+            padding: 50px;
+            width: 0;
+        }
+
+        .userInfoWrap {
+            padding-left: 20px;
+        }
+    }
+}

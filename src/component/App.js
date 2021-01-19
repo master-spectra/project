@@ -1,42 +1,32 @@
 import React from "react";
 import AppStyle from "./app.module.scss";
 import {Header} from "./header/Header";
+import {SideBar} from "./sideBar/SideBar";
 import {Messege} from "./messege/Messege";
-import {ProfileConteiner} from "./profile/ProfileConteiner";
-import {StoreContext} from "../storeContext";
-import {SideBarConteiner} from "./sideBar/sideBarConteiner";
+import {Profile} from "./profile/Profile";
 import {Route} from "react-router-dom";
 
-export const App = () => {
+export const App = (props) => {
+    const {state, dispatch} = props;
+
     return (
         <div className={AppStyle.app}>
             <Header/>
             <div className={AppStyle.content}>
                 <div className="wrapper">
                     <div className={AppStyle.overlay}>
-                        <SideBarConteiner/>
+                        <SideBar sideBar={state.sideBar}/>
                         <div className={AppStyle.appContent}>
                             <Route
                                 path="/profile"
                                 render={
                                     () => {
                                         return (
-                                            <StoreContext.Consumer>
-                                                {
-                                                    store => {
-                                                        return (
-                                                            <ProfileConteiner
-                                                                profile={
-                                                                    store.getState().profile
-                                                                }
-                                                                dispatch={(action) => {
-                                                                    store.dispatch(action)
-                                                                }}
-                                                            />
-                                                        )
-                                                    }
-                                                }
-                                            </StoreContext.Consumer>
+                                            <Profile
+                                                profile={state.profile}
+                                                className={state.profile.userComment}
+                                                dispatch={dispatch}
+                                            />
                                         )
                                     }
                                 }
@@ -46,22 +36,10 @@ export const App = () => {
                                 render={
                                     () => {
                                         return (
-                                            <StoreContext.Consumer>
-                                                {
-                                                    store => {
-                                                        return (
-                                                            <Messege
-                                                                messege={
-                                                                    store.getState().messege
-                                                                }
-                                                                dispatch={(action) => {
-                                                                    store.dispatch(action)
-                                                                }}
-                                                            />
-                                                        )
-                                                    }
-                                                }
-                                            </StoreContext.Consumer>
+                                            <Messege
+                                                messege={state.messege}
+                                                dispatch={dispatch}
+                                            />
                                         )
                                     }
                                 }
