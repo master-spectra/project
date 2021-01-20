@@ -4,15 +4,16 @@ import { User } from "./user/User";
 import { PostForm } from "./profileForm/postForm";
 
 export const Profile = (props) => {
-	const {profile, className, dispatch} = props;
+	const {profile, dispatch} = props;
+	const userComment = profile.userComment;
 
-	const allPostUser = profile.userComment.map((item, index) => {
+	const allPostUser = userComment.map((item, index) => {
 		return (
 			<MyPost
-				className={className}
-				text={item.comment}
-				dispatch={dispatch}
 				likeCounter={item.likeCounter}
+				text={item.comment}
+				className={userComment}
+				dispatch={dispatch}
 				index={index}
 			/>
 		)

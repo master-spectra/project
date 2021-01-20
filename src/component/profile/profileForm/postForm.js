@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./postForm.module.scss";
-import { addPostActionCreator, changeInputActionCreator } from "../../../state/store";
+import { addPostActionCreator, changeInputActionCreator } from "../../../state/actionCreator/actionCreator";
 
 export const PostForm = (props) => {
     const {profile, dispatch} = props;

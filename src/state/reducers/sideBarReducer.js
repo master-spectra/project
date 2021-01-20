@@ -18,6 +18,10 @@ const sideBarInit = [
     {
         nameLink: "Setting",
         link: "/setting"
+    },
+    {
+        nameLink: "Find user",
+        link: "/find"
     }
 ];
 

@@ -1,0 +1,49 @@
+@import "../../../mixins/mixins.scss";
+
+.user {
+    display: flex;
+    padding: 20px 0;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .otherItem {
+        .img {
+            @include image;
+            background-image: url("../../../media/profile.jpg");
+            width: 0;
+            padding: 50px;
+        }
+
+        .btnFollowing {
+            @include btn(green, #fff, 16px, 10px 20px, 30px 20px 0 0);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            letter-spacing: .7px;
+            text-transform: capitalize;
+        }
+    }
+
+    .information {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #c9c9c9;
+        padding: 5px;
+
+        p {
+            font-size: 20px;
+            color: #8b8b8b;
+            text-transform: capitalize;
+            padding-bottom: 20px;
+        }
+
+        .aboutUser {
+            .name {
+                padding-bottom: 55px;
+            }
+        }
+    }
+}

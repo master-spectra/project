@@ -1,6 +1,6 @@
 import React from "react";
 import MyPostStyle from "./myPost.module.scss";
-import { likePostActionCreator } from "../../../state/store";
+import { likePostActionCreator } from "../../../state/actionCreator/actionCreator";
 
 export const MyPost = (props) => {
 	const {text, likeCounter, index, className, dispatch} = props;

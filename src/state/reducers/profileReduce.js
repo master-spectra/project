@@ -21,6 +21,7 @@ export const profileReducer = (state = profileInit, action) => {
 
 			return newState;
 		}
+
 		case action.type === addPostCheckerForProfile && action.input.trim().length > 0: {
 			const userPost = {
 				comment: action.input,
@@ -36,6 +37,7 @@ export const profileReducer = (state = profileInit, action) => {
 
 			return newState;
 		}
+
 		case action.type === likePostChecker: {
 			const newState = {...state};
 			newState.userComment = [...state.userComment];
@@ -55,6 +57,7 @@ export const profileReducer = (state = profileInit, action) => {
 
 			return newState;
 		}
+
 		default:
 			return state;
 	}

@@ -1,6 +1,6 @@
 import React from "react";
 import messegeFormStyle from "./messegeForm.module.scss";
-import { addPostActionCreator, changeInputActionCreator } from "../../../state/store";
+import { addPostActionCreator, changeInputActionCreator } from "../../../state/actionCreator/actionCreator";
 
 export const MessegeForm = (props) => {
     const {messege, dispatch} = props;

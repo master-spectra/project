@@ -5,6 +5,7 @@ import {SideBar} from "./sideBar/SideBar";
 import {Messege} from "./messege/Messege";
 import {Profile} from "./profile/Profile";
 import {Route} from "react-router-dom";
+import { Users } from "./Users/Users";
 
 export const App = (props) => {
     const {state, dispatch} = props;
@@ -24,7 +25,6 @@ export const App = (props) => {
                                         return (
                                             <Profile
                                                 profile={state.profile}
-                                                className={state.profile.userComment}
                                                 dispatch={dispatch}
                                             />
                                         )
@@ -39,6 +39,19 @@ export const App = (props) => {
                                             <Messege
                                                 messege={state.messege}
                                                 dispatch={dispatch}
+                                            />
+                                        )
+                                    }
+                                }
+                            />
+                            <Route
+                                path="/find"
+                                render={
+                                    () => {
+                                        return (
+                                            <Users
+                                                dispatch={dispatch}
+                                                usersList={state.users.listUser}
                                             />
                                         )
                                     }

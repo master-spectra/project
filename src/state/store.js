@@ -1,10 +1,10 @@
-import {profileReducer} from "./reducers/profileReduce";
-import {messegeReducer} from "./reducers/messegeReduce";
+import { profileReducer } from "./reducers/profileReduce";
+import { messegeReducer } from "./reducers/messegeReduce";
 import { sideBarReducer } from "./reducers/sideBarReducer";
 
 export const store = {
 	state: {
- 		profile: {
+		profile: {
 			userInfo: [
 				"Andrey Omelchenko",
 				"Age: unknow",
@@ -14,11 +14,11 @@ export const store = {
 			userComment: [],
 			inputValue: ""
 		},
-  		messege: {
+		messege: {
 			messegeList: [],
 			inputValue: ""
 		},
- 		sideBar: [
+		sideBar: [
 			{
 				nameLink: "Profile",
 				link: "/profile"
@@ -38,11 +38,15 @@ export const store = {
 			{
 				nameLink: "Setting",
 				link: "/setting"
+			},
+			{
+				nameLink: "Find user",
+				link: "/find"
 			}
 		],
 	},
 
- 	getState() {
+	getState() {
 		return this.state
 	},
 
@@ -52,31 +56,3 @@ export const store = {
 		this.state.sideBar = sideBarReducer(this.state.sideBar);
 	}
 };
-
-export const addPostActionCreator = (input, target, textChacker) => {
-	const action = {
-		type: textChacker,
-		input: input.current.value
-	};
-
-	return action;
-};
-
-export const changeInputActionCreator = (input, target, textChacker) => {
-	const action = {
-		type: textChacker,
-		input: input.current.value
-	};
-
-	return action;
-};
-
-export const likePostActionCreator = (likeBtn, textChacker, index) => {
-	const action = {
-		type: textChacker,
-		btn: likeBtn,
-		index: index
-	};
-
-	return action;
-}
