@@ -9,10 +9,8 @@
 
     .otherItem {
         .img {
-            @include image;
-            background-image: url("../../../media/profile.jpg");
-            width: 0;
-            padding: 50px;
+            width: 100px;
+            height: 100px;
         }
 
         .btnFollowing {

@@ -1,11 +1,11 @@
 import React from "react";
 import AppStyle from "./app.module.scss";
 import {Header} from "./header/Header";
-import {SideBar} from "./sideBar/SideBar";
-import {Messege} from "./messege/Messege";
-import {Profile} from "./profile/Profile";
+import { UsersConteiner } from "./Users/UsersConteiner";
+import { ProfileConteiner } from "./profile/ProfileConteiner";
+import { MessegeConteiner } from "./messege/MessegeConteiner";
+import { SideBarConteiner } from "./sideBar/SideBarConteiner";
 import {Route} from "react-router-dom";
-import { Users } from "./Users/Users";
 
 export const App = (props) => {
     const {state, dispatch} = props;
@@ -16,17 +16,14 @@ export const App = (props) => {
             <div className={AppStyle.content}>
                 <div className="wrapper">
                     <div className={AppStyle.overlay}>
-                        <SideBar sideBar={state.sideBar}/>
+                        <SideBarConteiner />
                         <div className={AppStyle.appContent}>
                             <Route
                                 path="/profile"
                                 render={
                                     () => {
                                         return (
-                                            <Profile
-                                                profile={state.profile}
-                                                dispatch={dispatch}
-                                            />
+                                            <ProfileConteiner/>
                                         )
                                     }
                                 }
@@ -36,10 +33,7 @@ export const App = (props) => {
                                 render={
                                     () => {
                                         return (
-                                            <Messege
-                                                messege={state.messege}
-                                                dispatch={dispatch}
-                                            />
+                                            <MessegeConteiner />
                                         )
                                     }
                                 }
@@ -49,10 +43,7 @@ export const App = (props) => {
                                 render={
                                     () => {
                                         return (
-                                            <Users
-                                                dispatch={dispatch}
-                                                usersList={state.users.listUser}
-                                            />
+                                            <UsersConteiner />
                                         )
                                     }
                                 }

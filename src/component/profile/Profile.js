@@ -1,30 +1,16 @@
 import React from "react";
-import { MyPost } from "./myPost/MyPost";
-import { User } from "./user/User";
-import { PostForm } from "./profileForm/postForm";
+import { PostFormConteiner } from "./profileForm/postFormConteiner";
+import { UserConteiner } from "./user/UserConteiner";
 
 export const Profile = (props) => {
-	const {profile, dispatch} = props;
-	const userComment = profile.userComment;
-
-	const allPostUser = userComment.map((item, index) => {
-		return (
-			<MyPost
-				likeCounter={item.likeCounter}
-				text={item.comment}
-				className={userComment}
-				dispatch={dispatch}
-				index={index}
-			/>
-		)
-	});
+	const {userComment, allPostUser} = props;
 
 	return (
 		<div>
-			<User userInfo={profile.userInfo}/>
-			<PostForm profile={profile} dispatch={dispatch}/>
+			<UserConteiner />
+			<PostFormConteiner />
 			<div>
-				{allPostUser}
+				{allPostUser(userComment)}
 			</div>
 		</div>
 	);

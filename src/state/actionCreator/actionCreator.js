@@ -35,3 +35,12 @@ export const followingUserActionCreator = (btn, textChecker, index) => {
 
     return action;
 };
+
+export const setUsersActionCreator = (textChecker, usersArray) => {
+    const action = {
+        type: textChecker,
+        usersArray: usersArray
+    };
+
+    return action;
+};

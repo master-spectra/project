@@ -1,23 +1,18 @@
 import React from "react";
-import { User } from "./user/User";
+import * as axios from "axios";
 
 export const Users = (props) => {
-    const {usersList, dispatch} = props;
+    const {usersList, setState, getUser} = props;
+    const setUserTextCheker = "SET USER";
 
-    const users = usersList.map((item, index) => {
-        return (
-            <User
-                dispatch={dispatch}
-                name={item.name}
-                statusFollowing={item.statusFollowing}
-                index={index}
-                about={item.about}
-                location={item.location}
-            />
-        )
-    });
+    if (usersList.length === 0) {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            .then(resolve => {
+                setState(setUserTextCheker, resolve.data.items);
+            });
+    };
 
     return (
-        <div>{users}</div>
-    )
+        <div>{getUser(usersList)}</div>
+    );
 };

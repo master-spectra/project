@@ -1,72 +1,30 @@
 const usersInit = {
-    listUser: [
-        {
-            name: "Andrey",
-            about: "lorem",
-            location: {
-                city: "Kiev",
-                country: "Ukraine"
-            },
-            status: false,
-            statusFollowing: "Following"
-        },
-        {
-            name: "Andrey",
-            about: "lorem",
-            location: {
-                city: "Kiev",
-                country: "Ukraine"
-            },
-            status: false,
-            statusFollowing: "Following"
-        },
-        {
-            name: "Andrey",
-            about: "lorem",
-            location: {
-                city: "Kiev",
-                country: "Ukraine"
-            },
-            status: false,
-            statusFollowing: "Following"
-        },
-        {
-            name: "Andrey",
-            about: "Text please",
-            location: {
-                city: "Kiev",
-                country: "Ukraine"
-            },
-            status: false,
-            statusFollowing: "Following"
-        }
-    ],
+    listUser: [],
 };
 
 export const usersReducer = (state = usersInit, action) => {
     const followCheckerForUser = "FOLLOW ON USER";
+    const setUserTextCheker = "SET USER";
     const newState = {...state};
 
     newState.listUser = state.listUser.map(item => {
-        return {
-            name: item.name,
-            about: item.about,
-            location: item.location,
-            status: item.status,
-            statusFollowing: item.statusFollowing
-        };
+        return item;
     });
 
     switch (true) {
-        case action.type === followCheckerForUser && newState.listUser[action.index].status === false:
-            newState.listUser[action.index].status = !newState.listUser[action.index].status;
-            newState.listUser[action.index].statusFollowing = "Unfollowing";
+        case action.type === followCheckerForUser && newState.listUser[action.index].followed === false:
+            newState.listUser[action.index].followed = !newState.listUser[action.index].followed;
+            action.btn.textContent = "Unfollow";
 
             return newState;
-        case action.type === followCheckerForUser && newState.listUser[action.index].status === true:
-            newState.listUser[action.index].status = !newState.listUser[action.index].status;
-            newState.listUser[action.index].statusFollowing = "Following";
+        case action.type === followCheckerForUser && newState.listUser[action.index].followed === true:
+            newState.listUser[action.index].followed = !newState.listUser[action.index].followed;
+            action.btn.textContent = "Follow";
 
+            return newState;
+        case action.type === setUserTextCheker:
+            newState.listUser.push(...action.usersArray);
+            
             return newState;
         default:
             return state;

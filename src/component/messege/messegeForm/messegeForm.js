@@ -3,17 +3,17 @@ import messegeFormStyle from "./messegeForm.module.scss";
 import { addPostActionCreator, changeInputActionCreator } from "../../../state/actionCreator/actionCreator";
 
 export const MessegeForm = (props) => {
-    const {messege, dispatch} = props;
+    const {inputValue, messegeList, changeInput, addYourMessege} = props;
     const input = React.createRef();
     const addMessegeCheckerForMessege = "ADD MESSEGE";
     const changeInputCheckerForMessege = "CHANGE INPUT MESSEGE";
 
     const callChangeInput = () => {
-        dispatch(changeInputActionCreator(input, messege.inputValue, changeInputCheckerForMessege));
+        changeInput(input, inputValue, changeInputCheckerForMessege);
     };
 
     const callAddYourMessege = () => {
-        dispatch(addPostActionCreator(input, messege.messegeList, addMessegeCheckerForMessege));
+        addYourMessege(input, messegeList, addMessegeCheckerForMessege);
     };
 
     return (
@@ -23,7 +23,7 @@ export const MessegeForm = (props) => {
             </h3>
             <input
                 type="text"
-                value={messege.inputValue}
+                value={inputValue}
                 ref={input}
                 className={messegeFormStyle.formInput}
                 onChange={callChangeInput}

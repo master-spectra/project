@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "./style.scss";
-import { AppConteiner } from "./component/AppConteiner";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
 import { storeRedux } from "./state/redux-store";
-import { store } from "./state/store";
+import { Provider } from "react-redux";
+import { App } from "./component/App";
 
 ReactDom.render(
 	<BrowserRouter>
 		<Provider store={storeRedux}>
-			<AppConteiner />
+			<App />
 		</Provider>
 	</BrowserRouter>,
 	document.querySelector("body")

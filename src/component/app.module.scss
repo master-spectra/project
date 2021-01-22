@@ -16,7 +16,8 @@
 		.overlay {
 			display: flex;
 			justify-content: space-between;
-			
+			align-items: flex-start;
+
 			.appContent {
 				width: 80%;
 				padding: 0 20px;
