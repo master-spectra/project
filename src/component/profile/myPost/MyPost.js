@@ -5,10 +5,9 @@ export const MyPost = (props) => {
 	const {text, likeCounter, index, className, likePost} = props;
 	const post = React.createRef();
 	const likeBtn = React.createRef();
-	const likePostTextChacker = "LIKE POST";
 
 	const callLikePost = () => {
-		likePost(likeBtn, likePostTextChacker, index);
+		likePost(likeBtn, index);
 	};
 
 	return (

@@ -11,8 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setState: (textCheker, usersArray) => {
-            dispatch(setUsersActionCreator(textCheker, usersArray));
+        setState: (usersArray) => {
+            dispatch(setUsersActionCreator(usersArray));
         },
         getUser: (usersList) => {
             const users = usersList.map((item, index) => {
@@ -23,8 +23,8 @@ const mapDispatchToProps = dispatch => {
                         img={item.photos.large}
                         status={item.status}
                         following={
-                            (btn, followCheckerForUser, index) => {
-                                dispatch(followingUserActionCreator(btn, followCheckerForUser, index));
+                            (btn, index) => {
+                                dispatch(followingUserActionCreator(btn, index));
                             }
                         }
                     />

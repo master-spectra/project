@@ -1,18 +1,26 @@
-import React from "react";
+import React, {Component} from "react";
 import * as axios from "axios";
 
-export const Users = (props) => {
-    const {usersList, setState, getUser} = props;
-    const setUserTextCheker = "SET USER";
+export class Users extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-    if (usersList.length === 0) {
+    componentDidMount = () => {
+        const {setState} = this.props;
+
         axios.get("https://social-network.samuraijs.com/api/1.0/users")
             .then(resolve => {
-                setState(setUserTextCheker, resolve.data.items);
+                console.log(resolve.data);
+                setState(resolve.data.items);
             });
-    };
+    }
 
-    return (
-        <div>{getUser(usersList)}</div>
-    );
-};
+    render = () => {
+        const {usersList, getUser} = this.props;
+
+        return (
+            <div>{getUser(usersList)}</div>
+        );
+    }
+}

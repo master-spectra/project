@@ -4,18 +4,17 @@ import { MessegeForm } from "./messegeForm";
 
 const mapStateToProps = state => {
     return {
-        inputValue: state.messege.inputValue,
-        messegeList: state.messege.messegeList
+        inputValue: state.messege.inputValue
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeInput: (input, inputValue, changeInputCheckerForMessege) => {
-            dispatch(changeInputActionCreator(input, inputValue, changeInputCheckerForMessege));
+        changeInput: (input, textCheker) => {
+            dispatch(changeInputActionCreator(input, textCheker));
         },
-        addYourMessege: (input, userComment, addPostCheckerForMessege) => {
-            dispatch(addPostActionCreator(input, userComment, addPostCheckerForMessege));
+        addYourMessege: (input, textCheker) => {
+            dispatch(addPostActionCreator(input, textCheker));
         }
     };
 };

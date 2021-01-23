@@ -1,19 +1,19 @@
 import React from "react";
 import messegeFormStyle from "./messegeForm.module.scss";
-import { addPostActionCreator, changeInputActionCreator } from "../../../state/actionCreator/actionCreator";
 
 export const MessegeForm = (props) => {
-    const {inputValue, messegeList, changeInput, addYourMessege} = props;
+    const {inputValue, changeInput, addYourMessege} = props;
     const input = React.createRef();
-    const addMessegeCheckerForMessege = "ADD MESSEGE";
-    const changeInputCheckerForMessege = "CHANGE INPUT MESSEGE";
+    const addMessegeCheckerForMessege 	= "ADD MESSEGE";
+    const changeInputCheckerForMessege 	= "CHANGE INPUT MESSEGE";
+
 
     const callChangeInput = () => {
-        changeInput(input, inputValue, changeInputCheckerForMessege);
+        changeInput(input, changeInputCheckerForMessege);
     };
 
     const callAddYourMessege = () => {
-        addYourMessege(input, messegeList, addMessegeCheckerForMessege);
+        addYourMessege(input, addMessegeCheckerForMessege);
     };
 
     return (

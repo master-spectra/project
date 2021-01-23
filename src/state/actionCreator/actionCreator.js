@@ -1,24 +1,26 @@
-export const addPostActionCreator = (input, target, textChacker) => {
+export const addPostActionCreator = (input, textCheker) => {
     const action = {
-        type: textChacker,
+        type: textCheker,
         input: input.current.value
     };
 
     return action;
 };
 
-export const changeInputActionCreator = (input, target, textChacker) => {
+export const changeInputActionCreator = (input, textCheker) => {
     const action = {
-        type: textChacker,
+        type: textCheker,
         input: input.current.value
     };
 
     return action;
 };
 
-export const likePostActionCreator = (likeBtn, textChacker, index) => {
+export const likePostActionCreator = (likeBtn, index) => {
+    const likePostTextChacker = "LIKE POST";
+
     const action = {
-        type: textChacker,
+        type: likePostTextChacker,
         btn: likeBtn.current,
         index: index
     };
@@ -26,9 +28,11 @@ export const likePostActionCreator = (likeBtn, textChacker, index) => {
     return action;
 };
 
-export const followingUserActionCreator = (btn, textChecker, index) => {
+export const followingUserActionCreator = (btn, index) => {
+    const followCheckerForUser = "FOLLOW ON USER";
+
     const action = {
-        type: textChecker,
+        type: followCheckerForUser,
         btn: btn.current,
         index: index
     };
@@ -36,9 +40,11 @@ export const followingUserActionCreator = (btn, textChecker, index) => {
     return action;
 };
 
-export const setUsersActionCreator = (textChecker, usersArray) => {
+export const setUsersActionCreator = (usersArray) => {
+    const setUsers = "SET USER";
+
     const action = {
-        type: textChecker,
+        type: setUsers,
         usersArray: usersArray
     };
 

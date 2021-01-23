@@ -1,6 +1,5 @@
 import React from "react";
 import SideBarStyle from "./sideBar.module.scss";
-import { Link } from "./link/Link";
 
 export const SideBar = (props) => {
 	const {sideBar, getLink} = props;

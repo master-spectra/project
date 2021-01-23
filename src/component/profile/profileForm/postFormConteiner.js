@@ -4,18 +4,17 @@ import { PostForm } from "./postForm";
 
 const mapStateToProps = state => {
     return {
-        inputValue: state.profile.inputValue,
-        userComment: state.profile.userComment
+        inputValue: state.profile.inputValue
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeInput: (input, inputValue, changeInputCheckerForProfile) => {
-            dispatch(changeInputActionCreator(input, inputValue, changeInputCheckerForProfile));
+        changeInput: (input, textCheker) => {
+            dispatch(changeInputActionCreator(input, textCheker));
         },
-        addYourMessege: (input, userComment, addPostCheckerForProfile) => {
-            dispatch(addPostActionCreator(input, userComment, addPostCheckerForProfile));
+        addYourMessege: (input, textCheker) => {
+            dispatch(addPostActionCreator(input, textCheker));
         }
     };
 };

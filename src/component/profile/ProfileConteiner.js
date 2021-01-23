@@ -20,8 +20,8 @@ const mapDispatchToProps = dispatch => {
                         className={userComment}
                         index={index}
                         likePost={
-                            (likeBtn, likePostTextChacker, index) => {
-                                dispatch(likePostActionCreator(likeBtn, likePostTextChacker, index))
+                            (likeBtn, index) => {
+                                dispatch(likePostActionCreator(likeBtn, index))
                             }
                         }
                     />

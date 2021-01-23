@@ -1,15 +1,13 @@
 import React from "react";
 import userStyle from "./user.module.scss"
-import { followingUserActionCreator } from "../../../state/actionCreator/actionCreator";
 import logo from "../../../media/logo.jpg";
 
 export const User = (props) => {
     const {name, status, index, img, following} = props;
     const btn = React.createRef();
-    const followCheckerForUser = "FOLLOW ON USER";
 
     const callFolowingOnUser = () => {
-        following(btn, followCheckerForUser, index);
+        following(btn, index);
     };
 
     return (
