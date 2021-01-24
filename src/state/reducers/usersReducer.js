@@ -1,10 +1,14 @@
 const usersInit = {
     listUser: [],
+    totalUserCount: 0,
+    pageSize: 5,
+    currentPage: 1
 };
 
 export const usersReducer = (state = usersInit, action) => {
     const followCheckerForUser = "FOLLOW ON USER";
     const setUserTextCheker = "SET USER";
+    const changePage = "CHANGE PAGE";
     const newState = {...state};
 
     newState.listUser = state.listUser.map(item => {
@@ -23,9 +27,14 @@ export const usersReducer = (state = usersInit, action) => {
 
             return newState;
         case action.type === setUserTextCheker:
-            newState.listUser.push(...action.usersArray);
-            
+            newState.listUser = [...action.usersArray];
+            newState.totalUserCount = action.totalUserCount;
+
             return newState;
+        case action.type === changePage:
+            newState.currentPage = action.page;
+
+             return newState;
         default:
             return state;
     }

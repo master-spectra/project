@@ -40,13 +40,25 @@ export const followingUserActionCreator = (btn, index) => {
     return action;
 };
 
-export const setUsersActionCreator = (usersArray) => {
+export const setUsersActionCreator = (usersArray, totalUserCount) => {
     const setUsers = "SET USER";
 
     const action = {
         type: setUsers,
-        usersArray: usersArray
+        usersArray: usersArray,
+        totalUserCount: totalUserCount
     };
 
     return action;
 };
+
+export const changePageActionCreator = (newPage) => {
+    const changePage = "CHANGE PAGE";
+
+    const action = {
+        type: changePage,
+        page: newPage
+    };
+
+    return action;
+}

@@ -1,37 +1,31 @@
-import { followingUserActionCreator, setUsersActionCreator } from "../../state/actionCreator/actionCreator";
+import {
+    changePage,
+    changePageActionCreator,
+    followingUserActionCreator,
+    setUsersActionCreator
+} from "../../state/actionCreator/actionCreator";
 import { connect } from "react-redux";
 import { Users } from "./Users";
-import { User } from "./user/User";
 
 const mapStateToProps = state => {
     return {
-        usersList: state.users.listUser
+        usersList: state.users.listUser,
+        pageSize: state.users.pageSize,
+        totalUserCount: state.users.totalUserCount,
+        currentPage: state.users.currentPage
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        setState: (usersArray) => {
-            dispatch(setUsersActionCreator(usersArray));
+        setState: (usersArray, totalUserCount) => {
+            dispatch(setUsersActionCreator(usersArray, totalUserCount));
         },
-        getUser: (usersList) => {
-            const users = usersList.map((item, index) => {
-                return (
-                    <User
-                        name={item.name}
-                        index={index}
-                        img={item.photos.large}
-                        status={item.status}
-                        following={
-                            (btn, index) => {
-                                dispatch(followingUserActionCreator(btn, index));
-                            }
-                        }
-                    />
-                );
-            });
-
-            return users;
+        following: (btn, index) => {
+            dispatch(followingUserActionCreator(btn, index));
+        },
+        changePage: (newPage) => {
+            dispatch(changePageActionCreator(newPage));
         }
     }
 };

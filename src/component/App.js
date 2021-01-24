@@ -7,9 +7,7 @@ import { MessegeConteiner } from "./messege/MessegeConteiner";
 import { SideBarConteiner } from "./sideBar/SideBarConteiner";
 import {Route} from "react-router-dom";
 
-export const App = (props) => {
-    const {state, dispatch} = props;
-
+export const App = () => {
     return (
         <div className={AppStyle.app}>
             <Header/>
