@@ -1,58 +1,14 @@
-import { profileReducer } from "./reducers/profileReduce";
-import { messegeReducer } from "./reducers/messegeReduce";
+import { combineReducers, createStore } from "redux";
+import { messegeReducer } from './reducers/messegeReduce';
+import { profileReducer } from './reducers/profileReduce';
 import { sideBarReducer } from "./reducers/sideBarReducer";
+import { usersReducer } from "./reducers/usersReducer";
 
-export const store = {
-	state: {
-		profile: {
-			userInfo: [
-				"Andrey Omelchenko",
-				"Age: unknow",
-				"Home animal: unknow",
-				"City: unknow"
-			],
-			userComment: [],
-			inputValue: ""
-		},
-		messege: {
-			messegeList: [],
-			inputValue: ""
-		},
-		sideBar: [
-			{
-				nameLink: "Profile",
-				link: "/profile"
-			},
-			{
-				nameLink: "Messege",
-				link: "/messege"
-			},
-			{
-				nameLink: "Music",
-				link: "/music"
-			},
-			{
-				nameLink: "About",
-				link: "/about"
-			},
-			{
-				nameLink: "Setting",
-				link: "/setting"
-			},
-			{
-				nameLink: "Find user",
-				link: "/find"
-			}
-		],
-	},
+const reducers = combineReducers({
+	profile: profileReducer,
+	messege: messegeReducer,
+	sideBar: sideBarReducer,
+	users: usersReducer
+});
 
-	getState() {
-		return this.state
-	},
-
-	dispatch(action) {
-		this.state.profile = profileReducer(this.state.profile, action);
-		this.state.messege = messegeReducer(this.state.messege, action);
-		this.state.sideBar = sideBarReducer(this.state.sideBar);
-	}
-};
+export const store = createStore(reducers);
