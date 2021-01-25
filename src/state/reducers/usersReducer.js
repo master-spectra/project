@@ -2,13 +2,15 @@ const usersInit = {
     listUser: [],
     totalUserCount: 0,
     pageSize: 5,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: true
 };
 
 export const usersReducer = (state = usersInit, action) => {
     const followCheckerForUser = "FOLLOW ON USER";
     const setUserTextCheker = "SET USER";
     const changePage = "CHANGE PAGE";
+    const toggleLoader = "TOGGLE LOADER";
     const newState = {...state};
 
     newState.listUser = state.listUser.map(item => {
@@ -35,6 +37,10 @@ export const usersReducer = (state = usersInit, action) => {
             newState.currentPage = action.page;
 
              return newState;
+        case action.type === toggleLoader:
+            newState.isFetching = action.isFetching;
+
+            return newState;
         default:
             return state;
     }

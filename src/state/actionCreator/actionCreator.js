@@ -52,7 +52,7 @@ export const setUsersActionCreator = (usersArray, totalUserCount) => {
     return action;
 };
 
-export const changePageActionCreator = (newPage) => {
+export const changePageActionCreator = newPage => {
     const changePage = "CHANGE PAGE";
 
     const action = {
@@ -61,4 +61,15 @@ export const changePageActionCreator = (newPage) => {
     };
 
     return action;
-}
+};
+
+export const fetchingActionCreator = fetching => {
+    const toggleLoader = "TOGGLE LOADER";
+
+    const action = {
+        type: toggleLoader,
+        isFetching: fetching
+    };
+
+    return action;
+};

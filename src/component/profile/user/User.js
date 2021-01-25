@@ -2,7 +2,7 @@ import React from "react";
 import UserStyle from "./user.module.scss";
 
 export const User = (props) => {
-    const {userInfo, getInfo} = props;
+    const {userInfo} = props;
 
     return (
         <div className={UserStyle.profileWrap}>
@@ -10,7 +10,11 @@ export const User = (props) => {
             <div className={UserStyle.user}>
                 <div className={UserStyle.imgUser}></div>
                 <div className={UserStyle.userInfoWrap}>
-                    {getInfo(userInfo)}
+                    {
+                        userInfo.map(item => {
+                            return <p className={UserStyle.userInfo}>{item}</p>
+                        })
+                    }
                 </div>
             </div>
         </div>
