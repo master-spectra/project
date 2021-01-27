@@ -7,5 +7,5 @@ export const Loader = () => {
         <div className={loaderStyle.loaderImageWrap}>
             <img src={loaderLogo} className={loaderStyle.loaderImage} />
         </div>
-    )
+    );
 };

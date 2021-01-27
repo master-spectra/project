@@ -35,5 +35,5 @@ export const MessegeForm = (props) => {
                 onClick={callAddYourMessege}
             />
         </form>
-    )
+    );
 };

@@ -35,6 +35,7 @@ export const Users = (props) =>  {
                             <User
                                 name={item.name}
                                 index={index}
+                                key={index}
                                 img={item.photos.large}
                                 status={item.status}
                                 id={item.id}

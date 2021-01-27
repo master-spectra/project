@@ -20,7 +20,7 @@ export const App = () => {
                                 path="/profile"
                                 render={
                                     () => {
-                                        return <ProfileConteiner/>
+                                        return <ProfileConteiner/>;
                                     }
                                 }
                             />
@@ -28,7 +28,7 @@ export const App = () => {
                                 path="/messege"
                                 render={
                                     () => {
-                                        return <MessegeConteiner />
+                                        return <MessegeConteiner />;
                                     }
                                 }
                             />
@@ -36,7 +36,7 @@ export const App = () => {
                                 path="/find"
                                 render={
                                     () => {
-                                        return <UsersConteiner />
+                                        return <UsersConteiner />;
                                     }
                                 }
                             />

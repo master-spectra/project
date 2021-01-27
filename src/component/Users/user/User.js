@@ -30,5 +30,5 @@ export const User = (props) => {
                 </div>
             </div>
         </div>
-    )
+    );
 };
