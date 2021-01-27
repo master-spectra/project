@@ -36,6 +36,7 @@ export const Users = (props) =>  {
                                 index={index}
                                 img={item.photos.large}
                                 status={item.status}
+                                id={item.id}
                                 following={
                                     (btn, index) => {
                                         following(btn, index)

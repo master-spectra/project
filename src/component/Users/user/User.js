@@ -1,9 +1,10 @@
 import React from "react";
 import userStyle from "./user.module.scss"
 import logo from "../../../media/logo.jpg";
+import { NavLink } from "react-router-dom";
 
 export const User = (props) => {
-    const {name, status, index, img, following} = props;
+    const {name, status, index, img, following, id} = props;
     const btn = React.createRef();
 
     const callFolowingOnUser = () => {
@@ -13,7 +14,9 @@ export const User = (props) => {
     return (
         <div className={userStyle.user}>
             <div className={userStyle.otherItem}>
-                <img className={userStyle.img} src={ img !== null ? img : logo}/>
+                <NavLink to={`/profile/${id}`}>
+                    <img className={userStyle.img} src={img !== null ? img : logo}/>
+                </NavLink>
                 <button className={userStyle.btnFollowing} ref={btn} onClick={callFolowingOnUser}>Follow</button>
             </div>
             <div className={userStyle.information}>
@@ -21,7 +24,7 @@ export const User = (props) => {
                     <p className={userStyle.name}>{name}</p>
                     <p className={userStyle.about}>О пользователе: {status}</p>
                 </div>
-                <div>
+                <div className={userStyle.location}>
                     <p className={userStyle.country}>Страна: неизвестно</p>
                     <p className={userStyle.city}>Город: неизвестно</p>
                 </div>

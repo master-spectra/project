@@ -3,7 +3,7 @@ import { User } from "./User";
 
 const mapStateToProps = state => {
     return {
-        userInfo: state.profile.userInfo
+        currentProfile: state.profile.currentProfile
     };
 };
 

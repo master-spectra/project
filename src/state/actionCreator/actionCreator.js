@@ -17,10 +17,10 @@ export const changeInputActionCreator = (input, textCheker) => {
 };
 
 export const likePostActionCreator = (likeBtn, index) => {
-    const likePostTextChacker = "LIKE POST";
+    const likePostTextChecker = "LIKE POST";
 
     const action = {
-        type: likePostTextChacker,
+        type: likePostTextChecker,
         btn: likeBtn.current,
         index: index
     };
@@ -29,10 +29,10 @@ export const likePostActionCreator = (likeBtn, index) => {
 };
 
 export const followingUserActionCreator = (btn, index) => {
-    const followCheckerForUser = "FOLLOW ON USER";
+    const followCheckerForUserChecker = "FOLLOW ON USER";
 
     const action = {
-        type: followCheckerForUser,
+        type: followCheckerForUserChecker,
         btn: btn.current,
         index: index
     };
@@ -41,10 +41,10 @@ export const followingUserActionCreator = (btn, index) => {
 };
 
 export const setUsersActionCreator = (usersArray, totalUserCount) => {
-    const setUsers = "SET USER";
+    const setUsersChecker = "SET USER";
 
     const action = {
-        type: setUsers,
+        type: setUsersChecker,
         usersArray: usersArray,
         totalUserCount: totalUserCount
     };
@@ -53,10 +53,10 @@ export const setUsersActionCreator = (usersArray, totalUserCount) => {
 };
 
 export const changePageActionCreator = newPage => {
-    const changePage = "CHANGE PAGE";
+    const changePageChecker = "CHANGE PAGE";
 
     const action = {
-        type: changePage,
+        type: changePageChecker,
         page: newPage
     };
 
@@ -64,12 +64,25 @@ export const changePageActionCreator = newPage => {
 };
 
 export const fetchingActionCreator = fetching => {
-    const toggleLoader = "TOGGLE LOADER";
+    const toggleLoaderChecker = "TOGGLE LOADER";
 
     const action = {
-        type: toggleLoader,
+        type: toggleLoaderChecker,
         isFetching: fetching
     };
+
+    return action;
+};
+
+export const setProfileActionCreator = profile => {
+    const setProfileChecker						= "SET PROFILE";
+
+    const action = {
+        type: setProfileChecker,
+        profile: {...profile}
+    };
+
+    console.log(action.profile);
 
     return action;
 };

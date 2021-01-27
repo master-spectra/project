@@ -1,11 +1,11 @@
 import React from "react";
 import AppStyle from "./app.module.scss";
+import { ProfileConteiner } from "./profile/ProfileConteiner";
+import {Route} from "react-router-dom";
 import {Header} from "./header/Header";
 import { UsersConteiner } from "./Users/UsersConteiner";
-import { ProfileConteiner } from "./profile/ProfileConteiner";
-import { MessegeConteiner } from "./messege/MessegeConteiner";
 import { SideBarConteiner } from "./sideBar/SideBarConteiner";
-import {Route} from "react-router-dom";
+import { MessegeConteiner } from "./messege/MessegeConteiner";
 
 export const App = () => {
     return (
@@ -20,9 +20,7 @@ export const App = () => {
                                 path="/profile"
                                 render={
                                     () => {
-                                        return (
-                                            <ProfileConteiner/>
-                                        )
+                                        return <ProfileConteiner/>
                                     }
                                 }
                             />
@@ -30,9 +28,7 @@ export const App = () => {
                                 path="/messege"
                                 render={
                                     () => {
-                                        return (
-                                            <MessegeConteiner />
-                                        )
+                                        return <MessegeConteiner />
                                     }
                                 }
                             />
@@ -40,9 +36,7 @@ export const App = () => {
                                 path="/find"
                                 render={
                                     () => {
-                                        return (
-                                            <UsersConteiner />
-                                        )
+                                        return <UsersConteiner />
                                     }
                                 }
                             />

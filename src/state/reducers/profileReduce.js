@@ -6,23 +6,25 @@ const profileInit = {
 		"City: unknow"
 	],
 	userComment: [],
-	inputValue: ""
+	inputValue: "",
+	currentProfile: null
 };
 
 export const profileReducer = (state = profileInit, action) => {
-	const addPostCheckerForProfile 		= "ADD POST";	
-	const changeInputCheckerForProfile 	= "CHANGE INPUT PROFILE";
-	const likePostChecker				= "LIKE POST";
+	const addPostCheckerForProfileChecker 		= "ADD POST";
+	const changeInputCheckerForProfileChecker 	= "CHANGE INPUT PROFILE";
+	const likePostChecker						= "LIKE POST";
+	const setProfileChecker						= "SET PROFILE";
 	
 	switch (true) {
-		case changeInputCheckerForProfile === action.type: {
+		case changeInputCheckerForProfileChecker === action.type: {
 			const newState = {...state};
 			newState.inputValue = action.input;
-
+			console.log(newState);
 			return newState;
 		}
 
-		case action.type === addPostCheckerForProfile && action.input.trim().length > 0: {
+		case action.type === addPostCheckerForProfileChecker && action.input.trim().length > 0: {
 			const userPost = {
 				comment: action.input,
 				likeCounter: 0,
@@ -54,6 +56,13 @@ export const profileReducer = (state = profileInit, action) => {
 
 					break;
 			}
+
+			return newState;
+		}
+
+		case setProfileChecker === action.type: {
+			const newState = {...state};
+			newState.currentProfile = {...action.profile};
 
 			return newState;
 		}

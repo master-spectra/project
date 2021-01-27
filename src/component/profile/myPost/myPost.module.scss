@@ -1,9 +1,8 @@
 @import "../../../mixins/mixins.scss";
 
 .myPost {
-	display: flex;
-	width: 100%;
-	padding: 10px 0;
+	display: grid;
+	grid-template-columns: 100px 1fr;
 
 	.img {
 		@include image;
@@ -11,13 +10,11 @@
 		background-image: url("../../../media/profile.jpg");
 		padding: 50px;
 		width: 0;
-		align-self: flex-start;
 	}
 
 	.textWrap {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 70px;
 
 		.text {
 			padding: 0 20px;
@@ -26,9 +23,9 @@
 		}	
 
 		.likeWrap {
-		    display: flex;
-    		align-items: flex-start;
-    		justify-content: flex-end;
+		    display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			align-content: start;
 			
 			.like {
 				@include btn(transparent, #000, 0, 0, 0);

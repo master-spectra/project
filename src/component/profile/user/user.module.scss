@@ -8,14 +8,14 @@
     }
 
     .user {
-        display: flex;
+        display: grid;
         padding-top: 20px;
+        grid-template-columns: repeat(2, fit-content(200px));
+        grid-gap: 20px 0;
 
         .imgUser {
-            @include image;
-            background-image: url("../../../media/profile.jpg");
-            padding: 50px;
-            width: 0;
+            width: 100px;
+            height: 100px;
         }
 
         .userInfoWrap {

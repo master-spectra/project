@@ -4,16 +4,16 @@ import messegeFormStyle from "./messegeForm.module.scss";
 export const MessegeForm = (props) => {
     const {inputValue, changeInput, addYourMessege} = props;
     const input = React.createRef();
-    const addMessegeCheckerForMessege 	= "ADD MESSEGE";
-    const changeInputCheckerForMessege 	= "CHANGE INPUT MESSEGE";
+    const addMessegeCheckerForMessegeChecker 	= "ADD MESSEGE";
+    const changeInputCheckerForMessegeChecker 	= "CHANGE INPUT MESSEGE";
 
 
     const callChangeInput = () => {
-        changeInput(input, changeInputCheckerForMessege);
+        changeInput(input, changeInputCheckerForMessegeChecker);
     };
 
     const callAddYourMessege = () => {
-        addYourMessege(input, addMessegeCheckerForMessege);
+        addYourMessege(input, addMessegeCheckerForMessegeChecker);
     };
 
     return (

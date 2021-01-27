@@ -1,11 +1,10 @@
 @import "../../../mixins/mixins.scss";
 
 .user {
-    display: flex;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-gap: 0 20px;
     padding: 20px 0;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: space-between;
 
     .otherItem {
         .img {
@@ -23,13 +22,13 @@
     }
 
     .information {
-        display: flex;
-        justify-content: space-between;
-        width: 80%;
-        padding: 5px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-content: space-between;
+        align-self: start;
         border-radius: 5px;
         border: 1px solid #c9c9c9;
-        padding: 5px;
+        padding: 10px;
 
         p {
             font-size: 20px;
@@ -38,10 +37,8 @@
             padding-bottom: 20px;
         }
 
-        .aboutUser {
-            .name {
-                padding-bottom: 55px;
-            }
+        .location {
+            justify-self: end;
         }
     }
 }

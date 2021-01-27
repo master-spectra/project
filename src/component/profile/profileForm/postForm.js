@@ -4,15 +4,15 @@ import style from "./postForm.module.scss";
 export const PostForm = (props) => {
     const {inputValue, changeInput, addYourMessege} = props;
     const input = React.createRef();
-    const addPostCheckerForProfile = "ADD POST";
-    const changeInputCheckerForProfile = "CHANGE INPUT PROFILE";
+    const addPostCheckerForProfileChecker = "ADD POST";
+    const changeInputCheckerForProfileChecker = "CHANGE INPUT PROFILE";
 
     const callChangeInput = () => {
-        changeInput(input, changeInputCheckerForProfile);
+        changeInput(input, changeInputCheckerForProfileChecker);
     };
 
     const callAddYourMessege = () => {
-        addYourMessege(input, addPostCheckerForProfile);
+        addYourMessege(input, addPostCheckerForProfileChecker);
     };
 
     return (

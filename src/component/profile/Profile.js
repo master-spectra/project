@@ -15,15 +15,15 @@ export const Profile = (props) => {
 					userComment.map((item, index) => {
 						return (
 							<MyPost
-									likeCounter={item.likeCounter}
-									text={item.comment}
-									className={userComment}
-									index={index}
-									likePost={
-										(likeBtn, index) => {
+								likeCounter={item.likeCounter}
+								text={item.comment}
+								className={userComment}
+								index={index}
+								likePost={
+									(likeBtn, index) => {
 											likePost(likeBtn, index);
 										}
-									}
+								}
 							/>
 						);
 					})

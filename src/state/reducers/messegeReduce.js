@@ -4,18 +4,18 @@ const messegeInit = {
 };
 
 export const messegeReducer = (state = messegeInit, action) => {
-	const addMessegeCheckerForMessege 	= "ADD MESSEGE";	
-	const changeInputCheckerForMessege 	= "CHANGE INPUT MESSEGE";
+	const addMessegeCheckerForMessegeChecker 	= "ADD MESSEGE";
+	const changeInputCheckerForMessegeChecker 	= "CHANGE INPUT MESSEGE";
 	
 	switch (true) {
-		case action.type === changeInputCheckerForMessege && action.input.trim().length > 0: {
+		case action.type === changeInputCheckerForMessegeChecker && action.input.trim().length > 0: {
 			const newState = {...state};
 			newState.inputValue = action.input;
 
 			return newState;
 		}
 
-		case action.type === addMessegeCheckerForMessege && action.input.trim().length > 0: 
+		case action.type === addMessegeCheckerForMessegeChecker && action.input.trim().length > 0:
 			const userPost = {text: action.input};
 			const newState = {...state};
 			newState.messegeList = [...state.messegeList];
