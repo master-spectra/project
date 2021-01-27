@@ -5,7 +5,7 @@ import loaderStyle from "./loader.module.scss";
 export const Loader = () => {
     return (
         <div className={loaderStyle.loaderImageWrap}>
-            <img src={loaderLogo} className={loaderStyle.loaderImage} />
+            <img src={loaderLogo} className={loaderStyle.loaderImage} alt={"#"} />
         </div>
     );
 };

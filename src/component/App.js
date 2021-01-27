@@ -12,7 +12,7 @@ export const App = () => {
         <div className={AppStyle.app}>
             <Header/>
             <div className={AppStyle.content}>
-                <div className="wrapper">
+                <div className={AppStyle.wrapper}>
                     <div className={AppStyle.overlay}>
                         <SideBarConteiner />
                         <div className={AppStyle.appContent}>

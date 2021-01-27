@@ -9,7 +9,7 @@ export const User = (props) => {
         currentProfile ? <div className={UserStyle.profileWrap}>
             <div className={UserStyle.backgroundImage}></div>
             <div className={UserStyle.user}>
-                <img className={UserStyle.imgUser} src={currentProfile.photos.small}/>
+                <img className={UserStyle.imgUser} src={currentProfile.photos.small} alt={""}/>
                 <div className={UserStyle.userInfoWrap}>
                     <p className={UserStyle.userInfo}>{currentProfile.fullName}</p>
                     <p className={UserStyle.userInfo}>{currentProfile.aboutMe}</p>

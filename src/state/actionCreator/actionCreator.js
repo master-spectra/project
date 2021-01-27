@@ -1,86 +1,31 @@
 export const addPostActionCreator = (input, textCheker) => {
-    const action = {
-        type: textCheker,
-        input: input.current.value
-    };
-
-    return action;
+    return {type: textCheker, input: input.current.value};
 };
 
 export const changeInputActionCreator = (input, textCheker) => {
-    const action = {
-        type: textCheker,
-        input: input.current.value
-    };
-
-    return action;
+    return {type: textCheker, input: input.current.value};
 };
 
 export const likePostActionCreator = (likeBtn, index) => {
-    const likePostTextChecker = "LIKE POST";
-
-    const action = {
-        type: likePostTextChecker,
-        btn: likeBtn.current,
-        index: index
-    };
-
-    return action;
+    return {type: "LIKE POST", btn: likeBtn.current, index: index};
 };
 
 export const followingUserActionCreator = (btn, index) => {
-    const followCheckerForUserChecker = "FOLLOW ON USER";
-
-    const action = {
-        type: followCheckerForUserChecker,
-        btn: btn.current,
-        index: index
-    };
-
-    return action;
+    return {type: "FOLLOW ON USER", btn: btn.current, index: index};
 };
 
 export const setUsersActionCreator = (usersArray, totalUserCount) => {
-    const setUsersChecker = "SET USER";
-
-    const action = {
-        type: setUsersChecker,
-        usersArray: usersArray,
-        totalUserCount: totalUserCount
-    };
-
-    return action;
+    return {type: "SET USER", usersArray: usersArray, totalUserCount: totalUserCount};
 };
 
 export const changePageActionCreator = newPage => {
-    const changePageChecker = "CHANGE PAGE";
-
-    const action = {
-        type: changePageChecker,
-        page: newPage
-    };
-
-    return action;
+    return {type: "CHANGE PAGE", page: newPage};
 };
 
 export const fetchingActionCreator = fetching => {
-    const toggleLoaderChecker = "TOGGLE LOADER";
-
-    const action = {
-        type: toggleLoaderChecker,
-        isFetching: fetching
-    };
-
-    return action;
+    return {type: "TOGGLE LOADER", isFetching: fetching};
 };
 
 export const setProfileActionCreator = profile => {
-    const setProfileChecker						= "SET PROFILE";
-
-    const action = {
-        type: setProfileChecker,
-        profile: {...profile}
-    };
-
-    return action;
+    return {type: "SET PROFILE", profile: {...profile}};
 };

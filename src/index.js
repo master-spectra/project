@@ -6,11 +6,13 @@ import {store} from "./state/store";
 import {Provider} from "react-redux";
 import {App} from "./component/App";
 
+const body = document.querySelector("body");
+
 ReactDom.render(
     <BrowserRouter>
         <Provider store={store}>
             <App/>
         </Provider>
     </BrowserRouter>,
-    document.querySelector("body")
+    body
 );
