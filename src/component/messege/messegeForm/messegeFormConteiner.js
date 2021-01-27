@@ -1,6 +1,6 @@
-import { addPostActionCreator, changeInputActionCreator } from "../../../state/actionCreator/actionCreator";
-import { connect } from "react-redux";
-import { MessegeForm } from "./messegeForm";
+import {addPostActionCreator, changeInputActionCreator} from "../../../state/actionCreator/actionCreator";
+import {connect} from "react-redux";
+import {MessegeForm} from "./messegeForm";
 
 const mapStateToProps = state => {
     return {

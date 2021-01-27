@@ -1,7 +1,7 @@
 import React from "react";
 import userStyle from "./user.module.scss"
 import logo from "../../../media/logo.jpg";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 export const User = (props) => {
     const {name, status, index, img, following, id} = props;
@@ -15,7 +15,7 @@ export const User = (props) => {
         <div className={userStyle.user}>
             <div className={userStyle.otherItem}>
                 <NavLink to={`/profile/${id}`}>
-                    <img className={userStyle.img} src={img !== null ? img : logo} alt={"#"}/>
+                    <img className={userStyle.img} src={img !== null ? img : logo} alt={"#`"}/>
                 </NavLink>
                 <button className={userStyle.btnFollowing} ref={btn} onClick={callFolowingOnUser}>Follow</button>
             </div>

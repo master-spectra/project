@@ -1,5 +1,5 @@
-import { Messege } from "./Messege";
-import { connect } from "react-redux";
+import {Messege} from "./Messege";
+import {connect} from "react-redux";
 
 const mapStateToProps = state => {
     return {

@@ -4,11 +4,11 @@ import {
     followingUserActionCreator,
     setUsersActionCreator
 } from "../../state/actionCreator/actionCreator";
-import { connect } from "react-redux";
-import React, { Component } from "react";
+import {connect} from "react-redux";
+import React, {Component} from "react";
 import * as axios from "axios";
-import { Loader } from "../loader/Loader";
-import { Users } from "./Users";
+import {Loader} from "../loader/Loader";
+import {Users} from "./Users";
 
 export class UsersAPI extends Component {
     componentDidMount = () => {
@@ -40,15 +40,15 @@ export class UsersAPI extends Component {
         const {usersList, following, pageSize, totalUserCount, currentPage, isFetching} = this.props;
 
         return (
-            isFetching ? <Loader />
-            : <Users
-                usersList={usersList}
-                following={following}
-                pageSize={pageSize}
-                totalUserCount={totalUserCount}
-                currentPage={currentPage}
-                onPageChanged={(pageNumber) => this.onPageChanged(pageNumber)}
-            />
+            isFetching ? <Loader/>
+                : <Users
+                    usersList={usersList}
+                    following={following}
+                    pageSize={pageSize}
+                    totalUserCount={totalUserCount}
+                    currentPage={currentPage}
+                    onPageChanged={(pageNumber) => this.onPageChanged(pageNumber)}
+                />
         );
     }
 }

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import { connect } from "react-redux";
-import { Profile } from "./Profile";
-import { likePostActionCreator, setProfileActionCreator } from "../../state/actionCreator/actionCreator";
+import {connect} from "react-redux";
+import {Profile} from "./Profile";
+import {likePostActionCreator, setProfileActionCreator} from "../../state/actionCreator/actionCreator";
 import * as axios from "axios";
 
-export class ProfileConteinerAPI extends  Component {
+export class ProfileConteinerAPI extends Component {
     componentDidMount = () => {
         const {setProfile} = this.props;
 
