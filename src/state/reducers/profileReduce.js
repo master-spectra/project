@@ -20,7 +20,7 @@ export const profileReducer = (state = profileInit, action) => {
 		case changeInputCheckerForProfileChecker === action.type: {
 			const newState = {...state};
 			newState.inputValue = action.input;
-			console.log(newState);
+
 			return newState;
 		}
 

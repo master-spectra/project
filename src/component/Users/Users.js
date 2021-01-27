@@ -15,9 +15,10 @@ export const Users = (props) =>  {
         <div>
             <div className={UsersStyle.listPage}>
                 {
-                    items.map(numberItem => {
+                    items.map((numberItem, index) => {
                         return (
                             <span
+                                key={index}
                                 className={currentPage === numberItem ? UsersStyle.selectedItem : ""}
                                 onClick={() => onPageChanged(numberItem)}
                             >

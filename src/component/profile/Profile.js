@@ -19,6 +19,7 @@ export const Profile = (props) => {
 								text={item.comment}
 								className={userComment}
 								index={index}
+								key={index}
 								likePost={
 									(likeBtn, index) => {
 											likePost(likeBtn, index);

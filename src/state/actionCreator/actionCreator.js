@@ -82,7 +82,5 @@ export const setProfileActionCreator = profile => {
         profile: {...profile}
     };
 
-    console.log(action.profile);
-
     return action;
 };

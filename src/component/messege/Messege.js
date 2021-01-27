@@ -10,8 +10,8 @@ export const Messege = (props) => {
 		<div className={MessegeStyle.messege}>
 			<div className={MessegeStyle.listMessege}>
 				{
-					messegeList.map(item => {
-						return <MyMessege text={item.text}/>
+					messegeList.map((item, index) => {
+						return <MyMessege key={index} text={item.text}/>
 					})
 				}
 			</div>

@@ -3,10 +3,12 @@
 .myPost {
 	display: grid;
 	grid-template-columns: 100px 1fr;
+	padding-bottom: 20px;
 
 	.img {
 		@include image;
 		cursor: pointer;
+		align-self: start;
 		background-image: url("../../../media/profile.jpg");
 		padding: 50px;
 		width: 0;

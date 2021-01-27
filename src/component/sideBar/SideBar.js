@@ -9,7 +9,7 @@ export const SideBar = (props) => {
 		<aside className={SideBarStyle.sideBar} >
 			<ul className={SideBarStyle.menu}>
 				{
-					sideBar.map(item => <Link link={item.link} text={item.nameLink}/>)
+					sideBar.map((item, index) => <Link key={index} link={item.link} text={item.nameLink}/>)
 				}
 			</ul>
 		</aside>	
