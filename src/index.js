@@ -5,6 +5,9 @@ import {BrowserRouter} from "react-router-dom";
 import {store} from "./state/store";
 import {Provider} from "react-redux";
 import {App} from "./component/App";
+import {authReducer} from "./state/reducers/authReducer";
+
+authReducer()
 
 const body = document.querySelector("body");
 

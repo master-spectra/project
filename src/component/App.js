@@ -12,12 +12,12 @@ export const App = () => {
         <div className={AppStyle.app}>
             <Header/>
             <div className={AppStyle.content}>
-                <div className={AppStyle.wrapper}>
+                <div className={"wrapper"}>
                     <div className={AppStyle.overlay}>
                         <SideBarConteiner/>
                         <div className={AppStyle.appContent}>
                             <Route
-                                path="/profile"
+                                path="/profile/:userId?"
                                 render={
                                     () => {
                                         return <ProfileConteiner/>;

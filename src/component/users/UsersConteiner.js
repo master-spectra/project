@@ -18,7 +18,7 @@ export class UsersAPI extends Component {
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`)
             .then(resolve => {
-                setUsers(resolve.data.items, 54);
+                setUsers(resolve.data.items, 90);
                 fetching(false);
             });
     }
@@ -31,7 +31,7 @@ export class UsersAPI extends Component {
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`)
             .then(resolve => {
-                setUsers(resolve.data.items, 54);
+                setUsers(resolve.data.items, 90);
                 fetching(false);
             });
     }
@@ -40,7 +40,8 @@ export class UsersAPI extends Component {
         const {usersList, following, pageSize, totalUserCount, currentPage, isFetching} = this.props;
 
         return (
-            isFetching ? <Loader/>
+            isFetching
+                ? <Loader/>
                 : <Users
                     usersList={usersList}
                     following={following}
@@ -77,7 +78,7 @@ const mapDispatchToProps = dispatch => {
         fetching: isFetching => {
             dispatch(fetchingActionCreator(isFetching));
         }
-    }
+    };
 };
 
 export const UsersConteiner = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);

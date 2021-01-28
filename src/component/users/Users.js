@@ -9,8 +9,7 @@ export const Users = (props) => {
 
     for (let i = 1; i <= pageCount; i++) {
         items.push(i);
-    }
-    ;
+    };
 
     return (
         <div>

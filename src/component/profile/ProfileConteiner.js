@@ -3,12 +3,17 @@ import {connect} from "react-redux";
 import {Profile} from "./Profile";
 import {likePostActionCreator, setProfileActionCreator} from "../../state/actionCreator/actionCreator";
 import * as axios from "axios";
+import {withRouter} from "react-router-dom";
 
 export class ProfileConteinerAPI extends Component {
     componentDidMount = () => {
-        const {setProfile} = this.props;
+        const {setProfile, match} = this.props;
 
-        axios.get("https://social-network.samuraijs.com/api/1.0/profile/2")
+        if (!match.params.userId) {
+            match.params.userId = 2;
+        };
+
+         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${match.params.userId}`)
             .then(resolve => {
                 setProfile(resolve.data);
             });
@@ -37,5 +42,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
+const WithRouterProfileConteiner = withRouter(ProfileConteinerAPI);
 
-export const ProfileConteiner = connect(mapStateToProps, mapDispatchToProps)(ProfileConteinerAPI);
+export const ProfileConteiner = connect(mapStateToProps, mapDispatchToProps)(WithRouterProfileConteiner);

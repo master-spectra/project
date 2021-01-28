@@ -10,7 +10,7 @@
     .user {
         display: grid;
         padding-top: 20px;
-        grid-template-columns: repeat(2, fit-content(200px));
+        grid-template-columns: 100px 1fr;
         grid-gap: 20px 0;
 
         .imgUser {
