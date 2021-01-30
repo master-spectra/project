@@ -29,6 +29,7 @@ export class UsersAPI extends Component {
         fetching(true);
         changePage(pageNumber);
 
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`)
             .then(resolve => {
                 setUsers(resolve.data.items, 90);

@@ -1,24 +1,8 @@
-html,
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: content-box;
     font-family: Roboto;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-li,
-span,
-a,
-div,
-p {
-    margin: 0;
-    padding: 0;
     font-size: 14px;
     color: #000;
     list-style: none;

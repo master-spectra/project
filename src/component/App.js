@@ -1,8 +1,8 @@
 import React from "react";
 import AppStyle from "./app.module.scss";
-import {ProfileConteiner} from "./profile/ProfileConteiner";
 import {Route} from "react-router-dom";
-import {Header} from "./header/Header";
+import {ProfileConteiner} from "./profile/ProfileConteiner";
+import {HeaderConteiner} from "./header/HeaderConteiner";
 import {UsersConteiner} from "./users/UsersConteiner";
 import {SideBarConteiner} from "./sideBar/SideBarConteiner";
 import {MessegeConteiner} from "./messege/MessegeConteiner";
@@ -10,7 +10,7 @@ import {MessegeConteiner} from "./messege/MessegeConteiner";
 export const App = () => {
     return (
         <div className={AppStyle.app}>
-            <Header/>
+            <HeaderConteiner />
             <div className={AppStyle.content}>
                 <div className={"wrapper"}>
                     <div className={AppStyle.overlay}>

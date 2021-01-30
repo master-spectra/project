@@ -14,7 +14,7 @@ export const User = (props) => {
                     <img
                         className={UserStyle.imgUser}
                         src={currentProfile.photos.small ? currentProfile.photos.small : Logo}
-                        alt={""}
+                        alt={"#"}
                     />
                     <div className={UserStyle.userInfoWrap}>
                         <p className={UserStyle.userInfo}>

@@ -4,27 +4,26 @@ import {User} from "./user/User";
 
 export const Users = (props) => {
     const {usersList, following, pageSize, totalUserCount, currentPage, onPageChanged} = props;
-    const pageCount = Math.ceil(totalUserCount / pageSize);
-    const items = [];
+    const counterPage = Math.ceil(totalUserCount / pageSize);
+    const pageList = [];
 
-    for (let i = 1; i <= pageCount; i++) {
-        items.push(i);
+    for (let i = 1; i <= counterPage; i++) {
+        pageList.push(i);
     };
 
     return (
         <div>
             <div className={UsersStyle.listPage}>
                 {
-                    items.map((numberItem, index) => {
-                        return (
-                            <span
-                                key={index}
-                                className={currentPage === numberItem ? UsersStyle.selectedItem : ""}
-                                onClick={() => onPageChanged(numberItem)}
-                            >
-                                {numberItem}
-                            </span>
-                        )
+                    pageList.map((item, index) => {
+                         return (
+                             <span
+                                 className={currentPage === item ? UsersStyle.selectedItem : null}
+                                onClick={() => onPageChanged(item)}
+                             >
+                                 {item}
+                             </span>
+                         );
                     })
                 }
             </div>

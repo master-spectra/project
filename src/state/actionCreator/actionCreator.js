@@ -29,3 +29,7 @@ export const fetchingActionCreator = fetching => {
 export const setProfileActionCreator = profile => {
     return {type: "SET PROFILE", profile: {...profile}};
 };
+
+export const authActionCreator = (data, isAuth) => {
+    return {type: "AUTH FOR SITE", data: {...data}, isAuth: isAuth};
+};

@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from "redux";
-import {messegeReducer} from './reducers/messegeReduce';
-import {profileReducer} from './reducers/profileReduce';
+import {messegeReducer} from './reducers/messegeReducer';
+import {profileReducer} from './reducers/profileReducec';
 import {sideBarReducer} from "./reducers/sideBarReducer";
 import {usersReducer} from "./reducers/usersReducer";
 import {authReducer} from "./reducers/authReducer";

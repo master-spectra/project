@@ -6,9 +6,31 @@
 	grid-area: header;
 	margin-bottom: 20px;
 
-	.logo {
-		@include image;
-		background-image: url("https://cdn.svgporn.com/logos/facebook.svg");
-		padding: 20px;
+	.overlay {
+		display: grid;
+		grid-template-columns: 40px minmax(100px, 200px);
+		justify-content: space-between;
+		align-items: center;
+
+		.logo {
+			@include image;
+			background-image: url("https://cdn.svgporn.com/logos/facebook.svg");
+			padding: 20px;
+		}
+
+		.profile {
+			cursor: pointer;
+
+			.avatar {
+				width: 100px;
+				height: 100px;
+			}
+
+			.login {
+				padding-top: 20px;
+				font-size: 25px;
+				color: #fff;
+			}
+		}
 	}
 } 
