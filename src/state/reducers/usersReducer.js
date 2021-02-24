@@ -8,6 +8,7 @@ const usersInit = {
 
 export const usersReducer = (state = usersInit, action) => {
     const followCheckerForUser = "FOLLOW ON USER";
+    const unFollowCheckerForUser = "UNFOLLOW ON USER";
     const setUserTextCheker = "SET USER";
     const changePage = "CHANGE PAGE";
     const toggleLoader = "TOGGLE LOADER";
@@ -23,12 +24,16 @@ export const usersReducer = (state = usersInit, action) => {
                 if (item.id === action.id && !item.followed) {
                     item.followed = true;
                     action.btn.textContent = "unfollow";
-                } else if (item.id === action.id && item.followed) {
+                };
+            });
+
+            return newState;
+        case action.type === unFollowCheckerForUser:
+            newState.listUser.forEach(item => {
+                if (item.id === action.id && item.followed) {
                     item.followed = false;
                     action.btn.textContent = "follow";
-                    action.btn.setAttribute(onclick, () => console.log(5))
                 };
-
             });
 
             return newState;

@@ -14,6 +14,10 @@ export const followingUserActionCreator = (btn, id) => {
     return {type: "FOLLOW ON USER", btn: btn.current, id: id};
 };
 
+export const unFollowingUserActionCreator = (btn, id) => {
+    return {type: "UNFOLLOW ON USER", btn: btn.current, id: id};
+};
+
 export const setUsersActionCreator = (usersArray, totalUserCount) => {
     return {type: "SET USER", usersArray: usersArray, totalUserCount: totalUserCount};
 };

@@ -2,7 +2,7 @@ import {
     changePageActionCreator,
     fetchingActionCreator,
     followingUserActionCreator,
-    setUsersActionCreator
+    setUsersActionCreator, unFollowingUserActionCreator
 } from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
 import React, {Component} from "react";
@@ -36,20 +36,16 @@ export class UsersAPI extends Component {
     }
 
     render = () => {
-        const {usersList, following, pageSize, totalUserCount, currentPage, isFetching} = this.props;
+        const {isFetching} = this.props;
+        const getUsers = () => {
+            if (isFetching) {
+                return <Loader/>;
+            } else {
+                return <Users {...this.props} onPageChanged={(pageNumber) => this.onPageChanged(pageNumber)} />;
+            };
+        };
 
-        return (
-            isFetching
-                ? <Loader/>
-                : <Users
-                    usersList={usersList}
-                    following={following}
-                    pageSize={pageSize}
-                    totalUserCount={totalUserCount}
-                    currentPage={currentPage}
-                    onPageChanged={(pageNumber) => this.onPageChanged(pageNumber)}
-                />
-        );
+        return getUsers();
     }
 }
 
@@ -70,6 +66,9 @@ const mapDispatchToProps = dispatch => {
         },
         following: (btn, id) => {
             dispatch(followingUserActionCreator(btn, id));
+        },
+        unFollowing: (btn, id) => {
+            dispatch(unFollowingUserActionCreator(btn, id));
         },
         changePage: newPage => {
             dispatch(changePageActionCreator(newPage));

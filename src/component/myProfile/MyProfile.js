@@ -17,21 +17,9 @@ export const MyProfile = props => {
                 />
             </div>
             <div className={MyProfileStyle.profileInfo}>
-                <p>
-                    {
-                        `Имя: ${myProfile.profile ? myProfile.profile.login : ""}`
-                    }
-                </p>
-                <p>
-                    {
-                        `Почта: ${myProfile.profile ? myProfile.profile.email : ""}`
-                    }
-                </p>
-                <p>
-                    {
-                        `Индификатор: ${myProfile.profile ? myProfile.profile.id : ""}`
-                    }
-                </p>
+                <p>{`Имя: ${myProfile.profile ? myProfile.profile.login : ""}`}</p>
+                <p>{`Почта: ${myProfile.profile ? myProfile.profile.email : ""}`}</p>
+                <p>{`Индификатор: ${myProfile.profile ? myProfile.profile.id : ""}`}</p>
             </div>
         </div>
     );

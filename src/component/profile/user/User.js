@@ -6,6 +6,24 @@ import Logo from "../../../media/logo.jpg";
 export const User = (props) => {
     const {currentProfile} = props;
 
+    const getImg = () => {
+        if (currentProfile.photos.small) {
+            return currentProfile.photos.small;
+        } else {
+            return Logo;
+        };
+    };
+
+    const getInfo = item => {
+        if (item === true) {
+            return "есть";
+        } else if (item) {
+            return item;
+        } else {
+            return "Неизвестно";
+        };
+    };
+
     return (
         currentProfile
             ? <div className={UserStyle.profileWrap}>
@@ -13,42 +31,24 @@ export const User = (props) => {
                 <div className={UserStyle.user}>
                     <img
                         className={UserStyle.imgUser}
-                        src={
-                            currentProfile.photos && currentProfile.photos.small
-                                ? currentProfile.photos.small
-                                : Logo
-                        }
+                        src={getImg()}
                         alt={"#"}
                     />
                     <div className={UserStyle.userInfoWrap}>
                         <p className={UserStyle.userInfo}>
-                            {
-                                `Имя ${currentProfile.fullName}`
-                            }
+                            {`Имя: ${getInfo(currentProfile.fullName)}`}
                         </p>
                         <p className={UserStyle.userInfo}>
-                            {
-                                currentProfile.aboutMe ? `Статус: ${currentProfile.aboutMe}` : "Статус: Неизвестно"
-                            }
+                            {`О мне: ${getInfo(currentProfile.aboutMe)}`}
                         </p>
                         <p className={UserStyle.userInfo}>
-                            {
-                                currentProfile.lookingForAJob ? "Занятость: Ищу работу" : "Занятость: Не ищу работу"
-                            }
+                            {`Работа: ${getInfo(currentProfile.lookingForAJob) + ""}`}
                         </p>
                         <p className={UserStyle.userInfo}>
-                            {
-                                currentProfile.lookingForAJobDescription
-                                    ? `О работе: ${currentProfile.lookingForAJobDescription}`
-                                    : "О работе: Неизвестно"
-                            }
+                            {`О работе: ${getInfo(currentProfile.lookingForAJobDescription)}`}
                         </p>
                         <p className={UserStyle.userInfo}>
-                            {
-                                currentProfile.contacts && currentProfile.contacts.facebook
-                                    ? `Соц-Сети: ${currentProfile.contacts.facebook}`
-                                    : "Соц-Сети: Неизвестно"
-                            }
+                            {`Контакты ${getInfo(currentProfile.contacts.facebook)}`}
                         </p>
                     </div>
                 </div>

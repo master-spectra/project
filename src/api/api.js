@@ -20,6 +20,13 @@ export const callFolowingOnUser = id => {
     );
 };
 
+export const callUnFolowingOnUser = id => {
+    return (
+        instance.delete(`follow/${id}`)
+        .then(response => response.data)
+    );
+};
+
 export const getProfileOnHeader = () => {
     return (
         instance.get(`auth/me`,)
