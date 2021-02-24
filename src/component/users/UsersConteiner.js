@@ -6,19 +6,18 @@ import {
 } from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
 import React, {Component} from "react";
-import * as axios from "axios";
 import {Loader} from "../loader/Loader";
 import {Users} from "./Users";
+import {getUsers} from "../../api/api";
 
 export class UsersAPI extends Component {
     componentDidMount = () => {
         const {setUsers, currentPage, pageSize, fetching} = this.props;
 
         fetching(true);
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`)
-            .then(resolve => {
-                setUsers(resolve.data.items, 90);
+        getUsers(currentPage, pageSize)
+            .then(data => {
+                setUsers(data.items, 90);
                 fetching(false);
             });
     }
@@ -29,10 +28,9 @@ export class UsersAPI extends Component {
         fetching(true);
         changePage(pageNumber);
 
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`)
-            .then(resolve => {
-                setUsers(resolve.data.items, 90);
+        getUsers(pageNumber, pageSize)
+            .then(data => {
+                setUsers(data.items, 90);
                 fetching(false);
             });
     }
@@ -58,8 +56,8 @@ export class UsersAPI extends Component {
 const mapStateToProps = state => {
     return {
         usersList: state.users.listUser,
-        pageSize: state.users.pageSize,
         totalUserCount: state.users.totalUserCount,
+        pageSize: state.users.pageSize,
         currentPage: state.users.currentPage,
         isFetching: state.users.isFetching
     };
@@ -70,8 +68,8 @@ const mapDispatchToProps = dispatch => {
         setUsers: (usersArray, totalUserCount) => {
             dispatch(setUsersActionCreator(usersArray, totalUserCount));
         },
-        following: (btn, index) => {
-            dispatch(followingUserActionCreator(btn, index));
+        following: (btn, id) => {
+            dispatch(followingUserActionCreator(btn, id));
         },
         changePage: newPage => {
             dispatch(changePageActionCreator(newPage));

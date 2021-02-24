@@ -10,8 +10,8 @@ export const likePostActionCreator = (likeBtn, index) => {
     return {type: "LIKE POST", btn: likeBtn.current, index: index};
 };
 
-export const followingUserActionCreator = (btn, index) => {
-    return {type: "FOLLOW ON USER", btn: btn.current, index: index};
+export const followingUserActionCreator = (btn, id) => {
+    return {type: "FOLLOW ON USER", btn: btn.current, id: id};
 };
 
 export const setUsersActionCreator = (usersArray, totalUserCount) => {

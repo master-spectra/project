@@ -2,13 +2,19 @@ import React from "react";
 import userStyle from "./user.module.scss"
 import logo from "../../../media/logo.jpg";
 import {NavLink} from "react-router-dom";
+import {callFolowingOnUser} from "../../../api/api";
 
 export const User = (props) => {
-    const {name, status, index, img, following, id} = props;
+    const {name, status, img, following, id} = props;
     const btn = React.createRef();
 
-    const callFolowingOnUser = () => {
-        following(btn, index);
+    const callFollowing = () => {
+        callFolowingOnUser(id)
+            .then(data => {
+                if (data.resultCode === 1) {
+                    following(btn, id);
+                }
+            });
     };
 
     return (
@@ -17,7 +23,9 @@ export const User = (props) => {
                 <NavLink to={`/profile/${id}`}>
                     <img className={userStyle.img} src={img !== null ? img : logo} alt={"#`"}/>
                 </NavLink>
-                <button className={userStyle.btnFollowing} ref={btn} onClick={callFolowingOnUser}>Follow</button>
+                <button className={userStyle.btnFollowing} ref={btn} onClick={callFollowing}>
+                    Follow
+                </button>
             </div>
             <div className={userStyle.information}>
                 <div className={userStyle.aboutUser}>

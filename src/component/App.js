@@ -6,6 +6,7 @@ import {HeaderConteiner} from "./header/HeaderConteiner";
 import {UsersConteiner} from "./users/UsersConteiner";
 import {SideBarConteiner} from "./sideBar/SideBarConteiner";
 import {MessegeConteiner} from "./messege/MessegeConteiner";
+import {MyProfileConteiner} from "./myProfile/MyProfileConteiner";
 
 export const App = () => {
     return (
@@ -16,6 +17,7 @@ export const App = () => {
                     <div className={AppStyle.overlay}>
                         <SideBarConteiner/>
                         <div className={AppStyle.appContent}>
+                            <Route exact path={"/"} render={() => <MyProfileConteiner/>}/>
                             <Route
                                 path="/profile/:userId?"
                                 render={

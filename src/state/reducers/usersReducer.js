@@ -18,14 +18,18 @@ export const usersReducer = (state = usersInit, action) => {
     });
 
     switch (true) {
-        case action.type === followCheckerForUser && newState.listUser[action.index].followed === false:
-            newState.listUser[action.index].followed = !newState.listUser[action.index].followed;
-            action.btn.textContent = "Unfollow";
+        case action.type === followCheckerForUser:
+            newState.listUser.forEach(item => {
+                if (item.id === action.id && !item.followed) {
+                    item.followed = true;
+                    action.btn.textContent = "unfollow";
+                } else if (item.id === action.id && item.followed) {
+                    item.followed = false;
+                    action.btn.textContent = "follow";
+                    action.btn.setAttribute(onclick, () => console.log(5))
+                };
 
-            return newState;
-        case action.type === followCheckerForUser && newState.listUser[action.index].followed === true:
-            newState.listUser[action.index].followed = !newState.listUser[action.index].followed;
-            action.btn.textContent = "Follow";
+            });
 
             return newState;
         case action.type === setUserTextCheker:

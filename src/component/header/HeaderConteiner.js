@@ -1,25 +1,24 @@
 import React, {Component} from "react";
-import * as axios from "axios";
 import {Header} from "./Header";
 import {connect} from "react-redux";
 import {authActionCreator, fetchingActionCreator} from "../../state/actionCreator/actionCreator";
+import {getProfileOnHeader} from "../../api/api";
 
 class HeaderConteinerAPI extends Component {
     componentDidMount = () => {
         const {auth, fetching} = this.props;
 
         fetching(true);
-
-        axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {withCredentials: true})
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    auth(response.data.data, true);
+        getProfileOnHeader()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    auth(data.data, true);
                 } else {
                     auth({}, false);
                 };
 
                 fetching(false);
-            });
+            });;
     }
 
     render = () => {

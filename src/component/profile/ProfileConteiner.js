@@ -5,8 +5,8 @@ import {
     likePostActionCreator,
     setProfileActionCreator
 } from "../../state/actionCreator/actionCreator";
-import * as axios from "axios";
 import {withRouter} from "react-router-dom";
+import {getProfile} from "../../api/api";
 
 export class ProfileConteinerAPI extends Component {
     componentDidMount = () => {
@@ -16,9 +16,9 @@ export class ProfileConteinerAPI extends Component {
             match.params.userId = 2;
         };
 
-         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${match.params.userId}`)
-            .then(resolve => {
-                setProfile(resolve.data);
+        getProfile(match)
+            .then(data => {
+                setProfile(data);
             });
     }
 
@@ -30,7 +30,8 @@ export class ProfileConteinerAPI extends Component {
 const mapStateToProps = state => {
     return {
         userComment: state.profile.userComment,
-        currentProfile: state.profile.currentProfile
+        currentProfile: state.profile.currentProfile,
+        profileId: state.myProfile.id
     };
 };
 

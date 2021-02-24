@@ -13,7 +13,11 @@ export const User = (props) => {
                 <div className={UserStyle.user}>
                     <img
                         className={UserStyle.imgUser}
-                        src={currentProfile.photos.small ? currentProfile.photos.small : Logo}
+                        src={
+                            currentProfile.photos && currentProfile.photos.small
+                                ? currentProfile.photos.small
+                                : Logo
+                        }
                         alt={"#"}
                     />
                     <div className={UserStyle.userInfoWrap}>
@@ -41,7 +45,7 @@ export const User = (props) => {
                         </p>
                         <p className={UserStyle.userInfo}>
                             {
-                                currentProfile.contacts.facebook
+                                currentProfile.contacts && currentProfile.contacts.facebook
                                     ? `Соц-Сети: ${currentProfile.contacts.facebook}`
                                     : "Соц-Сети: Неизвестно"
                             }
