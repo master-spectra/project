@@ -18,30 +18,9 @@ export const App = () => {
                         <SideBarConteiner/>
                         <div className={AppStyle.appContent}>
                             <Route exact path={"/"} render={() => <MyProfileConteiner/>}/>
-                            <Route
-                                path="/profile/:userId?"
-                                render={
-                                    () => {
-                                        return <ProfileConteiner/>;
-                                    }
-                                }
-                            />
-                            <Route
-                                path="/messege"
-                                render={
-                                    () => {
-                                        return <MessegeConteiner/>;
-                                    }
-                                }
-                            />
-                            <Route
-                                path="/find"
-                                render={
-                                    () => {
-                                        return <UsersConteiner/>;
-                                    }
-                                }
-                            />
+                            <Route path="/profile/:userId?" render={() => <ProfileConteiner/>}/>
+                            <Route path="/messege" render={() => <MessegeConteiner/>}/>
+                            <Route path="/find" render={() => <UsersConteiner/>}/>
                         </div>
                     </div>
                 </div>

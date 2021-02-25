@@ -12,9 +12,7 @@ export const Header = props => {
             return (
                 <NavLink to={"/"}>
                     <div className={HeaderStyle.profile}>
-                        <p className={HeaderStyle.login}>
-                            {profile.isAuth ? profile.login : "Login"}
-                        </p>
+                        <p className={HeaderStyle.login}>{profile.isAuth ? profile.login : "Login"}</p>
                     </div>
                 </NavLink>
             );

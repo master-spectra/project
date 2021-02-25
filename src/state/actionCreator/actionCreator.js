@@ -11,11 +11,12 @@ export const likePostActionCreator = (likeBtn, index) => {
 };
 
 export const followingUserActionCreator = (btn, id) => {
-    return {type: "FOLLOW ON USER", btn: btn.current, id: id};
+    console.log(btn);
+    return {type: "FOLLOW ON USER", btn: btn, id: id};
 };
 
 export const unFollowingUserActionCreator = (btn, id) => {
-    return {type: "UNFOLLOW ON USER", btn: btn.current, id: id};
+    return {type: "UNFOLLOW ON USER", btn: btn, id: id};
 };
 
 export const setUsersActionCreator = (usersArray, totalUserCount) => {
@@ -36,4 +37,8 @@ export const setProfileActionCreator = profile => {
 
 export const authActionCreator = (data, isAuth) => {
     return {type: "AUTH FOR SITE", data: {...data}, isAuth: isAuth};
+};
+
+export const followInProgressActionCreator = status => {
+    return {type: "TOGGLE FOLLOWING", isFollow: status}
 };

@@ -5,15 +5,20 @@ import {MyPost} from "./myPost/MyPost";
 
 export const Profile = (props) => {
     const {userComment, likePost} = props;
+
     const getProfile = () => {
         return (
             userComment.map((item, index) => {
+                const postData = {
+                    likeCounter: item.likeCounter,
+                    text: item.comment,
+                    status: userComment,
+                    index: index
+                };
+
                 return (
                     <MyPost
-                        likeCounter={item.likeCounter}
-                        text={item.comment}
-                        className={userComment}
-                        index={index}
+                        postData={postData}
                         key={index}
                         likePost={
                             (likeBtn, index) => {

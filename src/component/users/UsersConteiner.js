@@ -1,7 +1,7 @@
 import {
     changePageActionCreator,
     fetchingActionCreator,
-    followingUserActionCreator,
+    followingUserActionCreator, followInProgressActionCreator,
     setUsersActionCreator, unFollowingUserActionCreator
 } from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
@@ -15,6 +15,7 @@ export class UsersAPI extends Component {
         const {setUsers, currentPage, pageSize, fetching} = this.props;
 
         fetching(true);
+
         getUsers(currentPage, pageSize)
             .then(data => {
                 setUsers(data.items, 90);
@@ -41,7 +42,7 @@ export class UsersAPI extends Component {
             if (isFetching) {
                 return <Loader/>;
             } else {
-                return <Users {...this.props} onPageChanged={(pageNumber) => this.onPageChanged(pageNumber)} />;
+                return <Users {...this.props} onPageChanged={pageNumber => this.onPageChanged(pageNumber)}/>
             };
         };
 
@@ -55,7 +56,8 @@ const mapStateToProps = state => {
         totalUserCount: state.users.totalUserCount,
         pageSize: state.users.pageSize,
         currentPage: state.users.currentPage,
-        isFetching: state.users.isFetching
+        isFetching: state.users.isFetching,
+        isFollow: state.users.isFollow
     };
 };
 
@@ -75,7 +77,10 @@ const mapDispatchToProps = dispatch => {
         },
         fetching: isFetching => {
             dispatch(fetchingActionCreator(isFetching));
-        }
+        },
+        followInProgress: status => {
+            dispatch(followInProgressActionCreator(status));
+        } 
     };
 };
 

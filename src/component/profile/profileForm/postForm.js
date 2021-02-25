@@ -17,22 +17,9 @@ export const PostForm = (props) => {
 
     return (
         <form action="#" className={style.formSendPost}>
-            <h3 className={style.formTitle}>
-                My Post
-            </h3>
-            <input
-                type="text"
-                value={inputValue}
-                ref={input}
-                className={style.formInput}
-                onChange={callChangeInput}
-            />
-            <input
-                type="button"
-                className={style.formBtn}
-                value="Send"
-                onClick={callAddYourMessege}
-            />
+            <h3 className={style.formTitle}>My Post</h3>
+            <input type="text" value={inputValue} ref={input} className={style.formInput} onChange={callChangeInput}/>
+            <input type="button" className={style.formBtn} value="Send" onClick={callAddYourMessege}/>
         </form>
     )
 };

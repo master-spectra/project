@@ -11,7 +11,6 @@ export const messegeReducer = (state = messegeInit, action) => {
 	switch (true) {
 		case action.type === changeInputCheckerForMessegeChecker && action.input.trim().length > 0:
 			newState.inputValue = action.input;
-
 			return newState;
 		case action.type === addMessegeCheckerForMessegeChecker && action.input.trim().length > 0:
 			const userPost = {text: action.input};
