@@ -7,7 +7,7 @@ export const User = (props) => {
     const {currentProfile} = props;
 
     const getImg = () => {
-        if (currentProfile.photos.small && currentProfile.photos) {
+        if (currentProfile.photos && currentProfile.photos.small) {
             return currentProfile.photos.small;
         } else {
             return Logo;
