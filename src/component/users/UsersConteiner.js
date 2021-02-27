@@ -38,15 +38,7 @@ export class UsersAPI extends Component {
 
     render = () => {
         const {isFetching} = this.props;
-        const getUsers = () => {
-            if (isFetching) {
-                return <Loader/>;
-            } else {
-                return <Users {...this.props} onPageChanged={pageNumber => this.onPageChanged(pageNumber)}/>
-            };
-        };
-
-        return getUsers();
+        return isFetching ? <Loader/> : <Users {...this.props} onPageChanged={pageNumber => this.onPageChanged(pageNumber)}/>;
     }
 }
 
@@ -66,21 +58,12 @@ const mapDispatchToProps = dispatch => {
         setUsers: (usersArray, totalUserCount) => {
             dispatch(setUsersActionCreator(usersArray, totalUserCount));
         },
-        following: (btn, id) => {
-            dispatch(followingUserActionCreator(btn, id));
-        },
-        unFollowing: (btn, id) => {
-            dispatch(unFollowingUserActionCreator(btn, id));
-        },
         changePage: newPage => {
             dispatch(changePageActionCreator(newPage));
         },
         fetching: isFetching => {
             dispatch(fetchingActionCreator(isFetching));
-        },
-        followInProgress: status => {
-            dispatch(followInProgressActionCreator(status));
-        } 
+        }
     };
 };
 
