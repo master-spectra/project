@@ -1,6 +1,6 @@
 import React from "react";
 import userStyle from "./user.module.scss"
-import logo from "../../../media/logo.jpg";
+import Logo from "../../../media/logo.jpg";
 import {NavLink} from "react-router-dom";
 import {GetButtonConteiner} from "./button/GetButtonConteiner";
 
@@ -11,7 +11,7 @@ export const User = (props) => {
         <div className={userStyle.user}>
             <div className={userStyle.otherItem}>
                 <NavLink to={`/profile/${profile.id}`}>
-                    <img className={userStyle.img} src={profile.img ? profile.img : logo} alt={"#"}/>
+                    <img className={userStyle.img} src={profile.img ? profile.img : Logo} alt={"#"}/>
                 </NavLink>
                 <GetButtonConteiner profile={profile}/>
             </div>

@@ -8,9 +8,7 @@ export const SideBar = (props) => {
 
     return (
         <aside className={SideBarStyle.sideBar}>
-            <ul className={SideBarStyle.menu}>
-                {link}
-            </ul>
+            <ul className={SideBarStyle.menu}>{link}</ul>
         </aside>
     );
 };

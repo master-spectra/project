@@ -7,9 +7,7 @@ export const Link = (props) => {
 
     return (
         <li className={LinkStyle.menuItem}>
-            <NavLink to={link} className={LinkStyle.menuLink} activeClassName={LinkStyle.active}>
-                {text}
-            </NavLink>
+            <NavLink to={link} className={LinkStyle.menuLink} activeClassName={LinkStyle.active}>{text}</NavLink>
         </li>
     );
 };

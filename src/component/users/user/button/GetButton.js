@@ -31,31 +31,15 @@ export const GetButton = props => {
 
     if (profile.followed) {
         if (isFollow) {
-            return (
-                <button disabled className={userStyle.btnFollowing} ref={btn} onClick={callUnFollowing}>
-                    UnFollow
-                </button>
-            );
+            return <button disabled className={userStyle.btnFollowing} ref={btn} onClick={callUnFollowing}>UnFollow</button>;
         } else {
-            return (
-                <button className={userStyle.btnFollowing} ref={btn} onClick={callUnFollowing}>
-                    UnFollow
-                </button>
-            );
+            return <button className={userStyle.btnFollowing} ref={btn} onClick={callUnFollowing}>UnFollow</button>;
         };
     } else {
         if (!isFollow) {
-            return (
-                <button className={userStyle.btnFollowing} ref={btn} onClick={callFollowing}>
-                    Follow
-                </button>
-            );
+            return <button className={userStyle.btnFollowing} ref={btn} onClick={callFollowing}>Follow</button>;
         } else {
-            return (
-                <button disabled className={userStyle.btnFollowing} ref={btn} onClick={callFollowing}>
-                    Follow
-                </button>
-            );
+            return <button disabled className={userStyle.btnFollowing} ref={btn} onClick={callFollowing}>Follow</button>;
         };
     };
 };
