@@ -1,5 +1,7 @@
 import {Messege} from "./Messege";
 import {connect} from "react-redux";
+import {redirectHOC} from "../hoc/hoc";
+import {compose} from "redux";
 
 const mapStateToProps = state => {
     return {
@@ -7,8 +9,4 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = () => {
-    return {};
-};
-
-export const MessegeConteiner = connect(mapStateToProps, mapDispatchToProps)(Messege);
+export const MessegeConteiner = compose(connect(mapStateToProps, () => {}), redirectHOC)(Messege);

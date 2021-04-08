@@ -1,24 +1,13 @@
 import React, {Component} from "react";
 import {Header} from "./Header";
 import {connect} from "react-redux";
-import {authActionCreator, fetchingActionCreator} from "../../state/actionCreator/actionCreator";
-import {getProfileOnHeader} from "../../api/api";
+import {authActionCreator} from "../../state/actionCreator/actionCreator";
+import {getMyProfileOnHeaderThunkCreator} from "../../state/reducers/authReducer";
 
 class HeaderConteinerAPI extends Component {
     componentDidMount = () => {
-        const {auth, fetching} = this.props;
-
-        fetching(true);
-        getProfileOnHeader()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    auth(data.data, true);
-                } else {
-                    auth({}, false);
-                };
-
-                fetching(false);
-            });;
+        const {auth, getMyProfileOnHeader} = this.props;
+        getMyProfileOnHeader(auth);
     }
 
     render = () => {
@@ -37,8 +26,8 @@ const mapDispatchToProps = dispatch => {
         auth: (data, isAuth) => {
             dispatch(authActionCreator(data, isAuth));
         },
-        fetching: isFetching => {
-            dispatch(fetchingActionCreator(isFetching));
+        getMyProfileOnHeader: auth => {
+            dispatch(getMyProfileOnHeaderThunkCreator(auth));
         }
     };
 };

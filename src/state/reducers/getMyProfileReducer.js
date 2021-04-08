@@ -1,3 +1,6 @@
+import {getProfileOnHeader} from "../../api/api";
+import {setProfileActionCreator} from "../actionCreator/actionCreator";
+
 const myProfileInit = {profile: null};
 
 export const getMyProfileReducer = (state = myProfileInit, action) =>{
@@ -11,4 +14,13 @@ export const getMyProfileReducer = (state = myProfileInit, action) =>{
         default:
             return state;
     }
+};
+
+export const getMyProfileThunkCreator = () => {
+    return dispatch => {
+        getProfileOnHeader()
+            .then(data => {
+                dispatch(setProfileActionCreator(data.data));
+            });
+    };
 };

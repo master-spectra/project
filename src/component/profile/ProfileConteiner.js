@@ -3,49 +3,48 @@ import {connect} from "react-redux";
 import {Profile} from "./Profile";
 import {
     likePostActionCreator,
-    setProfileActionCreator
 } from "../../state/actionCreator/actionCreator";
 import {withRouter} from "react-router-dom";
-import {getProfile} from "../../api/api";
+import {
+    getStatusThunkCreator,
+    profileThunkCreator,
+} from "../../state/reducers/profileReducer";
+import {redirectHOC} from "../hoc/hoc";
+import {compose} from "redux";
 
 export class ProfileConteinerAPI extends Component {
     componentDidMount = () => {
-        const {setProfile, match} = this.props;
+        const {profileThunk, match, getStatus, userId} = this.props;
 
-        if (!match.params.userId) {
-            match.params.userId = 2;
-        };
-
-        getProfile(match)
-            .then(data => {
-                setProfile(data);
-            });
+        profileThunk(match.params.userId || userId);
+        getStatus(match.params.userId || userId);
     }
 
     render = () => {
         return <Profile {...this.props} />
     }
-}
+};
 
 const mapStateToProps = state => {
     return {
-        userComment: state.profile.userComment,
         currentProfile: state.profile.currentProfile,
-        profileId: state.myProfile.id
+        userComment: state.profile.userComment,
+        userId: state.auth.id
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         likePost: (likeBtn, index) => {
-            dispatch(likePostActionCreator(likeBtn, index))
+            dispatch(likePostActionCreator(likeBtn, index));
         },
-        setProfile: profile => {
-            dispatch(setProfileActionCreator(profile))
+        profileThunk: id => {
+            dispatch(profileThunkCreator(id));
+        },
+        getStatus: userId => {
+            dispatch(getStatusThunkCreator(userId));
         }
     };
 };
 
-const WithRouterProfileConteiner = withRouter(ProfileConteinerAPI);
-
-export const ProfileConteiner = connect(mapStateToProps, mapDispatchToProps)(WithRouterProfileConteiner);
+export const ProfileConteiner = compose(connect(mapStateToProps, mapDispatchToProps), withRouter, redirectHOC)(ProfileConteinerAPI);

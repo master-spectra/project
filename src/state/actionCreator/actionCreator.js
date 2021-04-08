@@ -11,7 +11,6 @@ export const likePostActionCreator = (likeBtn, index) => {
 };
 
 export const followingUserActionCreator = (btn, id) => {
-    console.log(btn);
     return {type: "FOLLOW ON USER", btn: btn, id: id};
 };
 
@@ -40,5 +39,25 @@ export const authActionCreator = (data, isAuth) => {
 };
 
 export const followInProgressActionCreator = status => {
-    return {type: "TOGGLE FOLLOWING", isFollow: status}
+    return {type: "TOGGLE FOLLOWING", isFollow: status};
+};
+
+export const loadingInProgressActionCreator = status => {
+    return {type: "LOADING IN PROGRESS", status: status};
+};
+
+export const getStatusActionCreator = status => {
+    return {type: "GET STATUS", status: status};
+};
+
+export const updateStatusActionCreator = status => {
+    return {type: "UPDATE STATUS", status: status};
+};
+
+export const setStatusActionCreator = status => {
+    return {type: "SET STATUS", status: status};
+};
+
+export const getIdUsersActionCreator = id => {
+    return {type: "GET ID", id: id};
 };

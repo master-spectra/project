@@ -1,7 +1,8 @@
+import {getProfile, getProfileOnHeader, loginOnSite} from "../../api/api";
+import {fetchingActionCreator, getIdUsersActionCreator, setProfileActionCreator} from "../actionCreator/actionCreator";
+
 const authInit = {
     id: null,
-    email: null,
-    login: null,
     isFetching: false,
     isAuth: false
 };
@@ -9,6 +10,7 @@ const authInit = {
 export const authReducer = (state = authInit, action) => {
     const authChecker = "AUTH FOR SITE";
     const isFetchingChecker = "TOGGLE LOADER";
+    const getIdChecker = "GET ID";
     const newState = {...state};
 
     switch (true) {
@@ -23,7 +25,39 @@ export const authReducer = (state = authInit, action) => {
             newState.isFetching = action.isFetching;
 
             return newState;
+        case getIdChecker === action.type:
+            newState.id = action.id;
+            newState.isAuth = true;
+            return newState;
         default:
             return state;
     }
+};
+
+export const getMyProfileOnHeaderThunkCreator = auth => {
+    return dispatch => {
+        dispatch(fetchingActionCreator(true));
+        getProfileOnHeader()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    auth(data.data, true);
+                } else {
+                    auth({}, false);
+                };
+
+                dispatch(fetchingActionCreator(false));
+            });;
+    };
+};
+
+
+export const loginOnSiteThunkCreator = formData => {
+    return dispatch => {
+        loginOnSite(formData)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(getIdUsersActionCreator(response.data.data.userId));
+                };
+            });
+    };
 };

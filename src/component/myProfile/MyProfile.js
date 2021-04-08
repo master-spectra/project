@@ -8,7 +8,7 @@ export const MyProfile = props => {
     return (
         <div className={MyProfileStyle.profile}>
             <div className={MyProfileStyle.profileImgWrap}>
-                <img className={MyProfileStyle.profileImg} src={myProfile.profile.img ? myProfile.profile.img : Logo} alt="#"/>
+                <img className={MyProfileStyle.profileImg} src={myProfile.profile && myProfile.profile.img ? myProfile.profile.img : Logo} alt="#"/>
             </div>
             <div className={MyProfileStyle.profileInfo}>
                 <p>{`Имя: ${myProfile.profile ? myProfile.profile.login : ""}`}</p>

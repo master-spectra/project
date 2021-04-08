@@ -1,17 +1,12 @@
 import React, {Component} from "react";
-import {setProfileActionCreator} from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
 import {MyProfile} from "./MyProfile";
-import {getProfileOnHeader} from "../../api/api";
+import {getMyProfileThunkCreator} from "../../state/reducers/getMyProfileReducer";
 
 class MyProfileConteinerAPI extends Component {
     componentDidMount() {
-        const {getMyProfile} = this.props;
-
-        getProfileOnHeader()
-            .then(data => {
-                getMyProfile(data.data);
-            });
+        const {getMyProfile, myProfile} = this.props;
+        getMyProfile(myProfile);
     }
 
     render() {
@@ -28,7 +23,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getMyProfile: profile => {
-            dispatch(setProfileActionCreator(profile));
+            dispatch(getMyProfileThunkCreator(profile));
         }
     };
 };

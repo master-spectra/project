@@ -3,7 +3,7 @@ import UsersStyle from "./users.module.scss"
 import {User} from "./user/User";
 
 export const Users = (props) => {
-    const {followInProgress, isFollow, usersList, following, pageSize, totalUserCount, currentPage, onPageChanged, unFollowing} = props;
+    const {usersList, pageSize, totalUserCount, currentPage, onPageChanged} = props;
     const countPage = Math.ceil(totalUserCount / pageSize);
     const pageList = [];
     const users = usersList.map((item, index) => {
@@ -19,10 +19,6 @@ export const Users = (props) => {
             <User
                 key={index}
                 profile={profile}
-                isFollow={isFollow}
-                followInProgress={status => followInProgress(status)}
-                following={(btn, id) => following(btn, id)}
-                unFollowing={(btn, id) => unFollowing(btn, id)}
             />
         );
     });

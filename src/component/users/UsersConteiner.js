@@ -1,39 +1,24 @@
 import {
     changePageActionCreator,
-    fetchingActionCreator,
-    followingUserActionCreator, followInProgressActionCreator,
-    setUsersActionCreator, unFollowingUserActionCreator
 } from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
 import React, {Component} from "react";
 import {Loader} from "../loader/Loader";
 import {Users} from "./Users";
-import {getUsers} from "../../api/api";
+import {getUsersThunkCreator} from "../../state/reducers/usersReducer";
+import {redirectHOC} from "../hoc/hoc";
+import {compose} from "redux";
 
 export class UsersAPI extends Component {
     componentDidMount = () => {
-        const {setUsers, currentPage, pageSize, fetching} = this.props;
-
-        fetching(true);
-
-        getUsers(currentPage, pageSize)
-            .then(data => {
-                setUsers(data.items, 90);
-                fetching(false);
-            });
+        const {currentPage, pageSize, getUsersThunk} = this.props;
+        getUsersThunk(currentPage, pageSize);
     }
 
     onPageChanged = (pageNumber) => {
-        const {setUsers, pageSize, changePage, fetching} = this.props;
-
-        fetching(true);
+        const {pageSize, changePage, getUsersThunk} = this.props;
         changePage(pageNumber);
-
-        getUsers(pageNumber, pageSize)
-            .then(data => {
-                setUsers(data.items, 90);
-                fetching(false);
-            });
+        getUsersThunk(pageNumber, pageSize);
     }
 
     render = () => {
@@ -49,22 +34,18 @@ const mapStateToProps = state => {
         pageSize: state.users.pageSize,
         currentPage: state.users.currentPage,
         isFetching: state.users.isFetching,
-        isFollow: state.users.isFollow
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        setUsers: (usersArray, totalUserCount) => {
-            dispatch(setUsersActionCreator(usersArray, totalUserCount));
-        },
         changePage: newPage => {
             dispatch(changePageActionCreator(newPage));
         },
-        fetching: isFetching => {
-            dispatch(fetchingActionCreator(isFetching));
+        getUsersThunk: (currentPage, pageSize) => {
+            dispatch(getUsersThunkCreator(currentPage, pageSize));
         }
     };
 };
 
-export const UsersConteiner = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+export const UsersConteiner = compose(connect(mapStateToProps, mapDispatchToProps), redirectHOC)(UsersAPI);

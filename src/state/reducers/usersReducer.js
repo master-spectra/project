@@ -1,3 +1,10 @@
+import {callFolowingOnUser, callUnFolowingOnUser, getUsers} from "../../api/api";
+import {
+    fetchingActionCreator, followingUserActionCreator,
+    followInProgressActionCreator,
+    setUsersActionCreator, unFollowingUserActionCreator
+} from "../actionCreator/actionCreator";
+
 const usersInit = {
     listUser: [],
     totalUserCount: 0,
@@ -54,4 +61,44 @@ export const usersReducer = (state = usersInit, action) => {
         default:
             return state;
     }
+};
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return dispatch => {
+        dispatch(fetchingActionCreator(true));
+
+        getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(setUsersActionCreator(data.items, 90));
+                dispatch(fetchingActionCreator(false));
+            });
+    };
+};
+
+export const followingThunkCreator = (btn, id) => {
+    return dispatch => {
+        dispatch(followInProgressActionCreator(true));
+
+        callUnFolowingOnUser(id)
+            .then(data => {
+                if (!data.resultCode) {
+                    dispatch(followInProgressActionCreator(false));
+                    dispatch(unFollowingUserActionCreator(btn, id));
+                };
+            });
+    };
+};
+
+export const unFollowingThunkCreator = (btn, id) => {
+    return dispatch => {
+        dispatch(followInProgressActionCreator(true));
+
+        callFolowingOnUser(id)
+            .then(data => {
+                if (!data.resultCode) {
+                    dispatch(followInProgressActionCreator(false));
+                    dispatch(followingUserActionCreator(btn, id));
+                };
+            });
+    };
 };
