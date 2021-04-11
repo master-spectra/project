@@ -7,14 +7,9 @@ import {UsersConteiner} from "./users/UsersConteiner";
 import {SideBarConteiner} from "./sideBar/SideBarConteiner";
 import {MessegeConteiner} from "./messege/MessegeConteiner";
 import {MyProfileConteiner} from "./myProfile/MyProfileConteiner";
-import {LoginConteinerAPI} from "./login/loginConteiner";
+import {LoginConteiner} from "./login/LoginConteiner";
 
-export const App = props => {
-    const onSubmit = formData => {
-        const {loginOnSite} = props;
-        loginOnSite(formData);
-    };
-
+export const App = () => {
     return (
         <div className={AppStyle.app}>
             <HeaderConteiner />
@@ -27,7 +22,7 @@ export const App = props => {
                             <Route path="/profile/:userId?" render={() => <ProfileConteiner/>}/>
                             <Route path="/messege" render={() => <MessegeConteiner/>}/>
                             <Route path="/find" render={() => <UsersConteiner/>}/>
-                            <Route path="/login" render={() => <LoginConteinerAPI onSubmit={(formData) => onSubmit(formData)}/>}/>
+                            <Route path="/login" render={() => <LoginConteiner/>}/>
                         </div>
                     </div>
                 </div>

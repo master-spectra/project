@@ -1,5 +1,5 @@
-import {getProfile, getProfileOnHeader, loginOnSite} from "../../api/api";
-import {fetchingActionCreator, getIdUsersActionCreator, setProfileActionCreator} from "../actionCreator/actionCreator";
+import {getProfileOnHeader, loginOnSite} from "../../api/api";
+import {authActionCreator, fetchingActionCreator, getIdUsersActionCreator} from "../actionCreator/actionCreator";
 
 const authInit = {
     id: null,
@@ -34,19 +34,19 @@ export const authReducer = (state = authInit, action) => {
     }
 };
 
-export const getMyProfileOnHeaderThunkCreator = auth => {
+export const getMyProfileOnHeaderThunkCreator = () => {
     return dispatch => {
         dispatch(fetchingActionCreator(true));
         getProfileOnHeader()
             .then(data => {
                 if (data.resultCode === 0) {
-                    auth(data.data, true);
+                    dispatch(authActionCreator(data.data, true));
                 } else {
-                    auth({}, false);
+                    dispatch(authActionCreator({}, false));
                 };
 
                 dispatch(fetchingActionCreator(false));
-            });;
+            });
     };
 };
 

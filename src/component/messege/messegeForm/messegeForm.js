@@ -1,25 +1,23 @@
 import React from "react";
-import messegeFormStyle from "./messegeForm.module.scss";
+import {Field, Form, Formik} from "formik";
+import {setMessegeValidation} from "../../../utils/validate/validate";
+import style from "./messegeForm.module.scss";
 
 export const MessegeForm = (props) => {
-    const {inputValue, changeInput, addYourMessege} = props;
-    const input = React.createRef();
-    const addMessegeCheckerForMessegeChecker = "ADD MESSEGE";
-    const changeInputCheckerForMessegeChecker = "CHANGE INPUT MESSEGE";
+    const {onSubmit} = props;
 
-    const callChangeInput = () => {
-        changeInput(input, changeInputCheckerForMessegeChecker);
-    };
-
-    const callAddYourMessege = () => {
-        addYourMessege(input, addMessegeCheckerForMessegeChecker);
+    const submittingForm = (value, resetForm) => {
+        onSubmit(value);
+        resetForm("");
     };
 
     return (
-        <form action="#" className={messegeFormStyle.formSendPost}>
-            <h3 className={messegeFormStyle.formTitle}>Send messege</h3>
-            <input type="text" value={inputValue} ref={input} className={messegeFormStyle.formInput} onChange={callChangeInput}/>
-            <input type="button" className={messegeFormStyle.formBtn} value="Send" onClick={callAddYourMessege}/>
-        </form>
+        <Formik initialValues={{messegeText: ""}} onSubmit={(value, {resetForm}) => submittingForm(value, resetForm)} validationSchema={setMessegeValidation}>
+            <Form className={style.formSendPost}>
+                <h3 className={style.formTitle}>My Post</h3>
+                <Field name={"messegeText"} type={"text"} component="input" className={style.formInput}/>
+                <button type="submit" className={style.formBtn}>send</button>
+            </Form>
+        </Formik>
     );
 };

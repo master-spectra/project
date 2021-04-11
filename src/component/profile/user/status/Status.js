@@ -1,8 +1,11 @@
 import React, {Component} from "react";
 import style from "./status.module.scss";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import {setStatusValidation} from "../../../../utils/validate/validate";
+import {Input} from "../../../common/FormComponent/FormComponent";
 
 export class Status extends Component {
-    state = {editStatusMode: false, localStatus: this.props.status}
+    state = {editStatusMode: false}
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.status !== this.props.status) {
@@ -14,21 +17,15 @@ export class Status extends Component {
         this.setState({editStatusMode: !this.state.editStatusMode});
     }
 
-    saveStatus = value => {
-        const {updateStatus} = this.props;
+    submittingForm = (value) => {
+        const {onSubmit} = this.props;
 
+        onSubmit(value);
         this.changeEditStatusMode();
-        updateStatus(value);
-    }
-
-    setStatus = localStatus => {
-        this.setState({localStatus});
     }
 
     render = () => {
         const {status} = this.props;
-        const {localStatus} = this.state;
-        const input = React.createRef();
 
         if (!this.state.editStatusMode) {
             return (
@@ -38,10 +35,13 @@ export class Status extends Component {
             );
         } else {
             return (
-                <form action="" className={style.form}>
-                    <input ref={input} value={localStatus} type="text" className={style.input} onChange={() => this.setStatus(input.current.value)} />
-                    <button className={style.btn} onClick={() => this.saveStatus(localStatus)}>Save</button>
-                </form>
+                <Formik initialValues={{status: ""}} onSubmit={value => this.submittingForm(value)} validationSchema={setStatusValidation}>
+                    <Form>
+                        <ErrorMessage name={"status"}/>
+                        <Field type={"text"} name={"status"} component={Input}/>
+                        <button type={"submit"} className={style.btn}>Save</button>
+                    </Form>
+                </Formik>
             );
         };
     }

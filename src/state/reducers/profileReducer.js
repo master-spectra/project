@@ -22,9 +22,9 @@ export const profileReducer = (state = profileInit, action) => {
 		case changeInputCheckerForProfileChecker === action.type:
 			newState.inputValue = action.input;
 			return newState;
-		case action.type === addPostCheckerForProfileChecker && action.input.trim().length > 0:
+		case action.type === addPostCheckerForProfileChecker:
 			const userPost = {
-				comment: action.input,
+				comment: action.value.postText,
 				likeCounter: 0,
 				status: "far"
 			};

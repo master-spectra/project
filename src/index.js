@@ -4,12 +4,12 @@ import "./style.scss";
 import {BrowserRouter} from "react-router-dom";
 import {store} from "./state/store";
 import {Provider} from "react-redux";
-import {AppConteiner} from "./component/AppConteiner";
+import {App} from "./component/App";
 
 ReactDom.render(
     <BrowserRouter>
         <Provider store={store}>
-            <AppConteiner/>
+            <App/>
         </Provider>
     </BrowserRouter>,
     document.querySelector("body")

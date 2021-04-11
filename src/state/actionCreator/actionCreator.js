@@ -1,9 +1,5 @@
-export const addPostActionCreator = (input, textCheker) => {
-    return {type: textCheker, input: input.current.value};
-};
-
-export const changeInputActionCreator = (input, textCheker) => {
-    return {type: textCheker, input: input.current.value};
+export const addPostActionCreator = (value, textCheker) => {
+    return {type: textCheker, value: value};
 };
 
 export const likePostActionCreator = (likeBtn, index) => {
@@ -44,14 +40,6 @@ export const followInProgressActionCreator = status => {
 
 export const loadingInProgressActionCreator = status => {
     return {type: "LOADING IN PROGRESS", status: status};
-};
-
-export const getStatusActionCreator = status => {
-    return {type: "GET STATUS", status: status};
-};
-
-export const updateStatusActionCreator = status => {
-    return {type: "UPDATE STATUS", status: status};
 };
 
 export const setStatusActionCreator = status => {

@@ -1,4 +1,3 @@
-import {addPostActionCreator, changeInputActionCreator} from "../../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
 import {PostForm} from "./postForm";
 
@@ -8,15 +7,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        changeInput: (input, textCheker) => {
-            dispatch(changeInputActionCreator(input, textCheker));
-        },
-        addYourMessege: (input, textCheker) => {
-            dispatch(addPostActionCreator(input, textCheker));
-        }
-    };
+const mapDispatchToProps = () => {
+    return {};
 };
 
 export const PostFormConteiner = connect(mapStateToProps, mapDispatchToProps)(PostForm);

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Profile} from "./Profile";
 import {
+    addPostActionCreator,
     likePostActionCreator,
 } from "../../state/actionCreator/actionCreator";
 import {withRouter} from "react-router-dom";
@@ -11,10 +12,15 @@ import {
 } from "../../state/reducers/profileReducer";
 import {redirectHOC} from "../hoc/hoc";
 import {compose} from "redux";
+import {getMyProfileOnHeaderThunkCreator} from "../../state/reducers/authReducer";
 
 export class ProfileConteinerAPI extends Component {
     componentDidMount = () => {
-        const {profileThunk, match, getStatus, userId} = this.props;
+        const {getMyProfile, profileThunk, match, getStatus, userId} = this.props;
+
+        if (!match.params.userId && !userId) {
+            getMyProfile();
+        };
 
         profileThunk(match.params.userId || userId);
         getStatus(match.params.userId || userId);
@@ -43,6 +49,12 @@ const mapDispatchToProps = dispatch => {
         },
         getStatus: userId => {
             dispatch(getStatusThunkCreator(userId));
+        },
+        getMyProfile: () => {
+            dispatch(getMyProfileOnHeaderThunkCreator())
+        },
+        addYourMessege: (input, textChecker) => {
+            dispatch(addPostActionCreator(input, textChecker));
         }
     };
 };

@@ -2,7 +2,7 @@ import React from "react";
 import UserStyle from "./user.module.scss";
 import {Loader} from "../../loader/Loader";
 import Logo from "../../../media/logo.jpg";
-import {StatusConteiner} from "../status/StatusConteiner";
+import {StatusConteiner} from "./status/StatusConteiner";
 
 const getInfo = item => {
     if (item) {
@@ -13,7 +13,11 @@ const getInfo = item => {
 };
 
 export const User = (props) => {
-    const {currentProfile} = props;
+    const {currentProfile, updateStatus} = props;
+
+    const onSubmit = formData => {
+        updateStatus(formData.status);
+    };
 
     return currentProfile ? <div className={UserStyle.profileWrap}>
         <div className={UserStyle.backgroundImage}></div>
@@ -35,7 +39,7 @@ export const User = (props) => {
                 <p className={UserStyle.userInfo}>
                     {`Контакты: ${getInfo(currentProfile.contacts && currentProfile.contacts.facebook ? currentProfile.contacts.facebook : null)}`}
                 </p>
-                <StatusConteiner/>
+                <StatusConteiner onSubmit={onSubmit}/>
             </div>
         </div>
     </div> : <Loader/>;

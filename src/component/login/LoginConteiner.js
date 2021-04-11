@@ -1,9 +1,11 @@
 import {connect} from "react-redux";
-import {loginOnSiteThunkCreator} from "../state/reducers/authReducer";
-import {App} from "./App";
+import {loginOnSiteThunkCreator} from "../../state/reducers/authReducer";
+import {Login} from "./Login";
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        isAuth: state.auth.isAuth
+    };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -14,4 +16,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export const AppConteiner = connect(mapStateToProps, mapDispatchToProps)(App);
+export const LoginConteiner = connect(mapStateToProps, mapDispatchToProps)(Login);

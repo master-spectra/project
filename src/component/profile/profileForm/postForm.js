@@ -1,25 +1,23 @@
 import React from "react";
 import style from "./postForm.module.scss";
+import {Field, Form, Formik} from "formik";
+import {setPostValidation} from "../../../utils/validate/validate";
 
-export const PostForm = (props) => {
-    const {inputValue, changeInput, addYourMessege} = props;
-    const input = React.createRef();
-    const addPostCheckerForProfileChecker = "ADD POST";
-    const changeInputCheckerForProfileChecker = "CHANGE INPUT PROFILE";
+export const PostForm = props => {
+    const {onSubmit} = props;
 
-    const callChangeInput = () => {
-        changeInput(input, changeInputCheckerForProfileChecker);
-    };
-
-    const callAddYourMessege = () => {
-        addYourMessege(input, addPostCheckerForProfileChecker);
+    const submittingForm = (value, resetForm) => {
+        onSubmit(value);
+        resetForm("");
     };
 
     return (
-        <form action="#" className={style.formSendPost}>
-            <h3 className={style.formTitle}>My Post</h3>
-            <input type="text" value={inputValue} ref={input} className={style.formInput} onChange={callChangeInput}/>
-            <input type="button" className={style.formBtn} value="Send" onClick={callAddYourMessege}/>
-        </form>
+        <Formik initialValues={{postText: ""}} onSubmit={(value, {resetForm}) => submittingForm(value, resetForm)} validationSchema={setPostValidation}>
+            <Form className={style.formSendPost}>
+                <h3 className={style.formTitle}>My Post</h3>
+                <Field name={"postText"} type={"text"} component="input" className={style.formInput}/>
+                <button type="submit" className={style.formBtn}>send</button>
+            </Form>
+        </Formik>
     )
 };
