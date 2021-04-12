@@ -1,20 +1,19 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
 import {LoginConteiner} from "./form/LoginFormConteiner";
+import {ErrorMessege} from "../common/FormComponent/FormComponent";
 
 export const Login = props => {
-    const {isAuth, loginOnSite} = props;
+    const {isAuth, loginOnSite, statusCode} = props;
 
     const onSubmit = formData => {
         loginOnSite(formData);
     };
 
-    if (isAuth) {
-        return <Redirect to={"/profile"} />
-    } else {
+    if (!isAuth) {
         return (
             <div className="login">
-                <h1>Login</h1>
+                <h1>{statusCode === 1 ? <ErrorMessege /> : "Login"}</h1>
                 <LoginConteiner onSubmit={formData => onSubmit(formData)}/>
             </div>
         );

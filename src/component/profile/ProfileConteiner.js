@@ -10,9 +10,9 @@ import {
     getStatusThunkCreator,
     profileThunkCreator,
 } from "../../state/reducers/profileReducer";
-import {redirectHOC} from "../hoc/hoc";
 import {compose} from "redux";
 import {getMyProfileOnHeaderThunkCreator} from "../../state/reducers/authReducer";
+import {getCurrentProfileSelect, getIdSelect, getUserCommentSelect} from "../../utils/reselect/reselect";
 
 export class ProfileConteinerAPI extends Component {
     componentDidMount = () => {
@@ -33,9 +33,9 @@ export class ProfileConteinerAPI extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentProfile: state.profile.currentProfile,
-        userComment: state.profile.userComment,
-        userId: state.auth.id
+        currentProfile: getCurrentProfileSelect(state),
+        userComment: getUserCommentSelect(state),
+        userId: getIdSelect(state)
     };
 };
 
@@ -59,4 +59,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export const ProfileConteiner = compose(connect(mapStateToProps, mapDispatchToProps), withRouter, redirectHOC)(ProfileConteinerAPI);
+export const ProfileConteiner = compose(connect(mapStateToProps, mapDispatchToProps), withRouter)(ProfileConteinerAPI);

@@ -6,8 +6,13 @@ import React, {Component} from "react";
 import {Loader} from "../loader/Loader";
 import {Users} from "./Users";
 import {getUsersThunkCreator} from "../../state/reducers/usersReducer";
-import {redirectHOC} from "../hoc/hoc";
-import {compose} from "redux";
+import {
+    getCurrentPageSelect,
+    getIsFetchingSelect,
+    getPageSizeSelect,
+    getTotalUserCountSelect,
+    getUsersSelect
+} from "../../utils/reselect/reselect";
 
 export class UsersAPI extends Component {
     componentDidMount = () => {
@@ -29,11 +34,11 @@ export class UsersAPI extends Component {
 
 const mapStateToProps = state => {
     return {
-        usersList: state.users.listUser,
-        totalUserCount: state.users.totalUserCount,
-        pageSize: state.users.pageSize,
-        currentPage: state.users.currentPage,
-        isFetching: state.users.isFetching,
+        usersList: getUsersSelect(state),
+        totalUserCount: getTotalUserCountSelect(state),
+        pageSize: getPageSizeSelect(state),
+        currentPage: getCurrentPageSelect(state),
+        isFetching: getIsFetchingSelect(state),
     };
 };
 
@@ -48,4 +53,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export const UsersConteiner = compose(connect(mapStateToProps, mapDispatchToProps), redirectHOC)(UsersAPI);
+export const UsersConteiner = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);

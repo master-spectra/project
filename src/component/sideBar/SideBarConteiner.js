@@ -1,9 +1,10 @@
 import {SideBar} from "./SideBar";
 import {connect} from "react-redux";
+import {getSideBarSelect} from "../../utils/reselect/reselect";
 
 const mapStateToProps = state => {
     return {
-        sideBar: state.sideBar
+        sideBar: getSideBarSelect(state)
     };
 };
 

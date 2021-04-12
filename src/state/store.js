@@ -7,7 +7,7 @@ import {authReducer} from "./reducers/authReducer";
 import {getMyProfileReducer} from "./reducers/getMyProfileReducer";
 import {loaingReducer} from "./reducers/loadingReducer";
 import thunkMiddleware from "redux-thunk";
-import {reducer as formReducer} from "redux-form";
+import {statusCodeReducer} from "./reducers/statusCodeReducer";
 
 const reducers = combineReducers({
     profile: profileReducer,
@@ -17,7 +17,7 @@ const reducers = combineReducers({
     auth: authReducer,
     myProfile: getMyProfileReducer,
     loading: loaingReducer,
-    form: formReducer
+    statusCode: statusCodeReducer
 });
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware));

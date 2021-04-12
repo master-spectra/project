@@ -1,5 +1,5 @@
 import React from "react";
-import {Field, Form, Formik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import {setMessegeValidation} from "../../../utils/validate/validate";
 import style from "./messegeForm.module.scss";
 
@@ -15,6 +15,7 @@ export const MessegeForm = (props) => {
         <Formik initialValues={{messegeText: ""}} onSubmit={(value, {resetForm}) => submittingForm(value, resetForm)} validationSchema={setMessegeValidation}>
             <Form className={style.formSendPost}>
                 <h3 className={style.formTitle}>My Post</h3>
+                <ErrorMessage name={"messegeText"}/>
                 <Field name={"messegeText"} type={"text"} component="input" className={style.formInput}/>
                 <button type="submit" className={style.formBtn}>send</button>
             </Form>

@@ -1,5 +1,10 @@
-import {getProfileOnHeader, loginOnSite} from "../../api/api";
-import {authActionCreator, fetchingActionCreator, getIdUsersActionCreator} from "../actionCreator/actionCreator";
+import {getProfileOnHeader, loginOnSite, logoutOnSite} from "../../api/api";
+import {
+    authActionCreator,
+    fetchingActionCreator,
+    getIdUsersActionCreator,
+    setStatusCodeActionCreator
+} from "../actionCreator/actionCreator";
 
 const authInit = {
     id: null,
@@ -57,7 +62,20 @@ export const loginOnSiteThunkCreator = formData => {
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(getIdUsersActionCreator(response.data.data.userId));
+                } else {
+                    dispatch(setStatusCodeActionCreator(response.data.resultCode));
                 };
             });
     };
+};
+
+export const logoutOnSiteThunkCreator = () => dispatch => {
+    return (
+        logoutOnSite()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(authActionCreator({}, false));
+                };
+            })
+    );
 };

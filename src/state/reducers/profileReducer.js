@@ -12,16 +12,12 @@ const profileInit = {
 
 export const profileReducer = (state = profileInit, action) => {
 	const addPostCheckerForProfileChecker 		= "ADD POST";
-	const changeInputCheckerForProfileChecker 	= "CHANGE INPUT PROFILE";
 	const likePostChecker						= "LIKE POST";
 	const setProfileChecker						= "SET PROFILE";
 	const setStatusChecker 						= "SET STATUS";
 	const newState 								= {...state};
 
 	switch (true) {
-		case changeInputCheckerForProfileChecker === action.type:
-			newState.inputValue = action.input;
-			return newState;
 		case action.type === addPostCheckerForProfileChecker:
 			const userPost = {
 				comment: action.value.postText,

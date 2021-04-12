@@ -49,3 +49,7 @@ export const setStatusActionCreator = status => {
 export const getIdUsersActionCreator = id => {
     return {type: "GET ID", id: id};
 };
+
+export const setStatusCodeActionCreator = code => {
+    return {type: "SET STATUS CODE", code: code};
+};

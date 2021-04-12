@@ -58,3 +58,7 @@ export const loginOnSite = formData => {
         instance.post("/auth/login", formData)
     );
 };
+
+export const logoutOnSite = () => {
+    return instance.delete("/auth/login")
+};

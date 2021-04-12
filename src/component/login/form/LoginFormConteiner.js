@@ -1,5 +1,3 @@
-import {reduxForm} from "redux-form";
-import {compose} from "redux";
 import {connect} from "react-redux";
 import {LoginForm} from "./LoginForm";
 
@@ -13,4 +11,4 @@ const mapDispatchToProps = () => {
     return {};
 };
 
-export const LoginConteiner = compose(connect(mapStateToProps, mapDispatchToProps), reduxForm({form: "login"}))(LoginForm)
+export const LoginConteiner = connect(mapStateToProps, mapDispatchToProps)(LoginForm);

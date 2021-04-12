@@ -26,7 +26,6 @@ export const Profile = (props) => {
             />
         );
     })
-
     const callAddYourMessege = value => {
         addYourMessege(value, addPostCheckerForProfileChecker);
     };

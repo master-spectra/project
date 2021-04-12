@@ -1,7 +1,5 @@
 import {Messege} from "./Messege";
 import {connect} from "react-redux";
-import {redirectHOC} from "../hoc/hoc";
-import {compose} from "redux";
 import {addPostActionCreator} from "../../state/actionCreator/actionCreator";
 
 const mapStateToProps = state => {
@@ -18,4 +16,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export const MessegeConteiner = compose(connect(mapStateToProps, mapDispatchToProps), redirectHOC)(Messege);
+export const MessegeConteiner = connect(mapStateToProps, mapDispatchToProps)(Messege);
