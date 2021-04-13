@@ -1,39 +1,30 @@
-import React, {Component} from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {Profile} from "./Profile";
-import {
-    addPostActionCreator,
-    likePostActionCreator,
-} from "../../state/actionCreator/actionCreator";
+import {addPostActionCreator, likePostActionCreator,} from "../../state/actionCreator/actionCreator";
 import {withRouter} from "react-router-dom";
-import {
-    getStatusThunkCreator,
-    profileThunkCreator,
-} from "../../state/reducers/profileReducer";
+import {getStatusThunkCreator, profileThunkCreator,} from "../../state/reducers/profileReducer";
 import {compose} from "redux";
 import {getMyProfileOnHeaderThunkCreator} from "../../state/reducers/authReducer";
-import {getCurrentProfileSelect, getIdSelect, getUserCommentSelect} from "../../utils/reselect/reselect";
+import {getIdSelect, getUserCommentSelect} from "../../utils/reselect/reselect";
 
-export class ProfileConteinerAPI extends Component {
-    componentDidMount = () => {
-        const {getMyProfile, profileThunk, match, getStatus, userId} = this.props;
+export const ProfileConteinerAPI = props => {
+    const {getMyProfile, profileThunk, match, getStatus, userId} = props;
 
+    useEffect(() => {
         if (!match.params.userId && !userId) {
             getMyProfile();
         };
 
         profileThunk(match.params.userId || userId);
         getStatus(match.params.userId || userId);
-    }
+    });
 
-    render = () => {
-        return <Profile {...this.props} />
-    }
+    return <Profile {...props} />;
 };
 
 const mapStateToProps = state => {
     return {
-        currentProfile: getCurrentProfileSelect(state),
         userComment: getUserCommentSelect(state),
         userId: getIdSelect(state)
     };

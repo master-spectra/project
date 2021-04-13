@@ -41,3 +41,35 @@ export const getUserCommentSelect = state => {
 export const getIdSelect = state => {
     return state.auth.id;
 };
+
+export const getIsSubmittingSelect = state => {
+    return state.auth.isSubmitting;
+};
+
+export const getStatusSelect = state => {
+    return state.profile.status;
+};
+
+export const getInputValueSelect = state => {
+    return state.profile.inputValue;
+};
+
+export const getMyProfileSelect = state => {
+    return state.myProfile;
+};
+
+export const getMessegeListSelect = state => {
+    return state.messege.messegeList;
+};
+
+export const getMessegeInputValueSelect = state => {
+    return state.messege.inputValue;
+};
+
+export const getStatusCodeSelect = state => {
+    return state.statusCode.code;
+};
+
+export const getLoadingSelect = state => {
+    return state.loading.loading;
+};

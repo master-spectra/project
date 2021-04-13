@@ -1,22 +1,22 @@
-import React, {Component} from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {MyProfile} from "./MyProfile";
 import {getMyProfileThunkCreator} from "../../state/reducers/getMyProfileReducer";
+import {getMyProfileSelect} from "../../utils/reselect/reselect";
 
-class MyProfileConteinerAPI extends Component {
-    componentDidMount() {
-        const {getMyProfile, myProfile} = this.props;
+const MyProfileConteinerAPI = props => {
+    const {getMyProfile, myProfile} = props;
+
+    useEffect(() => {
         getMyProfile(myProfile);
-    }
+    });
 
-    render() {
-        return <MyProfile {...this.props}/>
-    }
+    return <MyProfile {...props}/>
 };
 
 const mapStateToProps = state => {
     return {
-        myProfile: state.myProfile
+        myProfile: getMyProfileSelect(state)
     };
 };
 

@@ -1,11 +1,12 @@
 import {connect} from "react-redux";
 import {loginOnSiteThunkCreator} from "../../state/reducers/authReducer";
 import {Login} from "./Login";
+import {getIsAuthSelect, getStatusCodeSelect} from "../../utils/reselect/reselect";
 
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.isAuth,
-        statusCode: state.statusCode.code
+        isAuth: getIsAuthSelect(state),
+        statusCode: getStatusCodeSelect(state)
     };
 };
 

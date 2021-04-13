@@ -1,12 +1,13 @@
 import {connect} from "react-redux";
-import {Status} from "./Status";
+import {StatusWithHooks} from "./StatusWithHooks";
+import {getStatusSelect} from "../../../../utils/reselect/reselect";
 
 const mapStateToProps = state => {
-    return {status: state.profile.status};
+    return {status: getStatusSelect(state)};
 };
 
 const mapDispatchToProps = () => {
     return {};
 };
 
-export const StatusConteiner = connect(mapStateToProps, mapDispatchToProps)(Status);
+export const StatusConteiner = connect(mapStateToProps, mapDispatchToProps)(StatusWithHooks);

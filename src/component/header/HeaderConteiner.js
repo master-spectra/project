@@ -1,11 +1,11 @@
-import React, {Component} from "react";
 import {Header} from "./Header";
 import {connect} from "react-redux";
 import {logoutOnSiteThunkCreator} from "../../state/reducers/authReducer";
+import {getIsAuthSelect} from "../../utils/reselect/reselect";
 
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: getIsAuthSelect(state)
     };
 };
 

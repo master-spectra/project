@@ -1,9 +1,10 @@
 import {loadingInProgressActionCreator} from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
 import {Loading} from "./Loading";
+import {getLoadingSelect} from "../../utils/reselect/reselect";
 
 const mapStateToProps = state => {
-    return {loading: state.loading.loading};
+    return {loading: getLoadingSelect(state)};
 };
 
 const mapDispatchToProps = dispatch => {

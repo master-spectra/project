@@ -1,9 +1,10 @@
 import {connect} from "react-redux";
 import {LoginForm} from "./LoginForm";
+import {getIsAuthSelect} from "../../../utils/reselect/reselect";
 
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: getIsAuthSelect(state)
     };
 };
 

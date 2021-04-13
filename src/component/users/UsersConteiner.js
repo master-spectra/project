@@ -1,8 +1,6 @@
-import {
-    changePageActionCreator,
-} from "../../state/actionCreator/actionCreator";
+import {changePageActionCreator} from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
-import React, {Component} from "react";
+import React, {useEffect} from "react";
 import {Loader} from "../loader/Loader";
 import {Users} from "./Users";
 import {getUsersThunkCreator} from "../../state/reducers/usersReducer";
@@ -11,26 +9,22 @@ import {
     getIsFetchingSelect,
     getPageSizeSelect,
     getTotalUserCountSelect,
-    getUsersSelect
+    getUsersSelect,
 } from "../../utils/reselect/reselect";
 
-export class UsersAPI extends Component {
-    componentDidMount = () => {
-        const {currentPage, pageSize, getUsersThunk} = this.props;
-        getUsersThunk(currentPage, pageSize);
-    }
-
-    onPageChanged = (pageNumber) => {
-        const {pageSize, changePage, getUsersThunk} = this.props;
+export const UsersAPI = props => {
+    const {isFetching, currentPage, pageSize, getUsersThunk, changePage} = props;
+    const onPageChanged = pageNumber => {
         changePage(pageNumber);
         getUsersThunk(pageNumber, pageSize);
     }
 
-    render = () => {
-        const {isFetching} = this.props;
-        return isFetching ? <Loader/> : <Users {...this.props} onPageChanged={pageNumber => this.onPageChanged(pageNumber)}/>;
-    }
-}
+    useEffect(() => {
+        getUsersThunk(currentPage, pageSize);
+    }, []);
+
+    return isFetching ? <Loader/> : <Users {...props} onPageChanged={pageNumber => onPageChanged(pageNumber)}/>;
+};
 
 const mapStateToProps = state => {
     return {
