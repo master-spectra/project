@@ -15,7 +15,7 @@ export const getCurrentPageSelect = state => {
 };
 
 export const getIsFetchingSelect = state => {
-    return state.users.isFetching;
+    return state.auth.isFetching;
 };
 
 export const getIsAuthSelect = state => {
@@ -58,11 +58,11 @@ export const getMyProfileSelect = state => {
     return state.myProfile;
 };
 
-export const getmessageListSelect = state => {
+export const getMessageListSelect = state => {
     return state.message.userComment;
 };
 
-export const getmessageInputValueSelect = state => {
+export const getMessageInputValueSelect = state => {
     return state.message.inputValue;
 };
 

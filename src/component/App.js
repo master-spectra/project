@@ -9,12 +9,26 @@ import {MessageConteiner} from "./message/MessegeConteiner";
 import {MyProfileConteiner} from "./myProfile/MyProfileConteiner";
 import {LoginConteiner} from "./login/LoginConteiner";
 
-export const App = props => {
-    const {isAuth, getMyProfileOnHeader} = props;
-
+export const App = ({isAuth, getMyProfileOnHeader}) => {
     useEffect(() => {
         getMyProfileOnHeader();
     });
+
+    const renderApp = () => {
+        if (isAuth) {
+            return (
+                <div className={AppStyle.appContent}>
+                    <Route exact path={"/"} render={() => <MyProfileConteiner/>}/>
+                    <Route path="/profile/:userId?" render={() => <ProfileConteiner/>}/>
+                    <Route path="/message" render={() => <MessageConteiner/>}/>
+                    <Route path="/find" render={() => <UsersConteiner/>}/>
+                    <Route path="/login" render={() => <LoginConteiner/>}/>
+                </div>
+            );
+        };
+
+        return <LoginConteiner/>;
+    };
 
     return (
         <div className={AppStyle.app}>
@@ -23,15 +37,7 @@ export const App = props => {
                 <div className={"wrapper"}>
                     <div className={AppStyle.overlay}>
                         <SideBarConteiner/>
-                        {
-                            isAuth ? <div className={AppStyle.appContent}>
-                            <Route exact path={"/"} render={() => <MyProfileConteiner/>}/>
-                            <Route path="/profile/:userId?" render={() => <ProfileConteiner/>}/>
-                            <Route path="/message" render={() => <MessageConteiner/>}/>
-                            <Route path="/find" render={() => <UsersConteiner/>}/>
-                            <Route path="/login" render={() => <LoginConteiner/>}/>
-                        </div> : <LoginConteiner/>
-                        }
+                        {renderApp()}
                     </div>
                 </div>
             </div>

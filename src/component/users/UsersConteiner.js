@@ -12,18 +12,13 @@ import {
 } from "../../utils/reselect/reselect";
 
 export const UsersAPI = props => {
-    const {isFetching, currentPage, pageSize, getUsersThunk, changePage} = props;
-
-    const onPageChanged = pageNumber => {
-        changePage(pageNumber);
-        getUsersThunk(pageNumber, pageSize);
-    }
+    const {isFetching, currentPage, pageSize, getUsersThunk} = props;
 
     useEffect(() => {
         getUsersThunk(currentPage, pageSize);
-    });
+    }, []);
 
-    return isFetching ? <Loader/> : <Users {...props} onPageChanged={pageNumber => onPageChanged(pageNumber)}/>;
+    return isFetching ? <Loader/> : <Users {...props}/>;
 };
 
 const mapStateToProps = state => {

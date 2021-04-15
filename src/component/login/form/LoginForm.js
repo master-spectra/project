@@ -2,9 +2,7 @@ import React from "react";
 import style from "../login.module.scss";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 
-export const LoginForm = props => {
-    const {onSubmit} = props;
-
+export const LoginForm = ({onSubmit}) => {
     return (
         <Formik initialValues={{email: "", password: ""}} onSubmit={onSubmit}>
             <Form className={style.form}>

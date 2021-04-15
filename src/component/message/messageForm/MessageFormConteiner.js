@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
 import {MessageForm} from "./MessageForm";
-import {getmessageInputValueSelect} from "../../../utils/reselect/reselect";
+import {getMessageInputValueSelect} from "../../../utils/reselect/reselect";
 
 const mapStateToProps = state => {
     return {
-        inputValue: getmessageInputValueSelect(state)
+        inputValue: getMessageInputValueSelect(state)
     };
 };
 

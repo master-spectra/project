@@ -2,9 +2,7 @@ import React from "react";
 import MyProfileStyle from "./myProfile.module.scss";
 import Logo from "../../media/logo.jpg";
 
-export const MyProfile = props => {
-    const {myProfile} = props;
-
+export const MyProfile = ({myProfile}) => {
     return (
         <div className={MyProfileStyle.profile}>
             <div className={MyProfileStyle.profileImgWrap}>

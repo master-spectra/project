@@ -4,14 +4,12 @@ import {MyProfile} from "./MyProfile";
 import {getMyProfileThunkCreator} from "../../state/reducers/getMyProfileReducer";
 import {getMyProfileSelect} from "../../utils/reselect/reselect";
 
-const MyProfileConteinerAPI = props => {
-    const {getMyProfile, myProfile} = props;
-
+const MyProfileConteinerAPI = ({getMyProfile, myProfile}) => {
     useEffect(() => {
         getMyProfile(myProfile);
-    });
+    }, []);
 
-    return <MyProfile {...props}/>
+    return <MyProfile myProfile={myProfile}/>
 };
 
 const mapStateToProps = state => {

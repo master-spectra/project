@@ -1,14 +1,11 @@
 import React from "react";
 import SideBarStyle from "./sideBar.module.scss";
-import {Link} from "./link/Link";
+import {LinkList} from "./linkList/linkList";
 
-export const SideBar = (props) => {
-    const {sideBar} = props;
-    const link = sideBar.map((item, index) => <Link key={index} link={item.link} text={item.nameLink}/>);
-
+export const SideBar = ({sideBar}) => {
     return (
         <aside className={SideBarStyle.sideBar}>
-            <ul className={SideBarStyle.menu}>{link}</ul>
+            <ul className={SideBarStyle.menu}><LinkList sideBar={sideBar}/></ul>
         </aside>
     );
 };

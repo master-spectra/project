@@ -1,17 +1,17 @@
 import {connect} from "react-redux";
-import {getmessageListSelect} from "../../utils/reselect/reselect";
+import {getMessageListSelect} from "../../utils/reselect/reselect";
 import {addPostActionCreator} from "../../state/reducers/profileReducer";
 import {Message} from "./Message";
 
 const mapStateToProps = state => {
     return {
-        messageList: getmessageListSelect(state)
+        messageList: getMessageListSelect(state)
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        addYourmessage: (input, textChecker) => {
+        addYourMessage: (input, textChecker) => {
             dispatch(addPostActionCreator(input, textChecker));
         }
     };

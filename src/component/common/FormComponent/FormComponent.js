@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./formComponent.module.scss"
 
-export const Errormessage = () => {
+export const ErrorMessage = () => {
     return <label className={style.message}>Uncorrected</label>;
 };
 

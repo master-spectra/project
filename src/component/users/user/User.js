@@ -4,9 +4,7 @@ import Logo from "../../../media/logo.jpg";
 import {NavLink} from "react-router-dom";
 import {GetButtonConteiner} from "./button/GetButtonConteiner";
 
-export const User = (props) => {
-    const {profile} = props;
-
+export const User = ({profile}) => {
     return (
         <div className={userStyle.user}>
             <div className={userStyle.otherItem}>

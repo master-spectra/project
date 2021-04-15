@@ -3,9 +3,7 @@ import style from "./postForm.module.scss";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {setPostValidation} from "../../../utils/validate/validate";
 
-export const PostForm = props => {
-    const {onSubmit} = props;
-
+export const PostForm = ({onSubmit}) => {
     const submittingForm = (value, resetForm) => {
         onSubmit(value);
         resetForm();

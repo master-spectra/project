@@ -1,21 +1,19 @@
 import React from "react";
 import messageStyle from "./message.module.scss";
 import {MessageFormConteiner} from "./messageForm/MessageFormConteiner";
-import {MyMessage} from "./myMessage/MyMessage";
+import {MyMessageArrays} from "./myMessage/MyMessageArrays";
 
-export const Message = (props) => {
-    const {messageList, addYourmessage} = props;
-    const addmessageCheckerFormessageChecker = "message/ADD MESSAGE";
-    const messageLists = messageList.map((item, index) => <MyMessage key={index} text={item.text}/>);
+export const Message = ({messageList, addYourMessage}) => {
+    const addMessageCheckerForMessageChecker = "message/ADD MESSAGE";
 
-    const callAddYourmessage = value => {
-        addYourmessage(value, addmessageCheckerFormessageChecker);
+    const callAddYourMessage = value => {
+        addYourMessage(value, addMessageCheckerForMessageChecker);
     };
 
     return (
         <div className={messageStyle.message}>
-            <div className={messageStyle.listmessage}>{messageLists}</div>
-            <MessageFormConteiner onSubmit={value => callAddYourmessage(value)} />
+            <div className={messageStyle.listMessage}><MyMessageArrays messageList={messageList}/></div>
+            <MessageFormConteiner onSubmit={value => callAddYourMessage(value)} />
         </div>
     );
 };

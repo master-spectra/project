@@ -1,6 +1,6 @@
 import {sendMessage} from "./profileReducer";
 
-const addMessageCheckerFormessage = "message/ADD MESSAGE";
+const addMessageCheckerForMessage = "message/ADD MESSAGE";
 
 const messageInit = {
 	userComment: [],
@@ -11,7 +11,7 @@ export const messageReducer = (state = messageInit, action) => {
 	const newState = {...state};
 
 	switch (true) {
-		case action.type === addMessageCheckerFormessage:
+		case action.type === addMessageCheckerForMessage:
 			const userPost = {text: action.value.messageText};
 			sendMessage(newState, state, userPost);
 

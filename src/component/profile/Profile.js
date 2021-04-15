@@ -1,35 +1,17 @@
 import React from "react";
 import {PostFormConteiner} from "./profileForm/postFormConteiner";
 import {UserConteiner} from "./user/UserConteiner";
-import {MyPost} from "./myPost/MyPost";
+import {MyPostArrays} from "./myPost/MyPostArrays";
 
-export const Profile = (props) => {
-    const {userComment, addYourMessage}   = props;
-    const addPostCheckerForProfile 		            = "profile/ADD POST";
-
-    const userComments = userComment.map((item, index) => {
-        const postData = {
-            text: item.comment,
-            status: userComment,
-            index: index
-        };
-
-        return (
-            <MyPost
-                postData={postData}
-                key={index}
-            />
-        );
-    })
-    const callAddYourmessage = value => {
-        addYourMessage(value, addPostCheckerForProfile);
-    };
+export const Profile = ({userComment, addYourMessage}) => {
+    const addPost = "profile/ADD POST";
+    const callAddYourMessage = value => addYourMessage(value, addPost);
 
     return (
         <div>
             <UserConteiner/>
-            <PostFormConteiner onSubmit={callAddYourmessage}/>
-            <div>{userComments}</div>
+            <PostFormConteiner onSubmit={callAddYourMessage}/>
+            <div><MyPostArrays userComment={userComment}/></div>
         </div>
     );
 };

@@ -77,8 +77,8 @@ export const getUsersThunkCreator = (currentPage, pageSize) => async dispatch =>
 
     const response = await getUsers(currentPage, pageSize);
 
-    dispatch(setUsersActionCreator(response.data.items, 90));
-    fetchingActionCreator(false);
+    dispatch(setUsersActionCreator(response.data.items, 200));
+    dispatch(fetchingActionCreator(false));
 };
 
 const followUnFollowMIX = async (type, id, dispatch, DALFunction) => {

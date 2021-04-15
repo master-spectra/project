@@ -2,9 +2,7 @@ import React from "react";
 import userStyle from "../user.module.scss";
 import {Loader} from "../../../loader/Loader";
 
-export const GetButton = props => {
-    const {profile, following, unFollowing, isFollow} = props;
-
+export const GetButton = ({profile, following, unFollowing, isFollow}) => {
     if (profile.followed) {
         if (isFollow) {
             return <Loader/>;

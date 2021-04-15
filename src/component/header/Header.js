@@ -2,9 +2,7 @@ import React from "react";
 import HeaderStyle from "./header.module.scss";
 import {NavLink} from "react-router-dom";
 
-export const Header = props => {
-    const {logoutOnSite, isAuth} = props;
-
+export const Header = ({logoutOnSite, isAuth}) => {
     return (
         <div className={HeaderStyle.header}>
             <div className="wrapper">

@@ -1,7 +1,8 @@
 @import "../../../mixins/mixins.scss";
 
-.mymessage {
+.myMessage {
 	display: grid;
+	margin-bottom: 20px;
 	grid-template-columns: 100px 1fr;
 
 	.img {

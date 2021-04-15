@@ -1,8 +1,7 @@
 import React from "react";
 import MyPostStyle from "./myPost.module.scss";
 
-export const MyPost = props => {
-    const {postData} = props;
+export const MyPost = ({postData}) => {
     const post = React.createRef();
 
     return (

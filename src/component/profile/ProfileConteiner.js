@@ -11,9 +11,7 @@ import {compose} from "redux";
 import {getMyProfileOnHeaderThunkCreator} from "../../state/reducers/authReducer";
 import {getIdSelect, getUserCommentSelect} from "../../utils/reselect/reselect";
 
-export const ProfileConteinerAPI = props => {
-    const {getMyProfile, profileThunk, match, getStatus, userId} = props;
-
+export const ProfileConteinerAPI = ({getMyProfile, profileThunk, match, getStatus, userId, ...props}) => {
     useEffect(() => {
         if (!match.params.userId && !userId) {
             getMyProfile();
