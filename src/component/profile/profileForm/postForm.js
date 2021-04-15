@@ -8,7 +8,7 @@ export const PostForm = props => {
 
     const submittingForm = (value, resetForm) => {
         onSubmit(value);
-        resetForm("");
+        resetForm();
     };
 
     return (

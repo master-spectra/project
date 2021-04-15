@@ -7,9 +7,9 @@ import {StatusConteiner} from "./status/StatusConteiner";
 const getInfo = item => {
     if (item) {
         return item;
-    } else {
-        return "Неизвестно";
     };
+
+    return "Неизвестно";
 };
 
 export const User = (props) => {

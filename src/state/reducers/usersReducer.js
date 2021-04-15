@@ -1,26 +1,30 @@
 import {callFolowingOnUser, callUnFolowingOnUser, getUsers} from "../../api/api";
-import {
-    fetchingActionCreator, followingUserActionCreator,
-    followInProgressActionCreator,
-    setUsersActionCreator, unFollowingUserActionCreator
-} from "../actionCreator/actionCreator";
+import {fetchingActionCreator} from "./authReducer";
+const followForUser      = "users/FOLLOW ON USER";
+const unFollowForUser    = "users/UNFOLLOWUNFOLLOW ON USER";
+const setUser            = "users/SET USER";
+const changePage         = "users/CHANGE PAGE";
+const toggleFollowing    = "users/TOGGLE FOLLOWING";
+const toggleLoader       = "users/TOGGLE LOADER";
 
 const usersInit = {
     listUser: [],
     totalUserCount: 0,
     pageSize: 5,
     currentPage: 1,
-    isFetching: true,
+    isFetching: false,
     isFollow: false
 };
 
+const followingUnFollowing = (newState, action) => {
+    newState.listUser.forEach(item => {
+        if (item.id === action.id) {
+            item.followed = !item.followed;
+        };
+    });
+};
+
 export const usersReducer = (state = usersInit, action) => {
-    const followCheckerForUser      = "FOLLOW ON USER";
-    const unFollowCheckerForUser    = "UNFOLLOW ON USER";
-    const setUserTextCheker         = "SET USER";
-    const changePage                = "CHANGE PAGE";
-    const toggleFollowing           = "TOGGLE FOLLOWING";
-    const toggleLoader              = "TOGGLE LOADER";
     const newState                  = {...state};
 
     newState.listUser = state.listUser.map(item => {
@@ -28,23 +32,13 @@ export const usersReducer = (state = usersInit, action) => {
     });
 
     switch (true) {
-        case action.type === followCheckerForUser:
-            newState.listUser.forEach(item => {
-                if (item.id === action.id && !item.followed) {
-                    item.followed = true;
-                };
-            });
-
+        case action.type === followForUser:
+            followingUnFollowing(newState, action);
             return newState;
-        case action.type === unFollowCheckerForUser:
-            newState.listUser.forEach(item => {
-                if (item.id === action.id && item.followed) {
-                    item.followed = false;
-                };
-            });
-
+        case action.type === unFollowForUser:
+            followingUnFollowing(newState, action);
             return newState;
-        case action.type === setUserTextCheker:
+        case action.type === setUser:
             newState.listUser = [...action.usersArray];
             newState.totalUserCount = action.totalUserCount;
 
@@ -58,47 +52,45 @@ export const usersReducer = (state = usersInit, action) => {
         case action.type === toggleFollowing:
             newState.isFollow = action.isFollow;
             return newState;
-        default:
-            return state;
+        default: return state;
     }
 };
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-    return dispatch => {
-        dispatch(fetchingActionCreator(true));
+const followInProgressActionCreator = status => {
+    return {type: toggleFollowing, isFollow: status};
+};
 
-        getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(setUsersActionCreator(data.items, 90));
-                dispatch(fetchingActionCreator(false));
-            });
+const setUsersActionCreator = (usersArray, totalUserCount) => {
+    return {type: setUser, usersArray: usersArray, totalUserCount: totalUserCount};
+};
+
+export const changePageActionCreator = newPage => {
+    return {type: changePage, page: newPage};
+};
+
+const followUnFollowActionCreator = (type, id) => {
+    return {type: type, id: id};
+};
+
+export const getUsersThunkCreator = (currentPage, pageSize) => async dispatch => {
+    dispatch(fetchingActionCreator(true));
+
+    const response = await getUsers(currentPage, pageSize);
+
+    dispatch(setUsersActionCreator(response.data.items, 90));
+    fetchingActionCreator(false);
+};
+
+const followUnFollowMIX = async (type, id, dispatch, DALFunction) => {
+    dispatch(followInProgressActionCreator(true));
+    const response = await DALFunction(id);
+
+    if (response.data.resultCode === 0) {
+        dispatch(followUnFollowActionCreator(type, id));
+        dispatch(followInProgressActionCreator(false));
     };
 };
 
-export const followingThunkCreator = (btn, id) => {
-    return dispatch => {
-        dispatch(followInProgressActionCreator(true));
+export const followingThunkCreator = id => dispatch => followUnFollowMIX(followForUser, id, dispatch, callFolowingOnUser);
 
-        callUnFolowingOnUser(id)
-            .then(data => {
-                if (!data.resultCode) {
-                    dispatch(followInProgressActionCreator(false));
-                    dispatch(unFollowingUserActionCreator(btn, id));
-                };
-            });
-    };
-};
-
-export const unFollowingThunkCreator = (btn, id) => {
-    return dispatch => {
-        dispatch(followInProgressActionCreator(true));
-
-        callFolowingOnUser(id)
-            .then(data => {
-                if (!data.resultCode) {
-                    dispatch(followInProgressActionCreator(false));
-                    dispatch(followingUserActionCreator(btn, id));
-                };
-            });
-    };
-};
+export const unFollowingThunkCreator = id => dispatch =>  followUnFollowMIX(unFollowForUser, id, dispatch, callUnFolowingOnUser);

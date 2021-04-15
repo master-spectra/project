@@ -11,11 +11,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        following: (btn, id) => {
-            dispatch(unFollowingThunkCreator(btn, id));
+        following: id => {
+            dispatch(followingThunkCreator(id));
         },
-        unFollowing: (btn, id) => {
-            dispatch(followingThunkCreator(btn, id));
+        unFollowing: id => {
+            dispatch(unFollowingThunkCreator(id));
         }
     };
 };

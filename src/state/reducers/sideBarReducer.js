@@ -4,8 +4,8 @@ const sideBarInit = [
         link: "/profile"
     },
     {
-        nameLink: "Messege",
-        link: "/messege"
+        nameLink: "Message",
+        link: "/message"
     },
     {
         nameLink: "Music",

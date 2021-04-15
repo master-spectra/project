@@ -1,26 +1,25 @@
 import {getProfileOnHeader} from "../../api/api";
-import {setProfileActionCreator} from "../actionCreator/actionCreator";
+import {setProfileActionCreator} from "./profileReducer";
 
+const getProfile = "profile/SET PROFILE";
 const myProfileInit = {profile: null};
 
 export const getMyProfileReducer = (state = myProfileInit, action) =>{
     const newState = {...state};
-    const getProfile = "SET PROFILE";
 
     switch (true) {
         case getProfile === action.type:
             newState.profile = action.profile;
             return newState;
-        default:
-            return state;
+        default: return state;
     }
 };
 
-export const getMyProfileThunkCreator = () => {
-    return dispatch => {
-        getProfileOnHeader()
-            .then(data => {
-                dispatch(setProfileActionCreator(data.data));
-            });
+
+export const getMyProfileThunkCreator = () => async dispatch => {
+    const response = await getProfileOnHeader();
+
+    if (response.data.resultCode === 0) {
+        dispatch(setProfileActionCreator(response.data.data));
     };
 };

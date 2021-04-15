@@ -1,9 +1,8 @@
-import {changePageActionCreator} from "../../state/actionCreator/actionCreator";
 import {connect} from "react-redux";
 import React, {useEffect} from "react";
 import {Loader} from "../loader/Loader";
 import {Users} from "./Users";
-import {getUsersThunkCreator} from "../../state/reducers/usersReducer";
+import {changePageActionCreator, getUsersThunkCreator} from "../../state/reducers/usersReducer";
 import {
     getCurrentPageSelect,
     getIsFetchingSelect,
@@ -14,6 +13,7 @@ import {
 
 export const UsersAPI = props => {
     const {isFetching, currentPage, pageSize, getUsersThunk, changePage} = props;
+
     const onPageChanged = pageNumber => {
         changePage(pageNumber);
         getUsersThunk(pageNumber, pageSize);
@@ -21,7 +21,7 @@ export const UsersAPI = props => {
 
     useEffect(() => {
         getUsersThunk(currentPage, pageSize);
-    }, []);
+    });
 
     return isFetching ? <Loader/> : <Users {...props} onPageChanged={pageNumber => onPageChanged(pageNumber)}/>;
 };

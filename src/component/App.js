@@ -5,7 +5,7 @@ import {ProfileConteiner} from "./profile/ProfileConteiner";
 import {HeaderConteiner} from "./header/HeaderConteiner";
 import {UsersConteiner} from "./users/UsersConteiner";
 import {SideBarConteiner} from "./sideBar/SideBarConteiner";
-import {MessegeConteiner} from "./messege/MessegeConteiner";
+import {MessageConteiner} from "./message/MessegeConteiner";
 import {MyProfileConteiner} from "./myProfile/MyProfileConteiner";
 import {LoginConteiner} from "./login/LoginConteiner";
 
@@ -23,13 +23,15 @@ export const App = props => {
                 <div className={"wrapper"}>
                     <div className={AppStyle.overlay}>
                         <SideBarConteiner/>
-                        {isAuth ? <div className={AppStyle.appContent}>
+                        {
+                            isAuth ? <div className={AppStyle.appContent}>
                             <Route exact path={"/"} render={() => <MyProfileConteiner/>}/>
                             <Route path="/profile/:userId?" render={() => <ProfileConteiner/>}/>
-                            <Route path="/messege" render={() => <MessegeConteiner/>}/>
+                            <Route path="/message" render={() => <MessageConteiner/>}/>
                             <Route path="/find" render={() => <UsersConteiner/>}/>
                             <Route path="/login" render={() => <LoginConteiner/>}/>
-                        </div> : <LoginConteiner/>}
+                        </div> : <LoginConteiner/>
+                        }
                     </div>
                 </div>
             </div>

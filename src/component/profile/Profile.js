@@ -4,11 +4,11 @@ import {UserConteiner} from "./user/UserConteiner";
 import {MyPost} from "./myPost/MyPost";
 
 export const Profile = (props) => {
-    const {userComment, likePost, addYourMessege} = props;
-    const addPostCheckerForProfileChecker = "ADD POST";
+    const {userComment, addYourMessage}   = props;
+    const addPostCheckerForProfile 		            = "profile/ADD POST";
+
     const userComments = userComment.map((item, index) => {
         const postData = {
-            likeCounter: item.likeCounter,
             text: item.comment,
             status: userComment,
             index: index
@@ -18,22 +18,17 @@ export const Profile = (props) => {
             <MyPost
                 postData={postData}
                 key={index}
-                likePost={
-                    (likeBtn, index) => {
-                        likePost(likeBtn, index);
-                    }
-                }
             />
         );
     })
-    const callAddYourMessege = value => {
-        addYourMessege(value, addPostCheckerForProfileChecker);
+    const callAddYourmessage = value => {
+        addYourMessage(value, addPostCheckerForProfile);
     };
 
     return (
         <div>
             <UserConteiner/>
-            <PostFormConteiner onSubmit={callAddYourMessege}/>
+            <PostFormConteiner onSubmit={callAddYourmessage}/>
             <div>{userComments}</div>
         </div>
     );

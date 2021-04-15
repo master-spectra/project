@@ -4,7 +4,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import {setStatusValidation} from "../../../../utils/validate/validate";
 import {Input} from "../../../common/FormComponent/FormComponent";
 
-export const StatusWithHooks = props => {
+export const Status = props => {
     const {status, onSubmit} = props;
     const [editMode, setEditMode] = useState(false);
 
@@ -24,15 +24,15 @@ export const StatusWithHooks = props => {
                 <p className={style.info}>О мне: {status || "----------------------"}</p>
             </div>
         );
-    } else {
-        return (
-            <Formik initialValues={{status: ""}} onSubmit={submitting} validationSchema={setStatusValidation}>
-                <Form>
-                    <ErrorMessage name={"status"}/>
-                    <Field type={"text"} name={"status"} component={Input}/>
-                    <button type={"submit"} className={style.btn}>Save</button>
-                </Form>
-            </Formik>
-        );
     };
+
+    return (
+        <Formik initialValues={{status: ""}} onSubmit={submitting} validationSchema={setStatusValidation}>
+            <Form>
+                <ErrorMessage name={"status"}/>
+                <Field type={"text"} name={"status"} component={Input}/>
+                <button type={"submit"} className={style.btn}>Save</button>
+            </Form>
+        </Formik>
+    );
 };

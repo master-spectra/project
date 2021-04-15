@@ -1,81 +1,87 @@
 import {getProfileOnHeader, loginOnSite, logoutOnSite} from "../../api/api";
-import {
-    authActionCreator,
-    fetchingActionCreator,
-    getIdUsersActionCreator,
-    setStatusCodeActionCreator
-} from "../actionCreator/actionCreator";
+
+const auth          = "auth/AUTH FOR SITE";
+const isFetching    = "auth/TOGGLE LOADER";
+const getId         = "auth/GET ID";
+const setStatusCode = "auth/SET STATUS CODE";
 
 const authInit = {
     id: null,
     isFetching: false,
-    isAuth: false
+    isAuth: false,
+    code: null
 };
 
 export const authReducer = (state = authInit, action) => {
-    const authChecker = "AUTH FOR SITE";
-    const isFetchingChecker = "TOGGLE LOADER";
-    const getIdChecker = "GET ID";
     const newState = {...state};
 
     switch (true) {
-        case authChecker === action.type:
-            newState.id = action.data.id;
-            newState.email = action.data.email;
-            newState.login = action.data.login;
+        case auth === action.type:
+            newState.id     = action.data.id;
+            newState.email  = action.data.email;
+            newState.login  = action.data.login;
             newState.isAuth = action.isAuth;
 
             return newState;
-        case isFetchingChecker === action.type:
+        case isFetching === action.type:
             newState.isFetching = action.isFetching;
-
             return newState;
-        case getIdChecker === action.type:
+        case getId === action.type:
             newState.id = action.id;
             newState.isAuth = true;
             return newState;
-        default:
-            return state;
+        case setStatusCode === action.type:
+            newState.code = action.code;
+            return newState;
+        default: return state;
     }
 };
 
-export const getMyProfileOnHeaderThunkCreator = () => {
-    return dispatch => {
-        dispatch(fetchingActionCreator(true));
-        getProfileOnHeader()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(authActionCreator(data.data, true));
-                } else {
-                    dispatch(authActionCreator({}, false));
-                };
+export const authActionCreator = (data, isAuth) => {
+    return {type: auth, data: {...data}, isAuth: isAuth};
+};
 
-                dispatch(fetchingActionCreator(false));
-            });
+export const fetchingActionCreator = fetching => {
+    return {type: isFetching, isFetching: fetching};
+};
+
+export const getIdUsersActionCreator = id => {
+    return {type: getId, id: id};
+};
+
+export const setStatusCodeActionCreator = code => {
+    return {type: setStatusCode, code: code};
+};
+
+export const getMyProfileOnHeaderThunkCreator = () => async dispatch => {
+    dispatch(fetchingActionCreator(true));
+    const response = await getProfileOnHeader();
+
+    if (response.data.resultCode === 0) {
+        dispatch(authActionCreator(response.data.data, true));
+    } else {
+        dispatch(authActionCreator({}, false));
     };
+
+    dispatch(fetchingActionCreator(false));
 };
 
 
-export const loginOnSiteThunkCreator = formData => {
-    return dispatch => {
-        loginOnSite(formData)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(getIdUsersActionCreator(response.data.data.userId));
-                } else {
-                    dispatch(setStatusCodeActionCreator(response.data.resultCode));
-                };
-            });
+export const loginOnSiteThunkCreator = formData => async dispatch => {
+    const response = await loginOnSite(formData);
+
+    if (response.data.resultCode === 0) {
+        dispatch(getIdUsersActionCreator(response.data.data.userId));
+        return null;
     };
+
+    dispatch(setStatusCodeActionCreator(response.data.resultCode));
 };
 
-export const logoutOnSiteThunkCreator = () => dispatch => {
-    return (
-        logoutOnSite()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(authActionCreator({}, false));
-                };
-            })
-    );
+export const logoutOnSiteThunkCreator = () => async dispatch => {
+    const response = await logoutOnSite();
+
+    if (response.data.resultCode === 0) {
+        dispatch(authActionCreator({}, false));
+    };
 };

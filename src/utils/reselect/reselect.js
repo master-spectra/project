@@ -58,18 +58,14 @@ export const getMyProfileSelect = state => {
     return state.myProfile;
 };
 
-export const getMessegeListSelect = state => {
-    return state.messege.messegeList;
+export const getmessageListSelect = state => {
+    return state.message.userComment;
 };
 
-export const getMessegeInputValueSelect = state => {
-    return state.messege.inputValue;
+export const getmessageInputValueSelect = state => {
+    return state.message.inputValue;
 };
 
 export const getStatusCodeSelect = state => {
-    return state.statusCode.code;
-};
-
-export const getLoadingSelect = state => {
-    return state.loading.loading;
+    return state.auth.code;
 };
