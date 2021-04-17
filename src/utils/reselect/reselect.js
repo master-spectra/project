@@ -69,3 +69,7 @@ export const getMessageInputValueSelect = state => {
 export const getStatusCodeSelect = state => {
     return state.auth.code;
 };
+
+export const getIsUpdatePhoto = state => {
+    return state.profile.isUpdatePhoto;
+};

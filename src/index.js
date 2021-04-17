@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "./style.scss";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import {store} from "./state/store";
 import {Provider} from "react-redux";
 import {AppConteiner} from "./component/AppConteiner";
 
 ReactDom.render(
-    <BrowserRouter>
+    <HashRouter>
         <Provider store={store}>
             <AppConteiner/>
         </Provider>
-    </BrowserRouter>,
+    </HashRouter>,
     document.querySelector("body")
 );

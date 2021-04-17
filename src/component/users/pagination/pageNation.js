@@ -1,7 +1,7 @@
 import UsersStyle from "./pageNation.module.scss";
 import React from "react";
 
-export const PageNation = ({pageSize, totalUserCount, currentPage, changePage, getUsersThunk, tabPageList}) => {
+export const PageNation = ({pageSize, totalUserCount, currentPage, changePage, getUsersThunk}) => {
     const countPage     = Math.ceil(totalUserCount / pageSize);
     const pageList      = [];
 
@@ -22,7 +22,7 @@ export const PageNation = ({pageSize, totalUserCount, currentPage, changePage, g
             const max       = currentPage + 5;
             const length    = max - min;
 
-            return item >= min && item <= max && length === 10 ? <span className={currentPage === item ? UsersStyle.selectedItem : null} onClick={() => onPageChanged(item)} key={index}>{item}</span> : null
+            return item >= min && item < max && length === 10 ? <span className={currentPage === item ? UsersStyle.selectedItem : null} onClick={() => onPageChanged(item)} key={index}>{item}</span> : null
         };
 
         return item < 11 ? <span className={currentPage === item ? UsersStyle.selectedItem : null} onClick={() => onPageChanged(item)} key={index}>{item}</span> : null
@@ -30,38 +30,25 @@ export const PageNation = ({pageSize, totalUserCount, currentPage, changePage, g
 
     const requestOnPrevPage = type => {
         if (copyCurrentPage > 1 && type === "prev") {
-            --copyCurrentPage;
-
-            getUsersThunk(copyCurrentPage);
-            changePage(copyCurrentPage);
-
+            onPageChanged(--copyCurrentPage, 5);
             return null;
         };
 
         if (copyCurrentPage === 1 && type === "prev") {
             copyCurrentPage = pageList.length;
-
-            getUsersThunk(copyCurrentPage);
-            changePage(copyCurrentPage);
+            onPageChanged(copyCurrentPage, 5);
 
             return null;
         };
 
         if (copyCurrentPage === pageList.length && type === "next") {
             copyCurrentPage = 1;
-
-            getUsersThunk(copyCurrentPage);
-            changePage(copyCurrentPage);
+            onPageChanged(copyCurrentPage, 5);
 
             return null;
         };
 
-        tabPageList.current.scrollLeft = 100;
-
-        ++copyCurrentPage;
-
-        getUsersThunk(copyCurrentPage);
-        changePage(copyCurrentPage);
+        onPageChanged(++copyCurrentPage, 5);
     };
 
     return (

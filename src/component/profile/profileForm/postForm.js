@@ -10,7 +10,7 @@ export const PostForm = ({onSubmit}) => {
     };
 
     return (
-        <Formik initialValues={{postText: ""}} onSubmit={(value, {resetForm}) => submittingForm(value, resetForm)} validationSchema={setPostValidation}>
+        <Formik initialValues={{postText: "", load: ""}} onSubmit={(value, {resetForm}) => submittingForm(value, resetForm)} validationSchema={setPostValidation}>
             <Form className={style.formSendPost}>
                 <h3 className={style.formTitle}>My Post</h3>
                 <ErrorMessage name={"postText"}/>

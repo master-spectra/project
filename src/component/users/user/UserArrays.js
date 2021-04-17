@@ -3,7 +3,7 @@ import React from "react";
 
 export const UsersArrays = ({usersList}) => {
     return (
-        usersList.map((item, index) => {
+        usersList.map(item => {
             const profile = {
                 name: item.name,
                 img: item.photos.small,
@@ -14,7 +14,7 @@ export const UsersArrays = ({usersList}) => {
 
             return (
                 <User
-                    key={index}
+                    key={profile.id}
                     profile={profile}
                 />
             );

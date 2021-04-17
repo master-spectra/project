@@ -5,11 +5,10 @@ import {PageNation} from "./pagination/pageNation";
 
 export const Users = props => {
     const {usersList} = props;
-    const pageList = React.createRef();
 
     return (
         <div>
-            <div className={UsersStyle.listPage} ref={pageList}><PageNation tabPageList={pageList} {...props}/></div>
+            <div className={UsersStyle.listPage}><PageNation {...props}/></div>
             <div><UsersArrays usersList={usersList}/></div>
         </div>
     );

@@ -42,4 +42,5 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export const UsersConteiner = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+const UsersConteiner = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+export default UsersConteiner;

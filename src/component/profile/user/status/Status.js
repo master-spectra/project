@@ -4,11 +4,13 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import {setStatusValidation} from "../../../../utils/validate/validate";
 import {Input} from "../../../common/FormComponent/FormComponent";
 
-export const Status = ({status, onSubmit}) => {
+export const Status = ({status, onSubmit, userId}) => {
     const [editMode, setEditMode] = useState(false);
 
     const changeEditMode = () => {
-        setEditMode(!editMode);
+        if (!userId) {
+            setEditMode(!editMode);
+        };
     };
 
     const submitting = (value, {resetForm}) => {
